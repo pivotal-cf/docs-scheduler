@@ -1,19 +1,38 @@
 ---
-title: YOUR-PRODUCT-NAME Release Notes
+title: Scheduler for PCF Release Notes
 owner: Partners
 ---
 
-**This topic should include the Release Notes for your product. For examples, see the 
-[GCP Service Broker Release Notes](http://docs.pivotal.io/gcp-sb/release-notes.html) or the 
-[ISS Knowtify Search Analytics Release Notes](http://docs.pivotal.io/knowtify/release.html).
-When you release a new version, add new release notes to this file, keeping the older notes below.**
+<style>
+    .note.warning {
+        background-color: #fdd;
+        border-color: #fbb
+    }
+    .note.warning:before {
+        color: #f99;
+     }
+</style>
 
-### vCURRENT-VERSION-NUMBER (Ex. v1.0.1)
+<p class="note warning">
+<strong>IMPORTANT: </strong> 
+The Scheduler for PCF tile is currently in Beta and is meant for evaluation and test purposes only. Do not use this product in a PCF production environment.
+</p>
 
-**Release Date:** RELEASE-DATE (Ex. August 1, 2016)
+This topic contains release notes for the Concourse for Pivotal Cloud Foundry (PCF) tile.
 
-Features included in this release:
+### v1.0.2
 
-* Feature one.
-* Feature two.
-* Feature three.
+**Release Date:** April 19, 2017
+
+###Features included in this release:
+
+* Create Jobs.
+* Run Jobs.
+* Schedule Jobs.
+* List Job History.
+
+###Known issues in this release:
+
+* Operators must create (if one doesn't already exist) a p-msql service plan named "1gb" with at least 100 MB of disk space.
+* Only a "standard" service plan exists that allows scheduling of as many tasks as desired and at any scheduled interval desired.
+
