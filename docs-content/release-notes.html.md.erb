@@ -35,4 +35,5 @@ This topic contains release notes for the Concourse for Pivotal Cloud Foundry (P
 
 * Operators must create (if one doesn't already exist) a p-msql service plan named "1gb" with at least 100 MB of disk space.
 * Only a "standard" service plan exists that allows scheduling of as many tasks as desired and at any scheduled interval desired.
+* Some buildpacks (python and ruby) do not properly create a `web` process_type command by default.  These buildpacks require that you take special considerations or they will no longer be accessible via the CF CLI.
 
