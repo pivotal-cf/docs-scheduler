@@ -1,58 +1,64 @@
 ---
-title: YOUR-PRODUCT-NAME
-owner: Partners
+title: Scheduler for PCF (Beta)
+owner: Pivotal
 ---
 
-**This topic should begin with a brief description of your product. See below for an example.**
+<style>
+    .note.warning {
+        background-color: #fdd;
+        border-color: #fbb
+    }
+    .note.warning:before {
+        color: #f99;
+     }
+</style>
 
-This documentation describes the Redis Labs Enterprise Cluster (RLEC) Service Broker for Pivotal Cloud Foundry (PCF). 
-The RLEC Service Broker registers a service broker on PCF and exposes its service plans on the Marketplace. 
-Developers can provision Redis databases by creating instances of the service plans using Apps Manager or the cf CLI.
+<p class="note warning">
+<strong>IMPORTANT: </strong> 
+The Scheduler for PCF tile is currently in Beta and is meant for evaluation and test purposes only. Do not use this product in a PCF production environment.
+</p>
+
+This documentation describes the Scheduler for PCF Service Broker for Pivotal Cloud Foundry (PCF). 
+The Scheduler for PCF Service Broker is exposed as a service in the PCF Marketplace.  Developers use the service to create and schedule jobs by creating and binding to instances of the standard service plan using Apps Manager or the cf CLI.
 
 ## <a id='overview'></a>Overview
 
-**The overview should provide a description of the product's key features.**
+Scheduler for PCF includes the following key feature:
 
-YOUR-PRODUCT-NAME includes the following key features:
-
-* Feature one.
-* Feature two.
-* Feature three.
+* Create jobs to execute tasks (Diego Tasks).
+* Execute jobs on an ad-hoc basis.
+* Schedule jobs to execute on a recurring basis.
+* View job status and history.
 
 ## <a id="snapshot"></a>Product Snapshot
 
 <dl>
-<dt>YOUR-PRODUCT-NAME details:</dt>
-<dd><strong>Version</strong>: vYOUR-VERSION-NUMBER </dd>
-<dd><strong>Release date</strong>: YOUR-RELEASE-DATE (Ex: August 1, 2016)</dd>
-<dd><strong>Software component version</strong>: vYOUR-SOFTWARE-COMPONENT-VERSION-NUMBER</dd>
-<dd><strong>Compatible Ops Manager version(s)</strong>: vYOUR-COMPATIBLE-OPS-MAN-VERSION (Ex. v1.6.x, v1.7.x)</dd>
-<dd><strong>Compatible Elastic Runtime version(s)</strong>: vYOUR-COMPATIBLE-ELASTIC-RUNTIME-VERSION (Ex. v1.4.x, v1.5.x, v1.6.x)</dd>
-<dd><strong>vSphere support?</strong> Yes-OR-No</dd>
-<dd><strong>OpenStack support?</strong> Yes-OR-No</dd>
-<dd><strong>AWS support?</strong> Yes-OR-No</dd>
+<dt>Scheduler for PCF details:</dt>
+<dd><strong>Version</strong>: v1.0 </dd>
+<dd><strong>Release date</strong>: April 14, 2017</dd>
+<dd><strong>Software component version</strong>: v1.0.3</dd>
+<dd><strong>Compatible Ops Manager version(s)</strong>: v1.9.x, v1.10.x</dd>
+<dd><strong>Compatible Elastic Runtime version(s)</strong>: v1.9.x, v1.10.x</dd>
+<dd><strong>vSphere support?</strong> Yes</dd>
+<dd><strong>OpenStack support?</strong> Yes</dd>
+<dd><strong>AWS support?</strong> Yes</dd>
 </dl>
 
 ## <a id="reqs"></a>Requirements
 
-**Provide any general or specific requirements, prerequisites, or dependencies here. 
-A general requirement might be something like, "An AppDynamics account." 
-A specific requirement might be something like, "Packaging Dependencies for Offline Buildpacks."**
+Scheduler for PCF has the following requirements:
 
-YOUR-PRODUCT-NAME has the following requirements:
-
-+ PREREQUISITE-1
-
-+ PREREQUISITE-2
++ ERT 1.9 or 1.10
++ MySQL for PCF 1.8 or 1.9
 
 ## <a id="limitations"></a>Limitations
 
-**List any known limitations.**
++ None
 
 ## <a id="feedback"></a>Feedback
 
 Please provide any bugs, feature requests, or questions to the 
-[Pivotal Cloud Foundry Feedback](mailto:pivotal-cf-feedback@pivotal.io) list or send an email to YOUR-SUPPORT-EMAIL.
+[Pivotal Cloud Foundry Feedback](mailto:pivotal-cf-feedback@pivotal.io) list or send an email to [Support](mailto:support@pivotal.io).
 
 ## <a id='license'></a>License
 

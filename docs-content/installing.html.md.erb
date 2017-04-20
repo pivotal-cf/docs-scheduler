@@ -1,28 +1,59 @@
 ---
-title: Installing and Configuring YOUR-PRODUCT-NAME
-owner: Partners
+title: Installing and Configuring Scheduler for PCF
+owner: Pivotal
 ---
 
-This topic describes how to install and configure YOUR-PRODUCT-NAME.
+<style>
+    .note.warning {
+        background-color: #fdd;
+        border-color: #fbb
+    }
+    .note.warning:before {
+        color: #f99;
+     }
+</style>
 
-##<a id='install'></a> Install and Configure YOUR-PRODUCT-NAME
+<p class="note warning">
+<strong>IMPORTANT: </strong> 
+The Scheduler for PCF tile is currently in Beta and is meant for evaluation and test purposes only. Do not use this product in a PCF production environment.
+</p>
+This topic describes how to install and configure Scheduler for PCF.
+
+##<a id='prereq'></a> Prerequisite for Scheduler for PCF
+
+1. If one does not exist, Create a `1gb` service plan in the MySQL for PCF tile.
+ 
+  1. Click the **MySQL for PCF** tile. 
+ 
+  1. Click **Service Plans** section.
+ 
+  1. Click **Add**.
+ 
+  1. Enter `1gb` for the **Service Plan Name**.
+ 
+  1. Enter a **Description**.
+ 
+  1. Enter `1000` for a **Storage Quota**.
+ 
+  1. Enter `40` for **Concurrent Connections Quota**.
+ 
+  1. Click **Save**.  
+ 
+  1. Return to the Ops Manager Installation Dashboard and click **Apply Changes** to create the 1gb service plan in the MySQL for PCF service.
+
+##<a id='install'></a> Install and Configure Scheduler for PCF
 
 1. Download the product file from Pivotal Network.
 
 1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
 
-1. Under the **Import a Product** button, click **+** next to the version number of YOUR-PRODUCT-NAME. 
+1. Under the **Import a Product** button, click **+** next to the version number of Scheduler for PCF. 
 This adds the tile to your staging area.
 
-1. Click the newly added **YOUR-PRODUCT-NAME** tile.
+1. Click the newly added **Scheduler for PCF** tile.
 
-1. **This portion of the procedure should tell the users how to configure the newly added tile by
-walking them through the sections. Which fields should they fill out? What are the different
-checkboxes? Include relevant screenshots here.** 
+1. Make sure all configuration of network and stemcells is complete.
 
 1. Click **Save**.
 
-1. Return to the Ops Manager Installation Dashboard and click **Apply Changes** to install YOUR-PRODUCT-NAME tile.
-
-**If needed, include additional configuration information below. For example, maybe there are
-configuration options not required for installation but which could be useful for certain users.**
+1. Return to the Ops Manager Installation Dashboard and click **Apply Changes** to install Scheduler for PCF tile.
