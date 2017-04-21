@@ -10,16 +10,23 @@ owner: Pivotal
     }
     .note.warning:before {
         color: #f99;
-     }
+    }
 </style>
 
 <p class="note warning">
 <strong>IMPORTANT: </strong> 
-The Scheduler for PCF tile is currently in Beta and is meant for evaluation and test purposes only. Do not use this product in a PCF production environment.
+The Scheduler for PCF tile is currently in beta and is intended for evaluation and test purposes only. Do not use this product in a PCF production environment.
 </p>
 This topic describes how to install and configure Scheduler for PCF.
 
-##<a id='prereq'></a> Prerequisite for Scheduler for PCF
+##<a id='prereq'></a> Prerequisites
+
+Before you install the tile, you need to have a MySQL for PCF service plan with a storage quota of 1&nbsp;GB or more that allows at least 40 concurrent connections. 
+
+If you do not already have this plan, see [Add a Plan](https://docs.pivotal.io/p-mysql/index.html#service-plan) in the MySQL for PCF documentation.
+
+-------
+REPLACE. SEE ABOVE
 
 1. If one does not exist, Create a `1gb` service plan in the MySQL for PCF tile.
  
@@ -40,6 +47,8 @@ This topic describes how to install and configure Scheduler for PCF.
   1. Click **Save**.  
  
   1. Return to the Ops Manager Installation Dashboard and click **Apply Changes** to create the 1gb service plan in the MySQL for PCF service.
+
+  --------
 
 ##<a id='install'></a> Install and Configure Scheduler for PCF
 

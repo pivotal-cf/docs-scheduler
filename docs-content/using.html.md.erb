@@ -10,39 +10,33 @@ owner: Partners
     }
     .note.warning:before {
         color: #f99;
-     }
+    }
 </style>
 
 <p class="note warning">
 <strong>IMPORTANT: </strong> 
-The Scheduler for PCF tile is currently in Beta and is meant for evaluation and test purposes only. Do not use this product in a PCF production environment.
+The Scheduler for PCF tile is currently in beta and is intended for evaluation and test purposes only. Do not use this product in a PCF production environment.
 </p>
 
-This topic provides instructions for using the Schedule for PCF service with their Pivotal Cloud Foundry (PCF) apps. Scheduler for PCF enables ad-hoc and scheduled execution of tasks on PCF.
+This topic provides instructions for using Scheduler for Pivotal Cloud Foundry (PCF). The service enables ad hoc and scheduled execution of PCF tasks.
 
-These procedures use the Cloud Foundry Command-Line Interface (cf CLI). You can also use [Apps Manager](http://docs.pivotal.io/pivotalcf/console/dev-console.html) to perform the same tasks using a graphical UI.
+You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI) tool or the [Apps Manager](http://docs.pivotal.io/pivotalcf/console/dev-console.html) UI.
 
 For general information, see [Managing Service Instances with the cf CLI](http://docs.pivotal.io/devguide/services/managing-services.html). 
 
 ## <a id="prereqs"></a>Prerequisites
 
 * A PCF installation with [Scheduler for PCF](https://network.pivotal.io/products/scheduler-for-pcf) installed and listed in the [Marketplace](http://docs.pivotal.io/devguide/services/#instances)
-* A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account on the PCF installation
+* A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account
+* (Optional) If you want to use the Scheduler for cf CLI Plugin, you must install it on your local machine.
+* (Optional) If you want to use the Scheduler for PCF API, you need:
+  * An api client such as `curl`
+  * An oauth toke for the the org and space containing your app
+  <p class="note"><strong>Note</strong>: See the Scheduler for PCF [API docs](http://docs.pivotal.io/pivotalcf/scheduler-for-pcf/api) for more details</p>
 
-#### To use Scheduler for PCF CLI Plugin, you need:
-* A local machine with the following installed:
-   - a browser
-   - a shell
-   - the [Cloud Foundry Command-Line Interface](http://docs.pivotal.io/pivotalcf/cf-cli/install-go-cli.html) (cf CLI)
-   - the [Scheduler for PCF Command-Line Interface Plugin](http://docs.pivotal.io/pivotalcf/scheduler-for-pcf/install-cli.html) 
+----
+
 * To [log into](http://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html#login) the org and space containing your app
-
-#### To use Scheduler for PCF API, you need:
-* A PCF installation with [Scheduler for PCF](https://network.pivotal.io/products/scheduler-for-pcf) installed and listed in the [Marketplace](http://docs.pivotal.io/devguide/services/#instances)
-* A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account on the PCF installation
-* An api client such as `curl`
-* An oauth toke for the the org and space containing your app
-* See the Scheduler for PCF [API docs](http://docs.pivotal.io/pivotalcf/scheduler-for-pcf/api) for more details
 
 ## <a id='process'></a>The Create-Bind Process
 

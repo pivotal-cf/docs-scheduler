@@ -10,46 +10,65 @@ owner: Pivotal
     }
     .note.warning:before {
         color: #f99;
-     }
+    }
 </style>
 
 <p class="note warning">
 <strong>IMPORTANT: </strong> 
-The Scheduler for PCF tile is currently in Beta and is meant for evaluation and test purposes only. Do not use this product in a PCF production environment.
+The Scheduler for Pivotal Cloud Foundry (PCF) tile is currently in beta and is intended for evaluation and test purposes only. Do not use this product in a PCF production environment.
 </p>
 
-This documentation describes the Scheduler for PCF Service Broker for Pivotal Cloud Foundry (PCF). 
-The Scheduler for PCF Service Broker is exposed as a service in the PCF Marketplace.  Developers use the service to create and schedule jobs by creating and binding to instances of the standard service plan using Apps Manager or the cf CLI.
+This documentation describes the Scheduler for PCF Service Broker. 
 
 ## <a id='overview'></a>Overview
 
-Scheduler for PCF includes the following key feature:
+The service broker is exposed as a service in the Marketplace. App developers use Scheduler for PCF to create and schedule jobs, interacting with the service through the Apps Manager UI or the Cloud Foundry Command Line Interface (cf CLI) tool.
 
-* Create jobs to execute tasks (Diego Tasks).
-* Execute jobs on an ad-hoc basis.
-* Schedule jobs to execute on a recurring basis.
-* View job status and history.
+Scheduler for PCF enables developers do the following:
+
+* Create jobs to execute tasks (Diego tasks)
+* Execute jobs on an ad hoc basis
+* Schedule jobs to execute on a recurring basis
+* View job status and history
 
 ## <a id="snapshot"></a>Product Snapshot
 
-<dl>
-<dt>Scheduler for PCF details:</dt>
-<dd><strong>Version</strong>: v1.0 </dd>
-<dd><strong>Release date</strong>: April 14, 2017</dd>
-<dd><strong>Software component version</strong>: v1.0.3</dd>
-<dd><strong>Compatible Ops Manager version(s)</strong>: v1.9.x, v1.10.x</dd>
-<dd><strong>Compatible Elastic Runtime version(s)</strong>: v1.9.x, v1.10.x</dd>
-<dd><strong>vSphere support?</strong> Yes</dd>
-<dd><strong>OpenStack support?</strong> Yes</dd>
-<dd><strong>AWS support?</strong> Yes</dd>
-</dl>
+The following table provides version and version-support information about Scheduler for PCF:
+
+<table class="nice">
+    <th>Element</th>
+    <th>Details</th>
+    <tr>
+        <td>Version</td>
+        <td>v1.0</td>
+    </tr>
+    <tr>
+        <td>Release date</td>
+        <td>April 14, 2017</td>
+    </tr>
+    <tr>
+        <td>Software component version</td>
+        <td>v1.0.3</td>
+    </tr>
+    <tr>
+        <td>Compatible Ops Manager version(s)</td>
+        <td>v1.9.x, v1.10.x</td>
+    </tr>
+    <tr>
+        <td>Compatible Elastic Runtime version(s)</td>
+        <td>v1.9.x, v1.10.x</td>
+    </tr>
+    <tr>
+        <td>IaaS support</td>
+        <td>AWS, OpenStack, and vSphere</td>
+    </tr>
+</table>
 
 ## <a id="reqs"></a>Requirements
 
 Scheduler for PCF has the following requirements:
 
-+ ERT 1.9 or 1.10
-+ MySQL for PCF 1.8 or 1.9
++ MySQL for PCF v1.8 or v1.9 ([available on Pivotal Network](https://network.pivotal.io/products/p-mysql/))
 
 ## <a id="limitations"></a>Limitations
 
