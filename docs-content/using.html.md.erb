@@ -3,21 +3,6 @@ title: Using Scheduler for PCF
 owner: Partners
 ---
 
-<style>
-    .note.warning {
-        background-color: #fdd;
-        border-color: #fbb
-    }
-    .note.warning:before {
-        color: #f99;
-    }
-</style>
-
-<p class="note warning">
-<strong>IMPORTANT: </strong> 
-The Scheduler for PCF tile is currently in beta and is intended for evaluation and test purposes only. Do not use this product in a PCF production environment.
-</p>
-
 This topic provides instructions for using Scheduler for Pivotal Cloud Foundry (PCF). The service enables ad hoc and scheduled execution of PCF tasks.
 
 You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI) tool or the [Apps Manager](http://docs.pivotal.io/pivotalcf/console/dev-console.html) UI.
@@ -29,40 +14,19 @@ For general information, see [Managing Service Instances with the cf CLI](http:/
 * A PCF installation with [Scheduler for PCF](https://network.pivotal.io/products/scheduler-for-pcf) installed and listed in the [Marketplace](http://docs.pivotal.io/devguide/services/#instances)
 * A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account
 * (Optional) If you want to use the Scheduler for cf CLI Plugin, you must install it on your local machine.
-* (Optional) If you want to use the Scheduler for PCF API, you need:
-  * An api client such as `curl`
-  * An oauth toke for the the org and space containing your app
-  <p class="note"><strong>Note</strong>: See the Scheduler for PCF [API docs](http://docs.pivotal.io/pivotalcf/scheduler-for-pcf/api) for more details</p>
 
-----
+## <a id='process'></a>Create and Bind a Service Instance
 
-* To [log into](http://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html#login) the org and space containing your app
-
-## <a id='process'></a>The Create-Bind Process
-
-Because every app and service in PCF is scoped to a [space](http://docs.pivotal.io/pivotalcf/concepts/roles.html#spaces), an app can only use a service if an instance of the service exists in the same space. 
+Every app and service in PCF is scoped to a [space](http://docs.pivotal.io/pivotalcf/concepts/roles.html#spaces), which means an app can only use a service if an instance of the service exists in the same space. 
 
 The Scheduler for PCF service is a singleton service and only one service instance can be created in a space.
 
-To use Scheduler in a PCF app:
+### <a id='marketplace'></a>Confirm Service Availability
 
-1. Use the [cf CLI](http://docs.pivotal.io/pivotalcf/cf-cli/getting-started.html#login) or [Apps Manager](http://docs.pivotal.io/pivotalcf/customizing/console-login.html) to log into the org and space that contains the app.
+To confirm your operator has installed Scheduler for PCF:
 
-1. Make sure an instance of the Scheduler for PCF service exists in the same space as the app.
-   - If the space does not already have a Scheduler for PCF instance, [create](#create) one.
-   - If the space already has a Scheduler for PCF instance, you can [bind](#bind) your app to the existing instance.
-
-2. [Bind](#bind) the app to the Scheduler for PCF service instance.
-
-## <a id='marketplace'></a>Confirm Service Availability
-
-For an app to use a service, 1) the service must be available in the Marketplace for its space and 2) an instance of the service must exist in its space.
-
-You can confirm both of these using the cf CLI as follows.
-
-1. To find out if Scheduler for PCF service is available in the Marketplace:
-   1. Enter `cf marketplace`
-   1. If the output lists `scheduler-for-pcf` in the `service` column, Scheduler for PCF is available. If it is not available, ask your operator to install it.
+1. Run `cf marketplace` from the command line.
+1. If the output lists `scheduler-for-pcf` in the `service` column, Scheduler for PCF is available. If it is not available, ask your operator to install it.
 
     <pre class="terminal">
     $ cf marketplace
@@ -74,188 +38,162 @@ You can confirm both of these using the cf CLI as follows.
     [...]
     </pre>
 
-1. To confirm that an Scheduler for PCF instance is running in the space
-    1. Enter `cf services`
-    1. A `scheduler-for-pcf` listing in the `service` column is a service instance of Scheduler in the space.
 
-    <pre class="terminal">
-    $ cf services
-    Getting services in org my-org / space my-space as user<span>@</span>example.com...
-    OK
-    name          service            plan    bound apps    last operation
-    my-instance   scheduler-for-pcf  standard              create succeeded
-    </pre>
-    You can [bind](#bind) your app to the existing instance.
+### <a id='create'></a>Create a Service Instance
 
-## <a id='create'></a>Create a Service Instance
 
-To create an instance of the Scheduler for PCF service, run `cf create-service`:
 
-1. Enter `cf create-service scheduler-for-pcf standard SERVICE_INSTANCE`  
+To create an instance of the Scheduler for PCF service, run `cf create-service scheduler-for-pcf standard SERVICE-INSTANCE-NAME`, replacing `SERVICE-INSTANCE-NAME` with a name of your choice. After you create the service instance, this name appears under `service` \[sic\] in output from `cf services`.
 
-    Where `SERVICE_INSTANCE` is a name you choose to identify the service instance. This name will appear under `service` \[sic\] in output from `cf services`.
+See the following example:
 
-    <pre class="terminal">
-   $ cf create-service scheduler-for-pcf standard my-instance<br>
-    Creating service my-instance in org my-org / space my-space as user<span>@</span>example.com...
-    OK<br>
-   $ cf services<br>
-    Getting services in org my-org / space my-space as user<span>@</span>example.com...
-    OK
-    name          service            plan    bound apps    last operation
-    my-instance   scheduler-for-pcf  standard              create succeeded
+<pre class="terminal">
+$ cf create-service scheduler-for-pcf standard my-instance<br>
+Creating service my-instance in org my-org / space my-space as user<span>@</span>example.com...
+OK<br>
+$ cf services<br>
+Getting services in org my-org / space my-space as user<span>@</span>example.com...
+OK
+name          service            plan    bound apps    last operation
+my-instance   scheduler-for-pcf  standard              create succeeded
 </pre>
 
-    You can only create one instance in a space.  If you attempt to create more than one instance in a space you will get an error response.
+You can only create one instance in a space.  If you attempt to create more than one instance in a space, you will get an error response.
 
-## <a id="bind"></a>Bind a Service Instance to Your App
+### <a id="bind"></a>Bind a Service Instance to Your App
 
 For an app to use a service, you must bind it to a service instance. Do this after you push or re-push the app using `cf push`.
 
-To bind an app to a Scheduler instance run `$ cf bind-service`.
+To bind an app to a Scheduler instance, run `cf bind-service APP-NAME SERVICE-INSTANCE-NAME`. Replace `APP-NAME` with the name of the app you want to use the Scheduler service for and `SERVICE-INSTANCE-NAME` with the name you supplied when you ran `cf create-service`.
 
-1. Enter `cf bind-service APP SERVICE_INSTANCE`
-
-    Where `APP` is the app you want to use the Scheduler service instance and `SERVICE_INSTANCE` is the name you supplied when you ran `cf create-service`.
-
-    <pre class="terminal">
-   $ cf bind-service my-app my-instance<br>
-    Binding service my-instance to my-app in org my-org / space my-space as user<span>@</span>example.com...
-    OK
-    TIP: Use 'cf push' to ensure your env variable changes take effect
+<pre class="terminal">
+$ cf bind-service my-app my-instance<br>
+Binding service my-instance to my-app in org my-org / space my-space as user<span>@</span>example.com...
+OK
+TIP: Use 'cf push' to ensure your env variable changes take effect
 </pre>
 
-## <a id="list-jobs"></a>Create a new job
+## <a id="list-jobs"></a>Manage Jobs
 
-To execute tasks related to an App, create a new job related to an apps. Use the CLI to create a job.
+See the following sections to learn about the operations you can perform with Scheduler for PCF.
 
-1. Enter `cf create-job APP JOB_NAME COMMAND`
+### <a id="list-jobs"></a>Create a New Job
 
-    Where `APP` is the app you want to execute a task againstand `JOB_NAME` is the name for your newly created job and COMMAND is the command you wish to execute.
+To execute tasks related to an app, create a new job by running `cf create-job APP-NAME JOB-NAME COMMAND`:
 
-    <pre class="terminal">
-   $ cf create-job my-app my-job "pwd"<br>
-   Creating job myjob for scheduler-api with command ls in org my-org / space my-space as user<span>@</span>example.com...
-   Job Name   App Name        Command
-   my-job      scheduler-api   ls
-   OK
-	</pre>
+  * `APP-NAME` is the app you want to execute a task against
+  * `JOB-NAME` is the name for your newly created job 
+  * `COMMAND` is the command you wish to execute
+    
+See the following example:
+
+<pre class="terminal">
+ $ cf create-job my-app my-job "pwd"<br>
+ Creating job myjob for scheduler-api with command ls in org my-org / space my-space as user<span>@</span>example.com...
+ Job Name   App Name        Command
+ my-job      scheduler-api   pwd
+ OK
+</pre>
 
 
-## <a id="list-jobs"></a>List Jobs
 
-Jobs are related to apps and are available to all space developers. Use the CLI to list all jobs in a space.
+### <a id="list-jobs"></a>List Jobs
 
-1. Enter `cf jobs`
+Use the cf CLI to list all jobs in a space by running `cf jobs`. See the following example:
 
-    <pre class="terminal">
-   $ cf jobs<br>
-   Listing jobs for org my-org / space my-space as user<span>@</span>example.com...
-   Job Name   App Name        Command
-   my-job      scheduler-api   ls
-   OK
-	</pre>
+<pre class="terminal">
+$ cf jobs<br>
+Listing jobs for org my-org / space my-space as user<span>@</span>example.com...
+Job Name    App Name        Command
+my-job      scheduler-api   pwd
+OK
+</pre>
 
-## <a id="exec-jobs"></a>Execute a job
+### <a id="exec-jobs"></a>Execute a Job
 
-Jobs can be executed in ad-hoc which is often useful to test the proper configuration of a job prior to scheduling the job for recurring execution.
+You can execute a job manually. This is often useful to test the proper configuration of a job prior to scheduling it for recurring execution.
 
-1. Enter `cf run-job my-job`
+Run `cf run-job JOB-NAME`. See the following example:
 
-    <pre class="terminal">
-    $ cf run-job my-job<br>
-    Enqueuing job my-job for app my-app in org my-org / space my-space as user<span>@</span>example.com...
-    OK
-	</pre>
+<pre class="terminal">
+$ cf run-job my-job<br>
+Enqueuing job my-job for app my-app in org my-org / space my-space as user<span>@</span>example.com...
+OK
+</pre>
 
-## <a id="view-job-history"></a>View job history
+### <a id="view-job-history"></a>View Job History
 
-Every execution of a job is recorded in the schedulers job history and can be easily reviewed for execution status.
+You can review job history by running `cf job-history JOB-NAME`:
 
-1. Enter `cf job-history my-job`
+<pre class="terminal">
+$ cf job-history my-job<br>
+Getting scheduled job history for my-job in org my-org / space my-space as user<span>@</span>example.com...
+1 - 1 of 1 Total Results
+Execution GUID                     Execution State   Scheduled Time                  Execution Start Time            Execution End Time              Exit Message
+8a7e808a5b883a25015b89b4a12c0001   SUCCEEDED         Mon, 10 Apr 2017 13:00:00 UTC   Mon, 10 Apr 2017 13:00:00 UTC   Mon, 10 Apr 2017 13:00:01 UTC   202 - Cloud Controller Accepted Task
+</pre>
 
-    <pre class="terminal">
-    $ cf job-history my-job<br>
-    Getting scheduled job history for my-job in org my-org / space my-space as user<span>@</span>example.com...
-    1 - 1 of 1 Total Results
-    Execution GUID                     Execution State   Scheduled Time                  Execution Start Time            Execution End Time              Exit Message
-    8a7e808a5b883a25015b89b4a12c0001   SUCCEEDED         Mon, 10 Apr 2017 13:00:00 UTC   Mon, 10 Apr 2017 13:00:00 UTC   Mon, 10 Apr 2017 13:00:01 UTC   202 - Cloud Controller Accepted Task
-	</pre>
+### <a id="view-logs"></a>View Logs
 
-## <a id="view-logs"></a>View logs for job execution
+You can view logs for jobs the same way you view logs for your app.
 
-Jobs are executed as [CF Tasks](https://docs.run.pivotal.io/devguide/using-tasks.html).  Logs for tasks and jobs can be viewed by view logs for the related App.
+<p class="note"><strong>Note</strong>: Jobs are executed as <a href="https://docs.run.pivotal.io/devguide/using-tasks.html">CF Tasks</a>.</p>
 
-1. Enter `cf logs my-job --recent`
+Enter `cf logs JOB-NAME --recent`. See the following example:
 
-    <pre class="terminal">
-    $ cf logs my-job --recent<br>
-    Connected, dumping recent logs for app my-app in org my-org / space my-space as user<span>@</span>example.com...
-    [...]
-    2017-04-19T23:04:13.79-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT Creating container
+<pre class="terminal">
+$ cf logs my-job --recent<br>
+Connected, dumping recent logs for app my-app in org my-org / space my-space as user<span>@</span>example.com...
+[...]
+2017-04-19T23:04:13.79-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT Creating container
 2017-04-19T23:04:14.01-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT Successfully created container
 2017-04-19T23:04:14.22-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT bin
 2017-04-19T23:04:14.22-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT db
 2017-04-19T23:04:14.23-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT Exit status 0
 2017-04-19T23:04:14.24-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT Destroying container
 2017-04-19T23:04:14.55-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT Successfully destroyed container
-	[...]
-	</pre>	
+[...]
+</pre>	
 
-## <a id="view-logs"></a>Schedule a job
+### <a id="view-logs"></a>Schedule a job
 
-Jobs can be scheduled to execute at any time in the future using a schedule expression. Scheduler for PCF takes cron expressions in the format of `<min> <hours> <Day of month> <month> <Day of week>` To better understand the expression (based on cron) see [Schedule Expressions](https://docs.pivotal.io/scheduler-for-pcf/scheduler-expressions.html)
+You can schedule a job to execute at any time using a schedule expression. Scheduler for PCF requires cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format.
 
-1. Enter `cf schedule-job my-job "* * ? * *"`
+For example, to execute a job at noon every day, enter the following command:
 
-    <pre class="terminal">
-    $ cf schedule-job my-job "* * ? * *"<br>
-    Scheduling job my-job for my-app to execute based on expression * * ? * * in org my-org / space my-space as user<span>@</span>example.com...
-    OK
-	</pre>	
+<pre class="terminal">$ cf schedule-job my-job "0 12 * * * *"</pre>
 
-The job will be executed based on all the existing schedules. Schedules also are assigned a guid in order to uniquely identify similar schedules.
+A single job can have multiple schedules. Each schedule has a GUID to help distinguish it from similar schedules.
 
-## <a id="view-schedules"></a>View Schedules for all jobs in a space.
+### <a id="view-schedules"></a>View Schedules for All Jobs in a Space
 
-Schedules for all jobs in a space can be reviewed for accuracy.
+You can review schedules for all jobs in a space by running `cf job-schedules`. See the following example:
 
-1. Enter `cf job-schedules`
+<pre class="terminal">
+$ cf job-schedules my-job "0 12 * * *"<br>
+Getting scheduled jobs for org my-org / space my-space as user<span>@</span>example.com...
+App Name: my-app
+my-job        pwd    2b69e0c2-9664-46bb-4817-54afcedbb65d   0 12 * * *
+OK
+</pre>
 
-    <pre class="terminal">
-    $ cf job-schedules my-job "* * ? * *"<br>
-    Getting scheduled jobs for org my-org / space my-space as user<span>@</span>example.com...
-    App Name: my-app
-    my-job                     ls
-                               2b69e0c2-9664-46bb-4817-54afcedbb65d   * * ? * *
-    OK
-	</pre>
+### <a id="delete-job-schedule"></a>Delete a Job Schedule  
 
-## <a id="delete-job-schedule"></a>Delete a Job Schedule  
+You can delete a specific schedule by running `cf delete-job-schedule SCHEDULE_GUID`, where `SCHEDULE_GUID` is the GUID found in the `job-schedules` command output. For example:  
 
-When you no longer wish to runa a job on a particular schedule you can delete a specific schedule.
+<pre class="terminal">
+$ cf delete-job-schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d<br>
+Really delete the schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d / 0 12 * * * and all associated history?> [yN]: y
+OK
+</pre>	
 
-1. Enter `cf delete-job-schedule SCHEDULE_GUID`  
+### <a id="delete-job"></a>Delete a job
 
-	Where 'SCHEDULE_GUID' is the guid found in the job-schedules command.
+You can delete a job by running `cf delete-job JOB_NAME`. See the following example:
 
-    <pre class="terminal">
-    $ cf delete-job-schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d<br>
-    Really delete the schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d / * * ? * * and all associated history?> [yN]: y
-    OK
-	</pre>	
-
-## <a id="delete-job"></a>Delete a job
-
-When a job is no longer needed it can be deleted.
-
-1. Enter `cf delete-job JOB_NAME`  
-
-	Where 'JOB_NAME' is the name of an existing job to be deleted.
-
-    <pre class="terminal">
-    $ cf delete-job my-job<br>
-    Really delete the job my-job with command ls and all associated schedules and history?> [yN]:y
-    OK
-	</pre>
+<pre class="terminal">
+$ cf delete-job my-job<br>
+Really delete the job my-job with command pwd and all associated schedules and history?> [yN]:y
+OK
+</pre>
 

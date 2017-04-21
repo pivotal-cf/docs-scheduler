@@ -5,9 +5,9 @@
 :subnav_templates:
   myservice: myservice_subnav
 :template_variables: 
-:local_repo_dir: "/Users/viktoryiafedzkovich/workspace/docs-scheduler"
+:local_repo_dir: "/Users/ljarzynski/workspace/docs-scheduler"
 :workspace: !ruby/object:Pathname
-  path: "/Users/viktoryiafedzkovich/workspace/docs-scheduler/docs-book/output/master_middleman/source"
+  path: "/Users/ljarzynski/workspace/docs-scheduler/docs-book/output/master_middleman/source"
 :feedback_enabled: 
 :repo_link_enabled: true
 :repo_links:

@@ -22,7 +22,9 @@ This documentation describes the Scheduler for PCF Service Broker.
 
 ## <a id='overview'></a>Overview
 
-The service broker is exposed as a service in the Marketplace. App developers use Scheduler for PCF to create and schedule jobs, interacting with the service through the Apps Manager UI or the Cloud Foundry Command Line Interface (cf CLI) tool.
+Scheduler allows app developers to schedule the execution of tasks on PCF without using external scheduling services. Developers may want to schedule tasks such as database migrations, emails and reports, and batch jobs. This service also allows developers to more easily bring their scheduled jobs into a CI/CD pipeline.
+
+Scheduler for PCF is a service broker, which is exposed as a service in the Marketplace. App developers use Scheduler for PCF to create and schedule jobs, interacting with the service through the Apps Manager UI or the Cloud Foundry Command Line Interface (cf CLI) tool.
 
 Scheduler for PCF enables developers do the following:
 
@@ -40,11 +42,11 @@ The following table provides version and version-support information about Sched
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>v1.0</td>
+        <td>v1.0.2</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>April 14, 2017</td>
+        <td>April 21, 2017</td>
     </tr>
     <tr>
         <td>Software component version</td>
@@ -60,7 +62,7 @@ The following table provides version and version-support information about Sched
     </tr>
     <tr>
         <td>IaaS support</td>
-        <td>AWS, OpenStack, and vSphere</td>
+        <td>AWS, Azure, GCP, OpenStack, and vSphere</td>
     </tr>
 </table>
 
@@ -72,13 +74,6 @@ Scheduler for PCF has the following requirements:
 
 ## <a id="limitations"></a>Limitations
 
-+ None
+The maximum amount of tasks you can schedule is determined by the quota in the org and space in which you are using the Scheduler service. See a href="https://docs.run.pivotal.io/devguide/using-tasks.html#manage-tasks">Running Tasks</a> for more information.
 
-## <a id="feedback"></a>Feedback
 
-Please provide any bugs, feature requests, or questions to the 
-[Pivotal Cloud Foundry Feedback](mailto:pivotal-cf-feedback@pivotal.io) list or send an email to [Support](mailto:support@pivotal.io).
-
-## <a id='license'></a>License
-
-**List any license information here.**

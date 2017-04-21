@@ -3,37 +3,22 @@ title: Scheduler for PCF Release Notes
 owner: Partners
 ---
 
-<style>
-    .note.warning {
-        background-color: #fdd;
-        border-color: #fbb
-    }
-    .note.warning:before {
-        color: #f99;
-    }
-</style>
+This topic contains release notes for the Scheduler for Pivotal Cloud Foundry (PCF) tile.
 
-<p class="note warning">
-<strong>IMPORTANT: </strong> 
-The Scheduler for PCF tile is currently in Beta and is meant for evaluation and test purposes only. Do not use this product in a PCF production environment.
-</p>
+## v1.0.2
 
-This topic contains release notes for the Concourse for Pivotal Cloud Foundry (PCF) tile.
+**Release Date:** April 21, 2017
 
-### v1.0.2
-
-**Release Date:** April 19, 2017
-
-###Features included in this release:
+### Features included in this release:
 
 * Create Jobs.
 * Run Jobs.
 * Schedule Jobs.
 * List Job History.
 
-###Known issues in this release:
+### Known issues in this release:
 
-* Operators must create (if one doesn't already exist) a p-msql service plan named "1gb" with at least 100 MB of disk space.
-* Only a "standard" service plan exists that allows scheduling of as many tasks as desired and at any scheduled interval desired.
+* Operators must create (if one doesn't already exist) a p-mysql service plan named `1gb` with at least 1000 MB of disk space.
+* Only a `standard` service plan exists that allows scheduling of as many tasks as desired and at any scheduled interval desired.
 * Some buildpacks (python and ruby) do not properly create a `web` process_type command by default.  These buildpacks require that you take special considerations or they will no longer be accessible via the CF CLI.
 
