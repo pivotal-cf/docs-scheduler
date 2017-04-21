@@ -11,14 +11,14 @@ This topic contains release notes for the Scheduler for Pivotal Cloud Foundry (P
 
 ### Features included in this release:
 
-* Create Jobs.
-* Run Jobs.
-* Schedule Jobs.
-* List Job History.
+* Create jobs.
+* Run jobs.
+* Schedule jobs.
+* List job history.
 
 ### Known issues in this release:
 
-* Operators must create (if one doesn't already exist) a p-mysql service plan named `1gb` with at least 1000 MB of disk space.
-* Only a `standard` service plan exists that allows scheduling of as many tasks as desired and at any scheduled interval desired.
-* Some buildpacks (python and ruby) do not properly create a `web` process_type command by default.  These buildpacks require that you take special considerations or they will no longer be accessible via the CF CLI.
+* Operators must have a p-mysql service plan named `1gb` with at least 1000 MB of disk space.
+* Only a `standard` service plan exists that allows scheduling of as many tasks as needed and at any scheduled interval.
+* Some buildpacks (Python and Ruby) do not properly create a `web` process_type command by default.  These buildpacks require that you take special considerations or they will no longer be accessible via the cf CLI.
 
