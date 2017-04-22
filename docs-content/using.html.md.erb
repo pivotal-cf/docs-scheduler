@@ -38,10 +38,7 @@ To confirm your operator has installed Scheduler for PCF:
     [...]
     </pre>
 
-
 ### <a id='create'></a>Create a Service Instance
-
-
 
 To create an instance of the Scheduler for PCF service, run `cf create-service scheduler-for-pcf standard SERVICE-INSTANCE-NAME`, replacing `SERVICE-INSTANCE-NAME` with a name of your choice. After you create the service instance, this name appears under `service` \[sic\] in the output from `cf services`.
 
@@ -89,9 +86,9 @@ See the following example:
 
 <pre class="terminal">
  $ cf create-job my-app my-job "pwd"<br>
- Creating job myjob for scheduler-api with command ls in org my-org / space my-space as user<span>@</span>example.com...
+ Creating job my-job for my-app with command pwd in org my-org / space my-space as user<span>@</span>example.com...
  Job Name   App Name        Command
- my-job      scheduler-api   pwd
+ my-job     my-app          pwd
  OK
 </pre>
 
@@ -137,7 +134,7 @@ Execution GUID                     Execution State   Scheduled Time             
 
 You can view logs for jobs the same way you view logs for your app.
 
-<p class="note"><strong>Note</strong>: Scheduled jobs are executed as <a href="https://docs.run.pivotal.io/devguide/using-tasks.html">CF Tasks</a>.</p>
+<p class="note"><strong>Note</strong>: Scheduler jobs are executed as <a href="https://docs.run.pivotal.io/devguide/using-tasks.html">CF Tasks</a>.</p>
 
 Enter `cf logs JOB-NAME --recent`. See the following example:
 
