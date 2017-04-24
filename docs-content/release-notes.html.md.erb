@@ -20,4 +20,4 @@ This topic contains release notes for the Scheduler for Pivotal Cloud Foundry (P
 
 * Operators must have a `p-mysql` service plan named `1gb` with at least 1,000 MB of disk space.
 * Only a `standard` service plan exists that allows scheduling of as many tasks as needed and at any interval.
-* Some buildpacks (Python and Ruby) do not properly create a `web` process_type command by default. These buildpacks require that you take special considerations or they will no longer be accessible via the cf CLI.
+* Some buildpacks (Python and Ruby) do not create a `web` process_type when pushed with the `--no-start` option. Apps using these buildpacks require special consideration when used with Scheduler for PCF or those apps will no longer be accessible via the cf CLI after creating jobs for those apps.  You can avoid this side effect by creating a Procfile in the app, prior to pushing, that specifies a `web` process_type .
