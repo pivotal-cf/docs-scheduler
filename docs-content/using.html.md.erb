@@ -1,6 +1,6 @@
 ---
 title: Using Scheduler for PCF
-owner: Partners
+owner: PCF Autoscaler and Scheduler
 ---
 
 This topic provides instructions for using Scheduler for Pivotal Cloud Foundry (PCF). The service enables ad hoc and scheduled execution of PCF tasks.
@@ -11,22 +11,22 @@ For general information, see [Managing Service Instances with the cf CLI](http:/
 
 ## <a id="prereqs"></a>Prerequisites
 
-* A PCF installation with [Scheduler for PCF](https://network.pivotal.io/products/scheduler-for-pcf) installed and listed in the [Marketplace](http://docs.pivotal.io/devguide/services/#instances)
+* A PCF installation with [Scheduler for PCF](https://network.pivotal.io/products/p-scheduler-for-pcf) installed and listed in the [Marketplace](http://docs.pivotal.io/devguide/services/#instances)
 * A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account
 * (Optional) If you want to use the Scheduler for PCF CLI Plugin, you must install it on your local machine. This plugin is packaged with the tile on Pivotal Network.
 
 ## <a id='process'></a>Create and Bind a Service Instance
 
-Every app and service in PCF is scoped to a [space](http://docs.pivotal.io/pivotalcf/concepts/roles.html#spaces), which means an app can only use a service if an instance of the service exists in the same space. 
+Every app and service in PCF is scoped to a [space](http://docs.pivotal.io/pivotalcf/concepts/roles.html#spaces). This means that an app can use a service only if an instance of the service exists in the same space.
 
-The Scheduler for PCF service is a singleton service and only one service instance can be created in a space.
+The Scheduler for PCF service is a singleton service. Only one service instance can be created in a space.
 
 ### <a id='marketplace'></a>Confirm Service Availability
 
-To confirm your operator has installed Scheduler for PCF:
+For apps to use a service, the service must be available in the Marketplace. To confirm you have installed Scheduler for PCF:
 
 1. Run `cf marketplace` from the command line.
-1. If the output lists `scheduler-for-pcf` in the `service` column, Scheduler for PCF is available. If it is not available, ask your operator to install it.
+1. If the output lists `scheduler-for-pcf` in the `service` column, Scheduler for PCF is available. If the service is not available, [install](./installing.html) it.
 
     <pre class="terminal">
     $ cf marketplace
@@ -34,13 +34,13 @@ To confirm your operator has installed Scheduler for PCF:
     OK
     service             plans      description
     [...]
-    scheduler-for-pcf   standard     Scheduler service
+    scheduler-for-pcf   standard   Scheduler service
     [...]
     </pre>
 
 ### <a id='create'></a>Create a Service Instance
 
-To create an instance of the Scheduler for PCF service, run `cf create-service scheduler-for-pcf standard SERVICE-INSTANCE-NAME`, replacing `SERVICE-INSTANCE-NAME` with a name of your choice. After you create the service instance, this name appears under `service` \[sic\] in the output from `cf services`.
+To create an instance of the Scheduler for PCF service, run `cf create-service scheduler-for-pcf standard SERVICE-INSTANCE-NAME`, replacing `SERVICE-INSTANCE-NAME` with a name of your choice. After you create the service instance, this name appears under `service` in the output of the `cf services` command.
 
 See the following example:
 
@@ -55,13 +55,13 @@ name          service            plan    bound apps    last operation
 my-instance   scheduler-for-pcf  standard              create succeeded
 </pre>
 
-You can only create one instance in a space.  If you attempt to create more than one instance in a space, you will get an error response.
+You can create only one instance in a space. If you attempt to create more than one instance in a space, you receive an error response.
 
 ### <a id="bind"></a>Bind a Service Instance to Your App
 
 For an app to use a service, you must bind it to a service instance. Do this after you push or re-push the app using `cf push`.
 
-To bind an app to a Scheduler instance, run `cf bind-service APP-NAME SERVICE-INSTANCE-NAME`. Replace `APP-NAME` with the name of the app you want to use the Scheduler service for and `SERVICE-INSTANCE-NAME` with the name you supplied when you ran `cf create-service`.
+To bind an app to a Scheduler instance, run `cf bind-service APP-NAME SERVICE-INSTANCE-NAME`, replacing `APP-NAME` with the name of the app you want to use the Scheduler service for and `SERVICE-INSTANCE-NAME` with the name you provided when you ran `cf create-service`.
 
 <pre class="terminal">
 $ cf bind-service my-app my-instance<br>
@@ -79,7 +79,7 @@ See the following sections to learn about the operations you can perform with Sc
 To execute tasks related to an app, create a new job by running `cf create-job APP-NAME JOB-NAME COMMAND`:
 
   * `APP-NAME` is the app you want to execute a task against.
-  * `JOB-NAME` is the name for your newly created job. 
+  * `JOB-NAME` is the name for your job.
   * `COMMAND` is the command you wish to execute.
     
 See the following example:
@@ -92,8 +92,6 @@ See the following example:
  OK
 </pre>
 
-
-
 ### <a id="list-jobs"></a>List Jobs
 
 Use the cf CLI to list all jobs in a space by running `cf jobs`. See the following example:
@@ -102,7 +100,7 @@ Use the cf CLI to list all jobs in a space by running `cf jobs`. See the followi
 $ cf jobs<br>
 Listing jobs for org my-org / space my-space as user<span>@</span>example.com...
 Job Name    App Name        Command
-my-job      scheduler-api   pwd
+my-job      my-app          pwd
 OK
 </pre>
 
@@ -132,11 +130,11 @@ Execution GUID                     Execution State   Scheduled Time             
 
 ### <a id="view-logs"></a>View Logs
 
-You can view logs for jobs the same way you view logs for your app.
+You can view logs for jobs by running `cf logs JOB-NAME --recent`.
 
 <p class="note"><strong>Note</strong>: Scheduler jobs are executed as <a href="https://docs.run.pivotal.io/devguide/using-tasks.html">CF Tasks</a>.</p>
 
-Enter `cf logs JOB-NAME --recent`. See the following example:
+See the following example:
 
 <pre class="terminal">
 $ cf logs my-job --recent<br>
@@ -156,9 +154,9 @@ Connected, dumping recent logs for app my-app in org my-org / space my-space as 
 
 You can schedule a job to execute at any time using a schedule expression. Scheduler for PCF requires cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format.
 
-For example, to execute a job at noon every day, enter the following command:
+For example, to execute a job at noon every day, run the following command:
 
-<pre class="terminal">$ cf schedule-job my-job "0 12 * * * *"</pre>
+<pre class="terminal">$ cf schedule-job my-job "0 12 * * * "</pre>
 
 A single job can have multiple schedules. Each schedule has a GUID to help distinguish it from similar schedules.
 
@@ -176,7 +174,7 @@ OK
 
 ### <a id="delete-job-schedule"></a>Delete a Job Schedule  
 
-You can delete a specific schedule by running `cf delete-job-schedule SCHEDULE_GUID`, where `SCHEDULE_GUID` is the GUID found in the `job-schedules` command output. For example:  
+You can delete a specific schedule by running `cf delete-job-schedule SCHEDULE_GUID`, where `SCHEDULE_GUID` is the GUID found in the output of the `job-schedules` command. See the following example:
 
 <pre class="terminal">
 $ cf delete-job-schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d<br>
@@ -193,4 +191,3 @@ $ cf delete-job my-job<br>
 Really delete the job my-job with command pwd and all associated schedules and history?> [yN]:y
 OK
 </pre>
-
