@@ -160,7 +160,7 @@ For example, to execute a job at noon every day, run the following command:
 
 A single job can have multiple schedules. Each schedule has a GUID to help distinguish it from similar schedules.
 
-### <a id="view-schedules"></a>View Schedules for All Jobs in a Space
+### <a id="view-schedules"></a>View Schedules for Jobs
 
 You can review schedules for all jobs in a space by running `cf job-schedules`. See the following example:
 
@@ -172,7 +172,7 @@ my-job        pwd    2b69e0c2-9664-46bb-4817-54afcedbb65d   0 12 * * *
 OK
 </pre>
 
-### <a id="delete-job-schedule"></a>Delete a Job Schedule  
+### <a id="delete-schedule"></a>Delete a Job Schedule  
 
 You can delete a specific schedule by running `cf delete-job-schedule SCHEDULE_GUID`, where `SCHEDULE_GUID` is the GUID found in the output of the `job-schedules` command. See the following example:
 
