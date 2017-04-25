@@ -15,13 +15,13 @@ For general information, see [Managing Service Instances with the cf CLI](http:/
 * A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account
 * (Optional) If you want to use the Scheduler for PCF CLI Plugin, you must install it on your local machine. This plugin is packaged with the tile on Pivotal Network.
 
-## <a id='process'></a>Create and Bind a Service Instance
+## <a id='create-service'></a>Create and Bind a Service Instance
 
 Every app and service in PCF is scoped to a [space](http://docs.pivotal.io/pivotalcf/concepts/roles.html#spaces). This means that an app can use a service only if an instance of the service exists in the same space.
 
 The Scheduler for PCF service is a singleton service. Only one service instance can be created in a space.
 
-### <a id='marketplace'></a>Confirm Service Availability
+### <a id='run-marketplace'></a>Confirm Service Availability
 
 For apps to use a service, the service must be available in the Marketplace. To confirm you have installed Scheduler for PCF:
 
@@ -70,11 +70,11 @@ OK
 TIP: Use 'cf push' to ensure your env variable changes take effect
 </pre>
 
-## <a id="list-jobs"></a>Manage Jobs
+## <a id="manage-jobs"></a>Manage Jobs
 
 See the following sections to learn about the operations you can perform with Scheduler for PCF.
 
-### <a id="list-jobs"></a>Create a New Job
+### <a id="create-jobs"></a>Create a New Job
 
 To execute tasks related to an app, create a new job by running `cf create-job APP-NAME JOB-NAME COMMAND`:
 
@@ -116,7 +116,7 @@ Enqueuing job my-job for app my-app in org my-org / space my-space as user<span>
 OK
 </pre>
 
-### <a id="view-job-history"></a>View Job History
+### <a id="job-history"></a>View Job History
 
 You can review job history by running `cf job-history JOB-NAME`:
 
@@ -150,7 +150,7 @@ Connected, dumping recent logs for app my-app in org my-org / space my-space as 
 [...]
 </pre>	
 
-### <a id="view-logs"></a>Schedule a Job
+### <a id="schedule-job"></a>Schedule a Job
 
 You can schedule a job to execute at any time using a schedule expression. Scheduler for PCF requires cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format.
 
