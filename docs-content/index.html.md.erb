@@ -76,7 +76,7 @@ Scheduler for PCF has the following requirements:
 
 * If your app uses a buildpack&mdash;such as Ruby or Python&mdash;that does not generate a `web` process type, you should do the following:
 <br><br>
-    1. Before pushing your app, create a [Procfile](https://docs.pivotal.io/pivotalcf/1-9/buildpacks/prod-server.html#procfile) in the root directory of it.
+    1. Before pushing your app, create a [Procfile](https://docs.pivotal.io/pivotalcf/1-10/buildpacks/prod-server.html#procfile) in the root directory of it.
     2. Specify the `web` process type in the file.
 
     If you do not do this, your app will not be accessible through the cf CLI after you create Scheduler jobs for it.
