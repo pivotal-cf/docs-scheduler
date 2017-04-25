@@ -74,6 +74,11 @@ Scheduler for PCF has the following requirements:
 
 ## <a id="limitations"></a>Limitations
 
-The maximum amount of tasks you can schedule is determined by the quota in the org and space in which you are using the Scheduler for PCF service. See <a href="https://docs.run.pivotal.io/devguide/using-tasks.html#manage-tasks">Running Tasks</a> for more information.
+* If your app uses a buildpack&mdash;such as Ruby or Python&mdash;that does not generate a `web` process type, you should do the following:
+<br><br>
+    1. Prior to pushing your app, create a [Procfile](https://docs.pivotal.io/pivotalcf/1-9/buildpacks/prod-server.html#procfile) in the root directory of it.
+    2. Specify the `web` process type in the file.
 
+    If you do not do this, your app will not be accessible through the cf CLI after you create Scheduler jobs for it.
 
+* The maximum amount of tasks you can schedule is determined by the quota in the org and space in which you are using the Scheduler for PCF service. See <a href="https://docs.run.pivotal.io/devguide/using-tasks.html#manage-tasks">Running Tasks</a> for more information.
