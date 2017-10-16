@@ -1,0 +1,132 @@
+---
+title: Using Scheduler for PCF
+owner: PCF Autoscaler and Scheduler
+---
+
+This topic provides instructions for using Scheduler for Pivotal Cloud Foundry (PCF). The service enables ad hoc and scheduled execution of PCF tasks.
+
+You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI) tool or the [Apps Manager](http://docs.pivotal.io/pivotalcf/console/dev-console.html) UI.
+
+For general information, see [Managing Service Instances with the cf CLI](http://docs.pivotal.io/devguide/services/managing-services.html). 
+
+## <a id="manage-jobs"></a>Manage Jobs
+
+See the following sections to learn about the operations you can perform with Scheduler for PCF.
+
+### <a id="create-jobs"></a>Create a New Job
+
+To execute tasks related to an app, create a new job by running `cf create-job APP-NAME JOB-NAME COMMAND`:
+
+  * `APP-NAME` is the app you want to execute a task against.
+  * `JOB-NAME` is the name for your job.
+  * `COMMAND` is the command you wish to execute.
+    
+See the following example:
+
+<pre class="terminal">
+ $ cf create-job my-app my-job "pwd"<br>
+ Creating job my-job for my-app with command pwd in org my-org / space my-space as user<span>@</span>example.com...
+ Job Name   App Name        Command
+ my-job     my-app          pwd
+ OK
+</pre>
+
+### <a id="list-jobs"></a>List Jobs
+
+Use the cf CLI to list all jobs in a space by running `cf jobs`. See the following example:
+
+<pre class="terminal">
+$ cf jobs<br>
+Listing jobs for org my-org / space my-space as user<span>@</span>example.com...
+Job Name    App Name        Command
+my-job      my-app          pwd
+OK
+</pre>
+
+### <a id="exec-jobs"></a>Execute a Job
+
+You can execute a job manually. This is often useful to test the proper configuration of a job prior to scheduling it for recurring execution.
+
+Run `cf run-job JOB-NAME`. See the following example:
+
+<pre class="terminal">
+$ cf run-job my-job<br>
+Enqueuing job my-job for app my-app in org my-org / space my-space as user<span>@</span>example.com...
+OK
+</pre>
+
+### <a id="job-history"></a>View Job History
+
+You can review job history by running `cf job-history JOB-NAME`:
+
+<pre class="terminal">
+$ cf job-history my-job<br>
+Getting scheduled job history for my-job in org my-org / space my-space as user<span>@</span>example.com...
+1 - 1 of 1 Total Results
+Execution GUID                     Execution State   Scheduled Time                  Execution Start Time            Execution End Time              Exit Message
+8a7e808a5b883a25015b89b4a12c0001   SUCCEEDED         Mon, 10 Apr 2017 13:00:00 UTC   Mon, 10 Apr 2017 13:00:00 UTC   Mon, 10 Apr 2017 13:00:01 UTC   202 - Cloud Controller Accepted Task
+</pre>
+
+### <a id="view-logs"></a>View Logs
+
+You can view logs for jobs by running `cf logs JOB-NAME --recent`.
+
+<p class="note"><strong>Note</strong>: Scheduler jobs are executed as <a href="https://docs.run.pivotal.io/devguide/using-tasks.html">CF Tasks</a>.</p>
+
+See the following example:
+
+<pre class="terminal">
+$ cf logs my-job --recent<br>
+Connected, dumping recent logs for app my-app in org my-org / space my-space as user<span>@</span>example.com...
+[...]
+2017-04-19T23:04:13.79-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT Creating container
+2017-04-19T23:04:14.01-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT Successfully created container
+2017-04-19T23:04:14.22-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT bin
+2017-04-19T23:04:14.22-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT db
+2017-04-19T23:04:14.23-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT Exit status 0
+2017-04-19T23:04:14.24-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT Destroying container
+2017-04-19T23:04:14.55-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT Successfully destroyed container
+[...]
+</pre>	
+
+### <a id="schedule-job"></a>Schedule a Job
+
+You can schedule a job to execute at any time using a schedule expression. Scheduler for PCF requires cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format.
+
+For example, to execute a job at noon every day, run the following command:
+
+<pre class="terminal">$ cf schedule-job my-job "0 12 * * * "</pre>
+
+A single job can have multiple schedules. Each schedule has a GUID to help distinguish it from similar schedules.
+
+### <a id="view-schedules"></a>View Schedules for Jobs
+
+You can review schedules for all jobs in a space by running `cf job-schedules`. See the following example:
+
+<pre class="terminal">
+$ cf job-schedules my-job "0 12 * * *"<br>
+Getting scheduled jobs for org my-org / space my-space as user<span>@</span>example.com...
+App Name: my-app
+my-job        pwd    2b69e0c2-9664-46bb-4817-54afcedbb65d   0 12 * * *
+OK
+</pre>
+
+### <a id="delete-schedule"></a>Delete a Job Schedule  
+
+You can delete a specific schedule by running `cf delete-job-schedule SCHEDULE_GUID`, where `SCHEDULE_GUID` is the GUID found in the output of the `job-schedules` command. See the following example:
+
+<pre class="terminal">
+$ cf delete-job-schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d<br>
+Really delete the schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d / 0 12 * * * and all associated history?> [yN]: y
+OK
+</pre>	
+
+### <a id="delete-job"></a>Delete a Job
+
+You can delete a job by running `cf delete-job JOB_NAME`. See the following example:
+
+<pre class="terminal">
+$ cf delete-job my-job<br>
+Really delete the job my-job with command pwd and all associated schedules and history?> [yN]:y
+OK
+</pre>
