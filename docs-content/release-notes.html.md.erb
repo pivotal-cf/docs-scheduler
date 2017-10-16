@@ -3,26 +3,11 @@ title: Release Notes
 owner: PCF Autoscaler and Scheduler
 ---
 
-<style>
-    .note.warning {
-        background-color: #fdd;
-        border-color: #fbb
-    }
-    .note.warning:before {
-        color: #f99;
-    }
-</style>
-
-<p class="note warning">
-<strong>IMPORTANT: </strong> 
-The Scheduler for Pivotal Cloud Foundry (PCF) tile is currently in beta and is intended for evaluation and test purposes only. Do not use this product in a PCF production environment.
-</p>
-
 This topic contains release notes for the Scheduler for Pivotal Cloud Foundry (PCF) tile.
 
-## v1.0.2
+## v1.1.0
 
-**Release Date:** April 19, 2017
+**Release Date:** October 16, 2017
 
 ### Features included in this release:
 
@@ -30,8 +15,21 @@ This topic contains release notes for the Scheduler for Pivotal Cloud Foundry (P
 * Run jobs.
 * Schedule jobs.
 * List job history.
+* Create calls.
+* Run calls.
+* Schedule calls.
+* List call history.
 
-## v1.0.2
+### Changes in this release
+
+* Supports use of any available MySQL plan.
+* HTTP Calls can be disable in the Tile Configuration.
+
+### Known issues in this release:
+
+* Only a `standard` service plan exists that allows scheduling of as many tasks as needed and at any interval.
+
+## v1.0.4
 
 **Release Date:** August 11, 2017
 
@@ -50,3 +48,20 @@ This topic contains release notes for the Scheduler for Pivotal Cloud Foundry (P
 
 * Operators must have a `p-mysql` service plan named `1gb` with at least 1000 MB of disk space.
 * Only a `standard` service plan exists that allows scheduling of as many tasks as needed and at any interval.
+
+## v1.0.2
+
+**Release Date:** April 19, 2017
+
+### Features included in this release:
+
+* Create jobs.
+* Run jobs.
+* Schedule jobs.
+* List job history.
+
+### Known issues in this release:
+
+* Operators must have a `p-mysql` service plan named `1gb` with at least 1000 MB of disk space.
+* Only a `standard` service plan exists that allows scheduling of as many tasks as needed and at any interval.
+
