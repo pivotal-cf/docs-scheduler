@@ -1,0 +1,21 @@
+---
+breadcrumb: Scheduler for Pivotal Cloud Foundry Documentation
+title: Architecture
+owner: PCF Autoscaler and Scheduler
+---
+
+This topic describes the high-level component architecture of the Scheduler for Pivotal Cloud Foundry (PCF) service. It describes the defaults configuration and other aspects of the service's components and how to manage them.
+
+## <a id="topology"></a> HA Topology ##
+
+In HA topology, the Scheduler for PCF service uses the following:
+
+* Three Scheduler instances running the Scheduler HTTP API server and a Scheduler Engine.
+
+* Three Scheduler Service Broker instances
+
+If operators wish to reduce the number of apps used in the deployment the number of Scheduler app intances can be reduced to 1.
+
+## <a id="persitence"></a> Scheduler Persistence ##
+
+Scheduler relies on a MySQL datastore to persistent service instance and binding information as well as all call and job information.  Each call or schedule can require up to 10 MB of database capacity to store history.

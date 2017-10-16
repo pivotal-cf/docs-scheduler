@@ -3,32 +3,38 @@ title: Installing and Configuring Scheduler for PCF
 owner: PCF Autoscaler and Scheduler
 ---
 
-<style>
-    .note.warning {
-        background-color: #fdd;
-        border-color: #fbb
-    }
-    .note.warning:before {
-        color: #f99;
-    }
-</style>
-
-<p class="note warning">
-<strong>IMPORTANT: </strong> 
-The Scheduler for Pivotal Cloud Foundry (PCF) tile is currently in beta and is intended for evaluation and test purposes only. Do not use this product in a PCF production environment.
-</p>
-
 This topic describes how to install and configure Scheduler for Pivotal Cloud Foundry (PCF).
 
 ##<a id='prereqs'></a> Prerequisites
 
-Before you install the tile, you need to have a MySQL for PCF service plan with the following configuration:
+Before you install the tile, you need to have a MySQL for PCF service plan.  Use the following parameters for guidance on adequate MySQL plan configuration:
 
-* **Service Plan Name**: `1gb`
-* **Storage Quota**: `1000`
-* **Concurrent Connections Quota**: `40`
+* Minimum MySQL Config: 
+  * **Service Plan Name**: `1gb`
+  * **Storage Quota**: `1000`
+  * **Concurrent Connections Quota**: `40`
 
-If you do not already have this plan, see [Add a Plan](https://docs.pivotal.io/p-mysql/index.html#service-plan) in the MySQL for PCF documentation. 
+If you do not already have an adequate plan, see [Add a Plan](https://docs.pivotal.io/p-mysql/index.html#service-plan) in the MySQL for PCF documentation. 
+
+
+## <a id="download-install"></a> Download and Install the Tile
+
+1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/p-scheduler-for-pcf).
+
+1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
+
+1. Under the **Import a Product** button, click **+** next to the version number of Scheduler for PCF. 
+   This adds the tile to your staging area.
+
+1. Click the newly-added **Scheduler for PCF** tile to open its configuration panes.
+
+
+
+## <a id="config-tile"></a> Configure the Tile
+
+Follow the steps below to configure the Scheduler for PCF service. 
+Scheduler for PCF v1.1 has five service plans that deploy dedicated MySQL service instances on demand.
+
 
 ##<a id='install'></a> Install and Configure Scheduler for PCF
 
@@ -41,8 +47,68 @@ This adds the tile to your staging area.
 
 1. Click the newly added **Scheduler for PCF** tile.
 
-1. Make sure your network and stemcell configuration is complete.
+1. Make sure to assign AZs and Networks, configure a stemcell and review Resource Config.
+
+
+###<a id="azs"></a> Configure AZs and Networks
+
+Follow the steps below to choose an Availability Zone (AZ) to run the service broker and to select networks.
+
+1. Click **Assign AZs and Networks**.
+
+1. Configure the fields as follows:
+  <table>
+    <tr><th>Field</th><th>Instructions</th></tr>
+    <tr><td><strong>Place singleton jobs in</strong></td>
+        <td>Select the AZ that you want the Scheduler Errands to execute in. All scheduler components execute as apps and do not require VMs.</td></tr>
+    <tr><td><strong>Balance other jobs in</strong></td>
+        <td>Ignore; not used.</td></tr>
+    <tr><td><strong>Network</strong></td>
+        <td>Select a subnet for the Scheduler Errands. This is should be the same subnet that includes the Elastic Runtime component VMs.<br>
+            </td></tr>
+  </table>
+    <p class="note"><strong>NOTE</strong>: The networks selected are only used by Errand VMs and do not apply to the Scheduler runtime.</p>
 
 1. Click **Save**.
 
-1. Return to the Ops Manager Installation Dashboard and click **Apply Changes** to install Scheduler for PCF tile.
+###<a id="scheduler-config"></a> Configure Scheduler options
+
+1. Click **Scheduler Configuration**.
+
+1. Verify and, if necessary, disable outbound HTTP Calls.
+
+1. Configure the fields as follows:
+  <table>
+    <tr><th>Field</th><th>Instructions</th></tr>
+    <tr><td><strong>Enable outbound HTTP Calls</strong></td>
+        <td>Enabled by Default.  Uncheck this box if you wish to prevent users from scheduling outbound HTTP calls from the scheduler service.
+            </td></tr>
+    <tr><td><strong>MySQL Service Plan Name</strong></td>
+        <td>Enter the name of a MySQL service plan that will be used to provision a database for persistent storage of scheduler data (jobs, calls, history and other scheduler data).
+           </td></tr>
+  </table>
+1. Click **Save**.
+
+###<a id="resources"></a> Verify Resource Config and Apply All Changes
+
+1. Click **Resource Config**.
+
+1. Verify and, if necessary, change any resource configuration.  
+
+1. Click **Save**.
+
+
+###<a id="stemcell"></a> Verify Stemcell Version and Apply All Changes
+
+1. Click **Stemcell**.
+
+1. Verify and, if necessary, import a new stemcell version.  
+   For more information, see about importing the stemcell for your IaaS:
+   [AWS](https://docs.pivotal.io/pivotalcf/customizing/cloudform-er-config.html#stemcell),
+   [Azure](https://docs.pivotal.io/pivotalcf/customizing/azure-er-config.html#stemcell), 
+   [GCP](https://docs.pivotal.io/pivotalcf/customizing/gcp-er-config.html#stemcell), or
+   [vSphere](https://docs.pivotal.io/pivotalcf/customizing/config-er-vmware.html#stemcell).
+
+1. Click **Save**.
+
+1. <a name="apply-changes"></a>Return to the Ops Manager Installation Dashboard and click **Apply Changes**.
