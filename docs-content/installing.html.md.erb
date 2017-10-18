@@ -7,48 +7,28 @@ This topic describes how to install and configure Scheduler for Pivotal Cloud Fo
 
 ##<a id='prereqs'></a> Prerequisites
 
-Before you install the tile, you need to have a MySQL for PCF service plan.  Use the following parameters for guidance on adequate MySQL plan configuration:
+Before you install the Scheduler for PCF tile, you need to configure a MySQL for PCF service plan. The minimum resource configuration of the MySQL plan requires the following:
 
-* Minimum MySQL Config: 
   * **Service Plan Name**: `1gb`
   * **Storage Quota**: `1000`
   * **Concurrent Connections Quota**: `40`
 
-If you do not already have an adequate plan, see [Add a Plan](https://docs.pivotal.io/p-mysql/index.html#service-plan) in the MySQL for PCF documentation. 
+For more information, see [Add a Plan](https://docs.pivotal.io/p-mysql/index.html#service-plan) in the MySQL for PCF documentation.
 
-
-## <a id="download-install"></a> Download and Install the Tile
-
-1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/p-scheduler-for-pcf).
-
-1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
-
-1. Under the **Import a Product** button, click **+** next to the version number of Scheduler for PCF. 
-   This adds the tile to your staging area.
-
-1. Click the newly-added **Scheduler for PCF** tile to open its configuration panes.
-
-
-
-## <a id="config-tile"></a> Configure the Tile
-
-Follow the steps below to configure the Scheduler for PCF service. 
-Scheduler for PCF v1.1 has five service plans that deploy dedicated MySQL service instances on demand.
-
-
-##<a id='install'></a> Install and Configure Scheduler for PCF
+## <a id="download-install"></a> Download and Install Scheduler for PCF
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/p-scheduler-for-pcf).
 
 1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
 
 1. Under the **Import a Product** button, click **+** next to the version number of Scheduler for PCF. 
-This adds the tile to your staging area.
+  This adds the tile to your staging area.
 
 1. Click the newly added **Scheduler for PCF** tile.
 
-1. Make sure to assign AZs and Networks, configure a stemcell and review Resource Config.
+## <a id="config-tile"></a> Configure Scheduler for PCF
 
+Follow the steps below to configure the Scheduler for PCF tile. Scheduler for PCF v1.1 has five service plans that deploy dedicated MySQL service instances on demand.
 
 ###<a id="azs"></a> Configure AZs and Networks
 
