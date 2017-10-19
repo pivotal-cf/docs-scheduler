@@ -28,62 +28,73 @@ For more information, see [Add a Plan](https://docs.pivotal.io/p-mysql/index.htm
 
 ## <a id="config-tile"></a> Configure Scheduler for PCF
 
-Follow the steps below to configure the Scheduler for PCF tile. Scheduler for PCF v1.1 has five service plans that deploy dedicated MySQL service instances on demand.
+Follow the steps below to configure the Scheduler for PCF tile. Scheduler for PCF v1.1 provides five service plans that deploy dedicated MySQL service instances on demand.
 
 ###<a id="azs"></a> Configure AZs and Networks
 
-Follow the steps below to choose an Availability Zone (AZ) to run the service broker and to select networks.
+Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler Service Broker and to select networks.
 
 1. Click **Assign AZs and Networks**.
 
 1. Configure the fields as follows:
-  <table>
-    <tr><th>Field</th><th>Instructions</th></tr>
-    <tr><td><strong>Place singleton jobs in</strong></td>
-        <td>Select the AZ that you want the Scheduler Errands to execute in. All scheduler components execute as apps and do not require VMs.</td></tr>
-    <tr><td><strong>Balance other jobs in</strong></td>
-        <td>Ignore; not used.</td></tr>
-    <tr><td><strong>Network</strong></td>
-        <td>Select a subnet for the Scheduler Errands. This is should be the same subnet that includes the Elastic Runtime component VMs.<br>
-            </td></tr>
-  </table>
+
+    <table class="nice">
+      <tr>
+        <th>Field</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><strong>Place singleton jobs in</strong></td>
+        <td>Select the AZ for executing the Scheduler errands. All Scheduler components execute as apps and do not require VMs.</td>
+      </tr>
+      <tr><td><strong>Balance other jobs in</strong></td>
+          <td>Ignore this field.</td>
+      </tr>
+      <tr>
+        <td><strong>Network</strong></td>
+        <td>Select a subnet for the Scheduler errands. Use the subnet that includes the Elastic Runtime component VMs.</td>
+      </tr>
+    </table>
+
     <p class="note"><strong>NOTE</strong>: The networks selected are only used by Errand VMs and do not apply to the Scheduler runtime.</p>
 
 1. Click **Save**.
 
-###<a id="scheduler-config"></a> Configure Scheduler options
+###<a id="scheduler-config"></a> Configure Scheduler Options
 
 1. Click **Scheduler Configuration**.
 
-1. Verify and, if necessary, disable outbound HTTP Calls.
-
 1. Configure the fields as follows:
-  <table>
-    <tr><th>Field</th><th>Instructions</th></tr>
-    <tr><td><strong>Enable outbound HTTP Calls</strong></td>
-        <td>Enabled by Default.  Uncheck this box if you wish to prevent users from scheduling outbound HTTP calls from the scheduler service.
-            </td></tr>
-    <tr><td><strong>MySQL Service Plan Name</strong></td>
-        <td>Enter the name of a MySQL service plan that will be used to provision a database for persistent storage of scheduler data (jobs, calls, history and other scheduler data).
-           </td></tr>
-  </table>
+
+    <table class="nice">
+      <tr>
+        <th>Field</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><strong>Enable outbound HTTP calls</strong></td>
+        <td>The field is enabled by default. Disable this feature if you want to prevent users from scheduling outbound HTTP calls from the Scheduler service.</td>
+      </tr>
+      <tr>
+        <td><strong>MySQL Service Plan Name</strong></td>
+        <td>Enter the name of your MySQL service plan, which is used to provision a database for persistent storage of Scheduler data, including jobs, calls, and history.</td>
+      </tr>
+    </table>
 1. Click **Save**.
 
-###<a id="resources"></a> Verify Resource Config and Apply All Changes
+###<a id="resources"></a> Verify Resource Config
 
 1. Click **Resource Config**.
 
-1. Verify and, if necessary, change any resource configuration.  
+1. Verify the settings.  
 
 1. Click **Save**.
 
-
-###<a id="stemcell"></a> Verify Stemcell Version and Apply All Changes
+###<a id="stemcell"></a> Verify Stemcell Version
 
 1. Click **Stemcell**.
 
-1. Verify and, if necessary, import a new stemcell version.  
-   For more information, see about importing the stemcell for your IaaS:
+1. Verify the settings. See the _Download Stemcell_ section for your IaaS if you need to import a new stemcell version:
    [AWS](https://docs.pivotal.io/pivotalcf/customizing/cloudform-er-config.html#stemcell),
    [Azure](https://docs.pivotal.io/pivotalcf/customizing/azure-er-config.html#stemcell), 
    [GCP](https://docs.pivotal.io/pivotalcf/customizing/gcp-er-config.html#stemcell), or
