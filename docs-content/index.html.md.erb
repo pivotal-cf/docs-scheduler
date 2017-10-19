@@ -18,15 +18,15 @@ owner: PCF Autoscaler and Scheduler
 The Scheduler for Pivotal Cloud Foundry (PCF) tile is currently in beta and is intended for evaluation and test purposes only. Do not use this product in a PCF production environment.
 </p>
 
-This documentation describes the Scheduler for PCF Service Broker. 
+This documentation describes Scheduler for PCF.
 
 ## <a id='overview'></a>Overview
 
-Scheduler for PCF allows app developers to schedule the execution of tasks on PCF without using external scheduling services. You may want to schedule tasks such as database migrations, emails and reports, and batch jobs. This service also enables developers to more easily bring their scheduled jobs into a CI/CD pipeline.
+Scheduler for PCF allows developers to schedule the execution of tasks, such as database migrations, emails and reports, or batch jobs, on PCF without using external scheduling services.
 
-Scheduler for PCF is a service broker, which is exposed as a service in the Marketplace. App developers use Scheduler for PCF to create and schedule jobs, interacting with the service through the Apps Manager UI or the Cloud Foundry Command Line Interface (cf CLI) tool.
+Scheduler for PCF is a service broker that is exposed as a service in the Marketplace. Developers can interact with the service through the Apps Manager UI, the Cloud Foundry Command Line Interface (cf CLI), and the Scheduler HTTP API.
 
-Scheduler for PCF enables developers do the following:
+Scheduler for PCF enables developers to do the following:
 
 * Create jobs to execute tasks (Diego tasks)
 * Execute jobs on an ad hoc basis
@@ -35,7 +35,7 @@ Scheduler for PCF enables developers do the following:
 
 ## <a id="snapshot"></a>Product Snapshot
 
-The following table provides version and version-support information about Scheduler for PCF:
+The following table provides version and version-support information about Scheduler for PCF.
 
 <table class="nice">
     <th>Element</th>
@@ -72,9 +72,9 @@ Scheduler for PCF has the following requirements:
 
 * If your app uses a buildpack that does not generate a `web` process type, such as Ruby or Python, you should do the following:
 <br><br>
-    1. Before pushing your app, create a [Procfile](https://docs.pivotal.io/pivotalcf/1-10/buildpacks/prod-server.html#procfile) in the root directory of it.
-    2. Specify the `web` process type in the file.
+    1. Before pushing your app, create a [Procfile](https://docs.pivotal.io/pivotalcf/buildpacks/prod-server.html#procfile) in the root directory of the app.
+    2. Declare a `web` process type in the file.
 
-    If you do not do this, your app will not be accessible through the cf CLI after you create Scheduler jobs for it.
+    If you do not declare this process type, your app will not be accessible through the cf CLI after you create Scheduler jobs for it.
 
-* The maximum amount of tasks you can schedule is determined by the quota in the org and space in which you are using the Scheduler for PCF service. See <a href="https://docs.run.pivotal.io/devguide/using-tasks.html#manage-tasks">Running Tasks</a> for more information.
+* The maximum amount of tasks you can schedule is determined by the memory and disk quotas in the org and space where you are using Scheduler for PCF. See <a href="http://docs.pivotal.io/pivotalcf/devguide/using-tasks.html#manage-tasks">Running Tasks</a> for more information.
