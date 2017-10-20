@@ -3,17 +3,19 @@ title: Using Scheduler for PCF
 owner: PCF Autoscaler and Scheduler
 ---
 
-This topic provides instructions for using Scheduler for Pivotal Cloud Foundry (PCF). The service enables ad hoc and scheduled execution of PCF tasks and HTTP POST calls to external HTTP services.
+This topic provides instructions for using Scheduler for Pivotal Cloud Foundry (PCF).
 
-You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI) or the [Apps Manager](http://docs.pivotal.io/pivotalcf/console/dev-console.html) UI. In addition, you can use the [Scheduler HTTP API](http://docs.pivotal.io/pcf-scheduler/1-1/api/) to configure jobs and calls and to review history.
+You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI) or the [Apps Manager](http://docs.pivotal.io/pivotalcf/console/dev-console.html) UI. In addition, you can use the [Scheduler HTTP API](http://docs.pivotal.io/pcf-scheduler/1-1/api/) to configure jobs and outbound HTTP calls and to review history.
 
 For general information, see [Managing Service Instances with the cf CLI](http://docs.pivotal.io/devguide/services/managing-services.html). 
 
 ## <a id="prereqs"></a>Prerequisites
 
+To start using Scheduler for PCF, you need the following:
+
 * A PCF installation with [Scheduler for PCF](https://network.pivotal.io/products/p-scheduler-for-pcf) installed and listed in the [Marketplace](http://docs.pivotal.io/devguide/services/#instances)
 * A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account
-* (Optional) If you want to use the Scheduler for PCF CLI plugin, you must install it on your local machine. This plugin is packaged with the Scheduler for PCF tile on Pivotal Network.
+* (Optional) The cf CLI v6.23.0 or greater and the Scheduler for PCF CLI plugin installed on your local machine. The Scheduler for PCF CLI plugin is packaged with the Scheduler for PCF tile on Pivotal Network.
 
 ## <a id='create-service'></a>Create and Bind a Service Instance
 
