@@ -91,7 +91,7 @@ You can schedule a job to execute at any time using a schedule expression. Sched
 
 For example, to execute a job at noon every day, run the following command:
 
-<pre class="terminal">$ cf schedule-job my-job "0 12 * * * "</pre>
+<pre class="terminal">$ cf schedule-job my-job "0 12 ? * * "</pre>
 
 A single job can have multiple schedules. Each schedule has a GUID to help distinguish it from similar schedules.
 
@@ -100,10 +100,10 @@ A single job can have multiple schedules. Each schedule has a GUID to help disti
 You can review schedules for all jobs in a space by running `cf job-schedules`. See the following example:
 
 <pre class="terminal">
-$ cf job-schedules my-job "0 12 * * *"<br>
+$ cf job-schedules my-job "0 12 ? * *"<br>
 Getting scheduled jobs for org my-org / space my-space as user<span>@</span>example.com...
 App Name: my-app
-my-job        pwd    2b69e0c2-9664-46bb-4817-54afcedbb65d   0 12 * * *
+my-job        pwd    2b69e0c2-9664-46bb-4817-54afcedbb65d   0 12 ? * *
 OK
 </pre>
 
@@ -113,7 +113,7 @@ You can delete a specific schedule by running `cf delete-job-schedule SCHEDULE_G
 
 <pre class="terminal">
 $ cf delete-job-schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d<br>
-Really delete the schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d / 0 12 * * * and all associated history?> [yN]: y
+Really delete the schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d / 0 12 ? * * and all associated history?> [yN]: y
 OK
 </pre>	
 
