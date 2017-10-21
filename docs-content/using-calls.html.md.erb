@@ -3,33 +3,45 @@ title: Scheduling Calls
 owner: PCF Autoscaler and Scheduler
 ---
 
-This topic provides instructions for managing HTTP POST calls in Scheduler for Pivotal Cloud Foundry (PCF).
+This topic provides instructions for managing outbound HTTP calls to external HTTP services in Scheduler for Pivotal Cloud Foundry (PCF).
 
 ## <a id="manage-calls"></a>Manage Calls
 
-See the following sections to learn about the Calls related operations you can perform with Scheduler for PCF.
+You can use Scheduler for PCF to schedule execution of HTTP calls to external HTTP services. See the following sections to learn more about creating, running, and scheduling calls and viewing call history.
 
-### <a id="create-calls"></a>Create a New Call
+### <a id="create-calls"></a>Create a Call
 
-To execute tasks related to an app, create a new call by running `cf create-call APP-NAME CALL-NAME URL`:
+To execute tasks related to an app, create a call by running the `cf create-call APP-NAME CALL-NAME URL` command, where:
 
   * `APP-NAME` is the app you want to execute a task against.
   * `CALL-NAME` is the name for your call.
   * `URL` is the URL to execute a HTTP POST call against.
-    
+
+### <a id="exec-calls"></a>Execute a Call
+
+You can execute a call manually by running the `cf run-call CALL-NAME` command. This is often useful to test the proper configuration of a call prior to scheduling it for recurring execution.
+
 See the following example:
 
 <pre class="terminal">
- $ cf create-call my-app my-call "pwd"<br>
- Creating call my-call for my-app with command pwd in org my-org / space my-space as user<span>@</span>example.com...
- Call Name   App Name        URL
- my-call     my-app          https://your-domain
- OK
+$ cf run-call my-call<br>
+Enqueuing call my-call for app my-app in org my-org / space my-space as user<span>@</span>example.com...
+OK
 </pre>
 
-### <a id="list-calls"></a>List Calls
+### <a id="schedule-call"></a>Schedule a Call
 
-Use the cf CLI to list all calls in a space by running `cf calls`. See the following example:
+You can schedule a call to execute at any time using a schedule expression. Scheduler for PCF requires Cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format.
+
+For example, to execute a call at noon every day, run the following command:
+
+<pre class="terminal">$ cf schedule-call my-call "0 12 ? * * "</pre>
+
+A single call can have multiple schedules. Each schedule has a GUID to distinguish it from similar schedules.
+
+### <a id="list-calls"></a>View Calls
+
+You can use the cf CLI to list all calls in a space by running `cf calls`. See the following example:
 
 <pre class="terminal">
 $ cf calls<br>
@@ -38,40 +50,6 @@ Call Name    App Name        URL
 my-call      my-app          https://your-domain
 OK
 </pre>
-
-### <a id="exec-calls"></a>Execute a Call
-
-You can execute a call manually. This is often useful to test the proper configuration of a call prior to scheduling it for recurring execution.
-
-Run `cf run-call CALL-NAME`. See the following example:
-
-<pre class="terminal">
-$ cf run-call my-call<br>
-Enqueuing call my-call for app my-app in org my-org / space my-space as user<span>@</span>example.com...
-OK
-</pre>
-
-### <a id="call-history"></a>View Call History
-
-You can review call history by running `cf call-history CALL-NAME`:
-
-<pre class="terminal">
-$ cf call-history my-call<br>
-Getting scheduled call history for my-call in org my-org / space my-space as user<span>@</span>example.com...
-1 - 1 of 1 Total Results
-Execution GUID                     Execution State   Scheduled Time                  Execution Start Time            Execution End Time              Exit Message
-d288a4ba-e0bc-48c9-969c-6ee79e380b20   SUCCEEDED         Mon, 16 Oct 2017 12:10:55 UTC   Mon, 16 Oct 2017 12:10:55 UTC   Mon, 16 Oct 2017 12:10:55 UTC   201 - Created
-</pre>  
-
-### <a id="schedule-call"></a>Schedule a Call
-
-You can schedule a call to execute at any time using a schedule expression. Scheduler for PCF requires cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format.
-
-For example, to execute a call at noon every day, run the following command:
-
-<pre class="terminal">$ cf schedule-call my-call "0 12 ? * * "</pre>
-
-A single call can have multiple schedules. Each schedule has a GUID to help distinguish it from similar schedules.
 
 ### <a id="view-schedules"></a>View Schedules for Calls
 
@@ -85,22 +63,34 @@ my-call    2b69e0c2-9664-46bb-4817-54afcedbb65d   0 12 ? * *
 OK
 </pre>
 
-### <a id="delete-schedule"></a>Delete a Call Schedule  
+### <a id="call-history"></a>View Call History
 
-You can delete a specific schedule by running `cf delete-call-schedule SCHEDULE_GUID`, where `SCHEDULE_GUID` is the GUID found in the output of the `call-schedules` command. See the following example:
+You can review call history by running `cf call-history CALL-NAME`:
 
 <pre class="terminal">
-$ cf delete-call-schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d<br>
-Really delete the schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d / 0 12 ? * * and all associated history?> [yN]: y
-OK
-</pre>	
+$ cf call-history my-call<br>
+Getting scheduled call history for my-call in org my-org / space my-space as user<span>@</span>example.com...
+1 - 1 of 1 Total Results
+Execution GUID                     Execution State   Scheduled Time                  Execution Start Time            Execution End Time              Exit Message
+d288a4ba-e0bc-48c9-969c-6ee79e380b20   SUCCEEDED         Mon, 16 Oct 2017 12:10:55 UTC   Mon, 16 Oct 2017 12:10:55 UTC   Mon, 16 Oct 2017 12:10:55 UTC   201 - Created
+</pre>
 
 ### <a id="delete-call"></a>Delete a Call
 
-You can delete a call by running `cf delete-call CALL_NAME`. See the following example:
+You can delete a call by running `cf delete-call CALL-NAME`. See the following example:
 
 <pre class="terminal">
 $ cf delete-call my-call<br>
 Really delete the call my-call with url https://your-domain and all associated schedules and history?> [yN]:y
 OK
 </pre>
+
+### <a id="delete-schedule"></a>Delete a Call Schedule  
+
+You can delete a specific schedule by running `cf delete-call-schedule SCHEDULE-GUID`, where `SCHEDULE-GUID` is the GUID found in the output of the `call-schedules` command. See the following example:
+
+<pre class="terminal">
+$ cf delete-call-schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d<br>
+Really delete the schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d / 0 12 ? * * and all associated history?> [yN]: y
+OK
+</pre>	
