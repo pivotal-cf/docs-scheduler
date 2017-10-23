@@ -45,18 +45,18 @@ Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler 
       </tr>
       <tr>
         <td><strong>Place singleton jobs in</strong></td>
-        <td>Select the AZ for executing the Scheduler errands. All Scheduler components execute as apps and do not require VMs.</td>
+        <td>Select the AZ for executing the Scheduler Errands. All Scheduler components execute as apps and do not require VMs.</td>
       </tr>
       <tr><td><strong>Balance other jobs in</strong></td>
           <td>Ignore this field.</td>
       </tr>
       <tr>
         <td><strong>Network</strong></td>
-        <td>Select a subnet for the Scheduler errands. Use the subnet that includes the Elastic Runtime component VMs.</td>
+        <td>Select a subnet for the Scheduler Errands. Use the subnet that includes the Elastic Runtime component VMs.</td>
       </tr>
     </table>
 
-    <p class="note"><strong>NOTE</strong>: The networks selected are only used by Errand VMs and do not apply to the Scheduler runtime.</p>
+    <p class="note"><strong>NOTE</strong>: The network selected is used only by Errand VMs and does not apply to the Scheduler runtime.</p>
 
 1. Click **Save**.
 
@@ -73,11 +73,11 @@ Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler 
       </tr>
       <tr>
         <td><strong>Enable outbound HTTP calls</strong></td>
-        <td>The field is enabled by default. Disable this feature if you want to prevent users from scheduling outbound HTTP calls from the Scheduler service.</td>
+        <td>The field is enabled by default. Disable this feature if you want to prevent users from scheduling outbound HTTP calls from the Scheduler for PCF service.</td>
       </tr>
       <tr>
         <td><strong>MySQL Service Plan Name</strong></td>
-        <td>Enter the name of your MySQL service plan, which is used to provision a database for persistent storage of Scheduler data, including jobs, calls, and history.</td>
+        <td>Enter the name of your MySQL for PCF service plan, which is used to provision a database for persistent storage of Scheduler data, including jobs, calls, and history.</td>
       </tr>
     </table>
 1. Click **Save**.
