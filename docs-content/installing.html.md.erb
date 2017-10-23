@@ -9,9 +9,9 @@ This topic describes how to install and configure Scheduler for Pivotal Cloud Fo
 
 Before you install the Scheduler for PCF tile, you need to configure a MySQL for PCF service plan. The minimum resource configuration of the MySQL plan requires the following:
 
-  * **Service Plan Name**: `1gb`
-  * **Storage Quota**: `1000`
-  * **Concurrent Connections Quota**: `40`
+  * Service plan name: `1gb`
+  * Storage quota: 1,000 MB
+  * Concurrent connections quota: 40
 
 For more information, see [Add a Plan](https://docs.pivotal.io/p-mysql/index.html#service-plan) in the MySQL for PCF documentation.
 
@@ -94,7 +94,7 @@ Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler 
 
 1. Click **Stemcell**.
 
-1. Verify the settings. See the _Download Stemcell_ section for your IaaS if you need to import a new stemcell version:
+1. Verify the settings. If you need to import a new stemcell version, see the _Download Stemcell_ section for your IaaS:
    [AWS](https://docs.pivotal.io/pivotalcf/customizing/cloudform-er-config.html#stemcell),
    [Azure](https://docs.pivotal.io/pivotalcf/customizing/azure-er-config.html#stemcell), 
    [GCP](https://docs.pivotal.io/pivotalcf/customizing/gcp-er-config.html#stemcell), or
