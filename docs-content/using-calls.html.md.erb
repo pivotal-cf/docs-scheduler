@@ -3,7 +3,7 @@ title: Scheduling Calls
 owner: PCF Autoscaler and Scheduler
 ---
 
-This topic provides instructions for managing outbound HTTP calls to external HTTP services in Scheduler for Pivotal Cloud Foundry (PCF).
+This topic provides instructions for managing outbound HTTP calls in Scheduler for Pivotal Cloud Foundry (PCF).
 
 ## <a id="manage-calls"></a>Manage Calls
 
@@ -19,7 +19,7 @@ To execute tasks related to an app, create a call by running the `cf create-call
 
 ### <a id="exec-calls"></a>Execute a Call
 
-You can execute a call manually by running the `cf run-call CALL-NAME` command. This is often useful to test the proper configuration of a call prior to scheduling it for recurring execution.
+You can execute a call manually by running the `cf run-call CALL-NAME` command. This is often useful to test the configuration of a call prior to scheduling it for recurring execution.
 
 See the following example:
 
@@ -47,7 +47,7 @@ You can use the cf CLI to list all calls in a space by running `cf calls`. See t
 $ cf calls<br>
 Listing calls for org my-org / space my-space as user<span>@</span>example.com...
 Call Name    App Name        URL
-my-call      my-app          https://your-domain
+my-call      my-app          https://example.com
 OK
 </pre>
 
@@ -65,14 +65,14 @@ OK
 
 ### <a id="call-history"></a>View Call History
 
-You can review call history by running `cf call-history CALL-NAME`:
+You can review call history by running `cf call-history CALL-NAME`. See the following example:
 
 <pre class="terminal">
 $ cf call-history my-call<br>
 Getting scheduled call history for my-call in org my-org / space my-space as user<span>@</span>example.com...
 1 - 1 of 1 Total Results
-Execution GUID                     Execution State   Scheduled Time                  Execution Start Time            Execution End Time              Exit Message
-d288a4ba-e0bc-48c9-969c-6ee79e380b20   SUCCEEDED         Mon, 16 Oct 2017 12:10:55 UTC   Mon, 16 Oct 2017 12:10:55 UTC   Mon, 16 Oct 2017 12:10:55 UTC   201 - Created
+Execution GUID                         Execution State   Scheduled Time                  Execution Start Time            Execution End Time               Exit Message
+d288a4ba-e0bc-48c9-969c-6ee79e380b20   SUCCEEDED         Mon, 16 Oct 2017 12:10:55 UTC   Mon, 16 Oct 2017 12:10:55 UTC   Mon, 16 Oct 2017 12:10:55 UTC    201 - Created
 </pre>
 
 ### <a id="delete-call"></a>Delete a Call
@@ -81,13 +81,13 @@ You can delete a call by running `cf delete-call CALL-NAME`. See the following e
 
 <pre class="terminal">
 $ cf delete-call my-call<br>
-Really delete the call my-call with url https://your-domain and all associated schedules and history?> [yN]:y
+Really delete the call my-call with url https://example.com and all associated schedules and history?> [yN]:y
 OK
 </pre>
 
 ### <a id="delete-schedule"></a>Delete a Call Schedule  
 
-You can delete a specific schedule by running `cf delete-call-schedule SCHEDULE-GUID`, where `SCHEDULE-GUID` is the GUID found in the output of the `call-schedules` command. See the following example:
+You can delete a specific schedule by running `cf delete-call-schedule SCHEDULE-GUID`, where `SCHEDULE-GUID` is the GUID found in the output of the `cf call-schedules` command. See the following example:
 
 <pre class="terminal">
 $ cf delete-call-schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d<br>
