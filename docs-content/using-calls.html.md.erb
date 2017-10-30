@@ -9,6 +9,8 @@ This topic provides instructions for managing outbound HTTP calls in Scheduler f
 
 You can use Scheduler for PCF to schedule execution of HTTP calls to external HTTP services. See the following sections to learn more about creating, running, and scheduling calls and viewing call history.
 
+<p class="note"><strong>Note</strong>: If you want to use the Cloud Foundry Command Line Interface (cf CLI) for managing calls, you must install the Scheduler for PCF CLI plugin on your local machine. This plugin is packaged with the Scheduler for PCF tile on <a href="https://network.pivotal.io/products/p-scheduler-for-pcf">Pivotal Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section of the Using Scheduler for PCF topic.</p>
+
 ### <a id="create-calls"></a>Create a Call
 
 To execute tasks related to an app, create a call by running the `cf create-call APP-NAME CALL-NAME URL` command, where:
