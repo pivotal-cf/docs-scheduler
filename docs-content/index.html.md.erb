@@ -22,9 +22,7 @@ This documentation describes Scheduler for PCF.
 
 ## <a id='overview'></a>Overview
 
-Scheduler for PCF allows developers to schedule the execution of tasks on PCF, such as database migrations, emails, or batch jobs, without using external scheduling services.
-
-Scheduler for PCF is a service broker that is exposed as a service in the Marketplace. Developers can interact with the service through the Cloud Foundry Command Line Interface (cf CLI) and the [Scheduler HTTP API](http://docs.pivotal.io/pcf-scheduler/1-0/api).
+Scheduler for PCF is a service for scheduling the execution of tasks on PCF, such as database migrations, emails, or batch jobs.
 
 Scheduler for PCF enables developers to do the following:
 
@@ -32,6 +30,8 @@ Scheduler for PCF enables developers to do the following:
 * Execute jobs on an ad hoc basis
 * Schedule jobs to execute on a recurring basis
 * View job status and history
+
+You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI) and the [Scheduler HTTP API](http://docs.pivotal.io/pcf-scheduler/1-0/api).
 
 ## <a id="snapshot"></a>Product Snapshot
 
@@ -66,7 +66,7 @@ The following table provides version and version-support information about Sched
 
 Scheduler for PCF has the following requirements:
 
-+ MySQL for PCF v1.8 or v1.9, available on [Pivotal Network](https://network.pivotal.io/products/p-mysql/)
++ MySQL for PCF v1.8 or v1.9. The service is available on [Pivotal Network](https://network.pivotal.io/products/p-mysql/).
 
 ## <a id="limitations"></a>Limitations
 
@@ -77,4 +77,4 @@ Scheduler for PCF has the following requirements:
 
     If you do not declare this process type, your app will not be accessible through the cf CLI after you create Scheduler jobs for it.
 
-* The maximum amount of tasks you can schedule is determined by the memory and disk quotas in the org and space where you are using Scheduler for PCF. See <a href="http://docs.pivotal.io/pivotalcf/devguide/using-tasks.html#manage-tasks">Running Tasks</a> for more information.
+* The maximum number of tasks that you can schedule is determined by the memory and disk quotas in the Scheduler for PCF org and space. See <a href="http://docs.pivotal.io/pivotalcf/devguide/using-tasks.html#manage-tasks">Running Tasks</a> for more information.
