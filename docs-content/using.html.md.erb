@@ -20,7 +20,7 @@ The Scheduler for Pivotal Cloud Foundry (PCF) tile is currently in beta and is i
 
 This topic provides instructions for using Scheduler for PCF.
 
-You can interact with the service through Cloud Foundry Command Line Interface (cf CLI) and the [Scheduler HTTP API](http://docs.pivotal.io/pcf-scheduler/1-0/api). For general information, see [Managing Service Instances with the cf CLI](http://docs.pivotal.io/devguide/services/managing-services.html). 
+You can interact with the service through Cloud Foundry Command Line Interface (cf CLI), [Apps Manager](https://docs.pivotal.io/pivotalcf/2-0/console/manage-apps.html), and the [Scheduler HTTP API](http://docs.pivotal.io/pcf-scheduler/1-0/api). For general information, see [Managing Service Instances with the cf CLI](http://docs.pivotal.io/devguide/services/managing-services.html). 
 
 ## <a id="prereqs"></a>Prerequisites
 
@@ -30,7 +30,7 @@ To start using Scheduler for PCF, you need the following:
 * A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account
 * (Optional) The cf CLI and the Scheduler for PCF CLI plugin installed on your local machine. The Scheduler for PCF CLI plugin is packaged with the Scheduler for PCF tile on Pivotal Network.
 
-## <a id='create-service'></a>Create and Bind a Service Instance
+## <a id='create-service-cli'></a>Create and Bind a Service Instance Using cf CLI
 
 Every app and service in PCF is scoped to a [space](http://docs.pivotal.io/pivotalcf/concepts/roles.html#spaces). This means that an app can use a service only if an instance of the service exists in the same space.
 
@@ -85,7 +85,7 @@ OK
 TIP: Use 'cf push' to ensure your env variable changes take effect
 </pre>
 
-## <a id="manage-jobs"></a>Manage Jobs
+## <a id="manage-jobs-cli"></a>Manage Jobs Using cf CLI
 
 See the following sections to learn about the operations you can perform with Scheduler for PCF.
 
@@ -206,3 +206,7 @@ $ cf delete-job my-job<br>
 Really delete the job my-job with command pwd and all associated schedules and history?> [yN]:y
 OK
 </pre>
+
+## <a id=“using-am”></a> Using PCF Scheduler in Apps Manager
+
+For information about binding and using PCF Scheduler to your service through Apps Manager, see [Managing Apps and Service Instances Using Apps Manager](http://docs-pcf-staging.cfapps.io/pivotalcf/2-0/console/manage-apps.html).
