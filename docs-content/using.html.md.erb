@@ -5,7 +5,14 @@ owner: PCF Autoscaler and Scheduler
 
 This topic provides instructions for using Scheduler for Pivotal Cloud Foundry (PCF).
 
-You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI) or the [Scheduler HTTP API](http://docs.pivotal.io/pcf-scheduler/1-1/api/) to configure jobs and outbound HTTP calls and to review history. For general information, see [Managing Service Instances with the cf CLI](http://docs.pivotal.io/devguide/services/managing-services.html). 
+<p class="note warning">
+<strong>IMPORTANT: </strong> 
+The Scheduler for Pivotal Cloud Foundry (PCF) tile is currently in beta and is intended for evaluation and test purposes only. Do not use this product in a PCF production environment.
+</p>
+
+This topic provides instructions for using Scheduler for PCF.
+
+You can interact with the service through Cloud Foundry Command Line Interface (cf CLI), [Apps Manager](https://docs.pivotal.io/pivotalcf/2-0/console/manage-apps.html), and the [Scheduler HTTP API](http://docs.pivotal.io/pcf-scheduler/1-0/api). For general information, see [Managing Service Instances with the cf CLI](http://docs.pivotal.io/devguide/services/managing-services.html).
 
 ## <a id="prereqs"></a>Prerequisites
 
@@ -15,7 +22,7 @@ To start using Scheduler for PCF, you need the following:
 * A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account
 * (Optional) The cf CLI v6.23.0 or greater and the Scheduler for PCF CLI plugin installed on your local machine. The Scheduler for PCF CLI plugin is packaged with the Scheduler for PCF tile on Pivotal Network.
 
-## <a id='create-service'></a>Create and Bind a Service Instance
+## <a id='create-service-cli'></a>Create and Bind a Service Instance Using cf CLI
 
 Every app and service in PCF is scoped to a [space](http://docs.pivotal.io/pivotalcf/concepts/roles.html#spaces). This means that an app can use a service only if an instance of the service exists in the same space.
 
@@ -70,10 +77,43 @@ OK
 TIP: Use 'cf push' to ensure your env variable changes take effect
 </pre>
 
-## <a id="manage-jobs"></a>Manage Jobs
+## <a id="manage-jobs-cli"></a>Manage Jobs Using cf CLI
 
 See [Using Jobs](using-jobs.html) to learn about the operations that you can perform with Scheduler for PCF.
 
-## <a id="manage-calls"></a>Manage Calls
+### <a id="view-schedules"></a>View Schedules for Jobs
 
-See [Using Calls](using-calls.html) to learn about the operations that you can perform with Scheduler for PCF.
+You can review schedules for all jobs in a space by running `cf job-schedules`. See the following example:
+
+<pre class="terminal">
+$ cf job-schedules my-job "0 12 ? * *"<br>
+Getting scheduled jobs for org my-org / space my-space as user<span>@</span>example.com...
+App Name: my-app
+my-job        pwd    2b69e0c2-9664-46bb-4817-54afcedbb65d   0 12 ? * *
+OK
+</pre>
+
+### <a id="delete-schedule"></a>Delete a Job Schedule  
+
+You can delete a specific schedule by running `cf delete-job-schedule SCHEDULE_GUID`, where `SCHEDULE_GUID` is the GUID found in the output of the `job-schedules` command. See the following example:
+
+<pre class="terminal">
+$ cf delete-job-schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d<br>
+Really delete the schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d / 0 12 ? * * and all associated history?> [yN]: y
+OK
+</pre>	
+
+### <a id="delete-job"></a>Delete a Job
+
+You can delete a job by running `cf delete-job JOB_NAME`. See the following example:
+
+<pre class="terminal">
+$ cf delete-job my-job<br>
+Really delete the job my-job with command pwd and all associated schedules and history?> [yN]:y
+OK
+</pre>
+
+## <a id=“using-am”></a> Using PCF Scheduler in Apps Manager
+
+For information about binding and using PCF Scheduler to your service through Apps Manager, see [Managing Apps and Service Instances Using Apps Manager](http://docs-pcf-staging.cfapps.io/pivotalcf/2-0/console/manage-apps.html).
+>>>>>>> ceff002... Added info about Apps Manager [#153103226]
