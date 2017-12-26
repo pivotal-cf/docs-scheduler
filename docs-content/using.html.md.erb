@@ -11,11 +11,11 @@ You can interact with the service through the Cloud Foundry Command Line Interfa
 
 To start using Scheduler for PCF, you need the following:
 
-* A PCF installation with [Scheduler for PCF](https://network.pivotal.io/products/p-scheduler-for-pcf) installed and listed in the [Marketplace](http://docs.pivotal.io/devguide/services/#instances)
-* A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account
+* A PCF deployment with [Scheduler for PCF](https://network.pivotal.io/products/p-scheduler-for-pcf) installed and listed in the [Marketplace](http://docs.pivotal.io/devguide/services/#instances).
+* A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account.
 * (Optional) The cf CLI v6.23.0 or greater and the Scheduler for PCF CLI plugin installed on your local machine. The Scheduler for PCF CLI plugin is packaged with the Scheduler for PCF tile on Pivotal Network.
 
-## <a id='create-service'></a>Create and Bind a Service Instance Using cf CLI
+## <a id='create-service'></a>Create and Bind a Service Instance Using the cf CLI
 
 Every app and service in PCF is scoped to a [space](http://docs.pivotal.io/pivotalcf/concepts/roles.html#spaces). This means that an app can use a service only if an instance of the service exists in the same space.
 
@@ -70,13 +70,11 @@ OK
 TIP: Use 'cf push' to ensure your env variable changes take effect
 </pre>
 
-## <a id="manage-jobs"></a>Manage Jobs Using cf CLI
+## <a id="manage-jobs"></a>Manage Jobs and Calls
 
-See [Using Jobs](using-jobs.html) to learn about the operations that you can perform with Scheduler for PCF.
+For information about the CLI operations that you can perform to manage jobs and calls in Scheduler for PCF, see [Using Jobs](using-jobs.html) and [Using Calls](using-calls.html).
 
-## <a id="manage-calls"></a>Manage Calls Using cf CLI
-
-See [Using Calls](using-calls.html) to learn about the operations that you can perform with Scheduler for PCF.
+If you want to manage jobs and calls through the Scheduler HTTP API, see the [Scheduler for PCF API Documentation](http://docs.pivotal.io/pcf-scheduler/1-1/api/).
 
 ## <a id=“using-am”></a> Using PCF Scheduler in Apps Manager
 
