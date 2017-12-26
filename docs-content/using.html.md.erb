@@ -26,9 +26,10 @@ You can interact with the service through Cloud Foundry Command Line Interface (
 
 To start using Scheduler for PCF, you need the following:
 
-* A PCF installation with [Scheduler for PCF](https://network.pivotal.io/products/p-scheduler-for-pcf) installed and listed in the [Marketplace](http://docs.pivotal.io/devguide/services/#instances)
-* A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account
-* (Optional) The cf CLI and the Scheduler for PCF CLI plugin installed on your local machine. The Scheduler for PCF CLI plugin is packaged with the Scheduler for PCF tile on Pivotal Network.
+* A PCF deployment with [Scheduler for PCF](https://network.pivotal.io/products/p-scheduler-for-pcf) listed in the [Marketplace](http://docs.pivotal.io/devguide/services/#instances).
+* A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account.
+* The cf CLI.
+* (Optional) The Scheduler for PCF CLI plugin, which is packaged with the Scheduler for PCF tile on Pivotal Network.
 
 ## <a id='create-service'></a>Create and Bind a Service Instance
 
@@ -85,7 +86,7 @@ OK
 TIP: Use 'cf push' to ensure your env variable changes take effect
 </pre>
 
-## <a id="manage-jobs"></a>Manage Jobs
+## <a id="manage-jobs"></a>Manage Jobs Using the cf CLI
 
 See the following sections to learn about the operations you can perform with Scheduler for PCF.
 
@@ -206,3 +207,7 @@ $ cf delete-job my-job<br>
 Really delete the job my-job with command pwd and all associated schedules and history?> [yN]:y
 OK
 </pre>
+
+## <a id="manage-jobs-api"></a>Manage Jobs Using the Scheduler API
+
+For information about managing jobs through the Scheduler HTTP API, see the [Scheduler for PCF API Documentation](http://docs.pivotal.io/pcf-scheduler/1-0/api).
