@@ -1,3 +1,14 @@
+## Which branch to use?
+
+**Note**: Provide instructions in your PRs to indicate which branches you want Docs to apply your commits to. 
+
+| Branch name | Use for… |
+|-------------| ------|
+| master      | v1.0|
+| 1.1         | v1.1 | 
+| 1.2         | v1.2 | 
+
+
 ## Pivotal Cloud Foundry Partners Template
 
 This template helps partners prepare documentation for Pivotal Cloud Foundry (PCF) partner services that appear on [Pivotal Network](https://network.pivotal.io/). 
