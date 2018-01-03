@@ -89,10 +89,11 @@ Execution GUID                     Execution State   Scheduled Time             
 
 ### <a id="view-logs"></a>View Logs
 
-You can view logs for jobs by running `cf logs JOB-NAME --recent`. See the following example:
+You can view logs for jobs by running `cf logs APP-NAME --recent`.
+See the following example:
 
 <pre class="terminal">
-$ cf logs my-job --recent<br>
+$ cf logs my-app --recent<br>
 Connected, dumping recent logs for app my-app in org my-org / space my-space as user<span>@</span>example.com...
 [...]
 2017-04-19T23:04:13.79-0600 [APP/TASK/cc6fab7f-32a9-4404-4574-b0c430a96cd9 -|- 0d30f4f0-11a4-4d6a-7e77-5e1cdc1aa5ec/0]OUT Creating container
