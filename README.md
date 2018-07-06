@@ -2,11 +2,11 @@
 
 **Note**: Provide instructions in your PRs to indicate which branches you want Docs to apply your commits to. 
 
-| Branch name | Use for… |
-|-------------| ------|
-| master      | v1.0|
-| 1.1         | v1.1 | 
-| 1.2         | v1.2 | 
+| Branch name | Use for… | Protected?| Published URL |
+|-------------| ------| -------------| --------------|
+| master      | v1.0 | yes           | https://docs.pivotal.io/pcf-scheduler/1-0/ |
+| 1.1         | v1.1 | yes           | https://docs.pivotal.io/pcf-scheduler/1-1/ |
+| 1.2         | v1.2 | yes           | https://docs.pivotal.io/pcf-scheduler/1-2/ |
 
 ## Which Book?
 https://github.com/pivotal-cf/docs-book-pcfservices
