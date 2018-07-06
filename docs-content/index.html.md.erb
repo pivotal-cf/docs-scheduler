@@ -6,14 +6,17 @@ This documentation describes Scheduler for Pivotal Cloud Foundry (PCF).
 
 ## <a id='overview'></a>Overview
 
-Scheduler for PCF is a service for scheduling the execution of Diego tasks, such as database migrations, emails, or batch jobs, as well as the execution of outbound HTTP calls.
+Scheduler for PCF is a service for scheduling the execution of Diego tasks, 
+such as database migrations, emails, or batch jobs, as well as the execution of outbound HTTP calls.
 
 Scheduler for PCF enables developers to do the following:
 
 * Create, run, and schedule jobs and view job history.
 * Create, run, and schedule calls and view call history.
 
-You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI), [Apps Manager](https://docs.pivotal.io/pivotalcf/console/manage-apps.html#enable-scheduling), and the [Scheduler HTTP API](http://docs.pivotal.io/pcf-scheduler/1-1/api).
+You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI), 
+[Apps Manager](https://docs.pivotal.io/pivotalcf/console/manage-apps.html#enable-scheduling), 
+and the [Scheduler HTTP API](http://docs.pivotal.io/pcf-scheduler/1-1/api).
 
 ## <a id="snapshot"></a>Product Snapshot
 
@@ -28,7 +31,7 @@ The following table provides version and version-support information about Sched
     </tr>
     <tr>
         <td>Release date</td>
-        <td>December 21, 2017</td>
+        <td>July 5, 2018</td>
     </tr>
     <tr>
         <td>Compatible Ops Manager version(s)</td>
@@ -58,11 +61,17 @@ Scheduler for PCF has the following requirements:
 
 ## <a id="limitations"></a>Limitations
 
-* If your app uses a buildpack that does not generate a `web` process type, such as Ruby or Python, you should do the following:
+* If your app uses a buildpack that does not generate a `web` process type, 
+such as Ruby or Python, you should do the following:
 <br><br>
-    1. Before pushing your app, create a [Procfile](https://docs.pivotal.io/pivotalcf/buildpacks/prod-server.html#procfile) in the root directory of the app.
+    1. Before pushing your app, create a 
+    [Profile](https://docs.pivotal.io/pivotalcf/buildpacks/prod-server.html#procfile) 
+    in the root directory of the app.
     2. Declare a `web` process type in the file.
 
-    If you do not declare this process type, your app will not be accessible through the cf CLI after you create Scheduler jobs for it.
+    If you do not declare this process type, your app will not be accessible through 
+    the cf CLI after you create Scheduler jobs for it.
 
-* The maximum number of tasks that you can schedule is determined by the memory and disk quotas in the Scheduler for PCF org and space. See [Running Tasks](http://docs.pivotal.io/pivotalcf/devguide/using-tasks.html#manage-tasks) for more information.
+* The maximum number of tasks that you can schedule is determined by the memory 
+and disk quotas in the Scheduler for PCF org and space. 
+For more information, see [Running Tasks](http://docs.pivotal.io/pivotalcf/devguide/using-tasks.html#manage-tasks).
