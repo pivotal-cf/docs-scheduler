@@ -8,6 +8,10 @@
 | 1.1         | v1.1 | yes           | https://docs.pivotal.io/pcf-scheduler/1-1/ |
 | 1.2         | v1.2 | yes           | https://docs.pivotal.io/pcf-scheduler/1-2/ |
 
+Write access given to:
+
++ Allen Duet, 2018-07-06 [JD]
+
 ## Which Book?
 https://github.com/pivotal-cf/docs-book-pcfservices
 
