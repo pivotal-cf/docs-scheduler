@@ -1,0 +1,21 @@
+---
+breadcrumb: PCF Services
+title: Migrating to a MySQL for PCF v2 Database for use with PCF Scheduler
+---
+
+This topic explains how Scheduler for PCF performs the migration from a MySQL for PCF v1 database to a MySQL for PCF v2 database.
+
+- If you have Scheduler for PCF v1.1 installed with MySQL for PCF v1--AND you have MySQL for PCF v2 installed but your data is still in a v1 database--Pivotal recommends backing up the MySQL for PCF v1 database before installing Scheduler for PCF v1.2. This is because upgrading your Scheduler for PCF installation from v1.1 to v1.2 will trigger automatic migration of your data to a MySQL v2 database.
+
+- If you have Scheduler for PCF v1.1 installed with a MySQL for PCF v1 database--but you DO NOT have MySQL for PCF v2 installed--what happens when you install Scheduler v1.2? Scheduler 1.2 will continue to use your v1 database until/unless you install MySQL for PCF v2 and the *whatever* errand is triggerd, causing data migration to occur automagically.
+
+- Doing this migration reduces dependency on v1 as users move to v2. 
+
+## <a id="prerequisites"></a> Prerequisites
+
+Some version of Scheduler
+Some version of MySQL for PCF
+
+## <a id="migrate-data"></a> Migrate Your Data
+
+Brief discussion of how to migrate manually or link out to procedure?
