@@ -20,23 +20,20 @@ After this has been initiated, the upgrade will detect your MySQL v1 service bin
 It will then automatically migrate the MySQL for PCF v1 database instance to a MySQL for PCF v2 instance.
 The errand will migrate the database, execute smoke tests, and on success, remove the previous service binding to the MySQL for PCF v1 instance.
 
-===============================
-Notes 
+>>>(Working Notes)<br> 
+>>>All Post deploy errands for PCF Scheduler must be enabled to successfully migrate from MySQL v1 to MySQL v2
 
-All Post deploy errands for PCF Scheduler must be enabled to successfully migrate from MySQL v1 to MySQL v2
-===============================
 
-##<a id="new-install"></a>
+##<a id="new-install"></a>New installation of Scheduler for PCF v1.2
 
-===============================
+>>> (Working Notes)<br>
 >>>SCENARIO #3
-New install of 1.2
+>>>New install of 1.2
 
-(no versions of scheduler or mysql at the outset) - there is no migration, because scheduler is configured to create the instance.
+>>>(no versions of scheduler or mysql at the outset) - there is no migration, because scheduler is configured to create the instance.
 
-a.k.a - 
-MySQL V2 (also if both tiles exist) - new installs of PCF Scheduler 1.2 and you have configured it to use a service broker database source, it will create an instance of MySQL v2 database and use this as the database source.
-===============================
+>>>a.k.a - 
+>>>MySQL V2 (also if both tiles exist) - new installs of PCF Scheduler 1.2 and you have configured it to use a service broker database source, it will create an instance of MySQL v2 database and use this as the database source.
 
 
 ###<a id="troubleshooting"></a>Troubleshooting
