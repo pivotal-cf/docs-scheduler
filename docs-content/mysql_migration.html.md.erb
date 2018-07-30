@@ -6,39 +6,31 @@ title: Migrating to a MySQL for PCF v2 Database for use with PCF Scheduler
 This topic explains how Scheduler for PCF performs the migration from a MySQL for PCF v1 database to a MySQL for PCF v2 database.
 Doing this migration reduces dependency on MySQL for PCF v1 as users move to MySQL for PCF v2.
 
-##<a id="migrate"></a>Migrating from a MySQL for PCF v1 to a MySQL for PCF v2 database
 
+##<a id="migrate"></a>Migrating from a MySQL for PCF v1 to a MySQL for PCF v2 database
 To migrate to a MySQL for PCF v2 database, do the following:
 
 1. (Prerequisite) Have the MySQL for PCF v1 and Scheduler for PCF v1.1 tiles installed
 1. Install the MySQL for PCF v2 tile
 1. (Optional) Back up your MySQL for PCF v1 database that is currently being used by your Scheduler for PCF v1.1 tile.
-<p class="note"><strong>Note:</strong> Pivotal recommends backing up the MySQL for PCF v1 database before installing Scheduler for PCF v1.2. This is because upgrading your Scheduler for PCF installation from v1.1 to v1.2 will trigger automatic migration of your data to a MySQL v2 database. To do this, see [Perform Manual Backup](http://docs.pivotal.io/p-mysql/1-10/backup.html#manual-process)</p>
+	<p class="note"><strong>Note:</strong> Pivotal recommends backing up the MySQL for PCF v1 database before installing Scheduler for PCF v1.2. This is because upgrading your Scheduler for PCF installation from v1.1 to v1.2 will trigger automatic migration of your data to a MySQL v2 database. To do this, see [Perform Manual Backup](http://docs.pivotal.io/p-mysql/1-10/backup.html#manual-process)</p>
 1. Upgrade Scheduler for PCF to v1.2 with all errands enabled
+	<p class="note"><strong>Note:</strong> All <strong>Post-Deploy Errands</strong> must be enabled to successfully migrate from a MySQL for PCF v1 database to MySQL for PCF v2 database. These settings are found in the Scheduler for PCF <strong>Errands</strong> pane of Ops Manager. 
 
 After this has been initiated, the upgrade will detect your MySQL v1 service binding.
 It will then automatically migrate the MySQL for PCF v1 database instance to a MySQL for PCF v2 instance.
 The errand will migrate the database, execute smoke tests, and on success, remove the previous service binding to the MySQL for PCF v1 instance.
 
->>>(Working Notes)<br> 
->>>All Post deploy errands for PCF Scheduler must be enabled to successfully migrate from MySQL v1 to MySQL v2
-
 
 ##<a id="new-install"></a>New installation of Scheduler for PCF v1.2
+With a new installation of Scheduler for PCF v1.2, without an existing MySQL for PCF database, no migration is performed because Scheduler is configured to create the instance.
 
->>> (Working Notes)<br>
->>>SCENARIO #3
->>>New install of 1.2
-
->>>(no versions of scheduler or mysql at the outset) - there is no migration, because scheduler is configured to create the instance.
-
->>>a.k.a - 
->>>MySQL V2 (also if both tiles exist) - new installs of PCF Scheduler 1.2 and you have configured it to use a service broker database source, it will create an instance of MySQL v2 database and use this as the database source.
+If you have the MySQL for PCF v2 tile installed, when you install the Scheduler for PCF v1.2 tile, and configure it to use a service broker database source, it creates a MySQL for PCF v2 database instance, and uses this as the database source.
 
 
-###<a id="troubleshooting"></a>Troubleshooting
+##<a id="troubleshooting"></a>Troubleshooting
 _"I installed Scheduler for PCF v1.2, but my data is still using my MySQL for PCF v1 database and service bindings."_
 
-If you have Scheduler for PCF v1.1 installed with a MySQL for PCF v1 database, but **DO NOT** install MySQL for PCF v2 prior to Scheduler for PCF v1.2, you will encounter this scenario.
+If you have Scheduler for PCF v1.1 installed with a MySQL for PCF v1 database, but **DO NOT** install the MySQL for PCF v2 tile prior to the Scheduler for PCF v1.2 tile, you will encounter this scenario.
 
 Scheduler for PCF v1.2 will continue to use your existing MySQL for PCF v1 database and service bindings unless you install the MySQL for PCF v2 tile and (Insert Errand Trigger instructions here), allowing it to migrate your data automatically.
