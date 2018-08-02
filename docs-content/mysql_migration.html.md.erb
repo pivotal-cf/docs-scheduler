@@ -8,10 +8,9 @@ Doing this migration reduces dependency on MySQL for PCF v1 as users move to MyS
 
 ##<a id="Prerequisites"></a>Prerequisites
 
-1. Ensure that you have the following tiles installed:
-
-	* MySQL for PCF v1
-	* Scheduler for PCF v1.1
+1. Ensure that you have the following:
+  + An existing MySQL for PCF v1.x service instance with the data you want to migrate
+  + Scheduler for PCF v1.1
 
 1. (Optional) Back up the MySQL for PCF v1 database that is currently being used by your Scheduler for PCF v1.1 tile.
 	<p class="note"><strong>Note:</strong> Pivotal recommends backing up the MySQL for PCF v1 database before installing Scheduler for PCF v1.2. This is because upgrading your Scheduler for PCF installation from v1.1 to v1.2 will trigger automatic migration of your data to a MySQL v2 database. For information on performing the backup, see [Perform Manual Backup](http://docs.pivotal.io/p-mysql/1-10/backup.html#manual-process).</p>
@@ -20,14 +19,14 @@ Doing this migration reduces dependency on MySQL for PCF v1 as users move to MyS
 
 To migrate to a MySQL for PCF v2 database, do the following:
 
-1. Install the MySQL for PCF v2 tile.
-1. Upgrade Scheduler for PCF to v1.2 with all errands enabled
+1. Install MySQL for PCF v2.x in the same PCF environment as your PCF v1.x service instance. 
+For more information on installing MySQL for PCF v2.x, see [Download and Install the Tile](http://docs.pivotal.io/p-mysql/2-3/install-config.html#install).
+1. Upgrade Scheduler for PCF to v1.2 with all errands enabled.
 	<p class="note"><strong>Note:</strong> All <strong>Post-Deploy Errands</strong> must be enabled to successfully migrate from a MySQL for PCF v1 database to MySQL for PCF v2 database. These settings are found in the Scheduler for PCF <strong>Errands</strong> pane of Ops Manager. 
 
-After this has been initiated, the upgrade will detect your MySQL v1 service binding.
+During the upgrade, Scheduler for PCF will detect your MySQL v1 service binding.
 It will then automatically migrate the MySQL for PCF v1 database instance to a MySQL for PCF v2 instance.
-The errand will migrate the database, execute smoke tests, and on success, remove the previous service binding to the MySQL for PCF v1 instance.
-
+The errand will migrate the database and execute smoke tests. When the migration has completed successfully, the errand automatically removes the previous service binding to the MySQL for PCF v1 instance.
 
 ##<a id="new-install"></a>New installation of Scheduler for PCF v1.2
 With a new installation of Scheduler for PCF v1.2, without an existing MySQL for PCF database, no migration is performed because Scheduler is configured to create the instance.
