@@ -6,14 +6,21 @@ title: Migrating to a MySQL for PCF v2 Database for use with PCF Scheduler
 This topic explains how Scheduler for PCF performs the migration from a MySQL for PCF v1 database to a MySQL for PCF v2 database.
 Doing this migration reduces dependency on MySQL for PCF v1 as users move to MySQL for PCF v2.
 
+##<a id="Prerequisites"></a>Prerequisites
 
-##<a id="migrate"></a>Migrating from a MySQL for PCF v1 to a MySQL for PCF v2 database
+1. Ensure that you have the following tiles installed:
+
+	* MySQL for PCF v1
+	* Scheduler for PCF v1.1
+
+1. (Optional) Back up the MySQL for PCF v1 database that is currently being used by your Scheduler for PCF v1.1 tile.
+	<p class="note"><strong>Note:</strong> Pivotal recommends backing up the MySQL for PCF v1 database before installing Scheduler for PCF v1.2. This is because upgrading your Scheduler for PCF installation from v1.1 to v1.2 will trigger automatic migration of your data to a MySQL v2 database. For information on performing the backup, see [Perform Manual Backup](http://docs.pivotal.io/p-mysql/1-10/backup.html#manual-process).</p>
+
+##<a id="migrate"></a>Migrating Your Data
+
 To migrate to a MySQL for PCF v2 database, do the following:
 
-1. (Prerequisite) Have the MySQL for PCF v1 and Scheduler for PCF v1.1 tiles installed
-1. Install the MySQL for PCF v2 tile
-1. (Optional) Back up your MySQL for PCF v1 database that is currently being used by your Scheduler for PCF v1.1 tile.
-	<p class="note"><strong>Note:</strong> Pivotal recommends backing up the MySQL for PCF v1 database before installing Scheduler for PCF v1.2. This is because upgrading your Scheduler for PCF installation from v1.1 to v1.2 will trigger automatic migration of your data to a MySQL v2 database. To do this, see [Perform Manual Backup](http://docs.pivotal.io/p-mysql/1-10/backup.html#manual-process)</p>
+1. Install the MySQL for PCF v2 tile.
 1. Upgrade Scheduler for PCF to v1.2 with all errands enabled
 	<p class="note"><strong>Note:</strong> All <strong>Post-Deploy Errands</strong> must be enabled to successfully migrate from a MySQL for PCF v1 database to MySQL for PCF v2 database. These settings are found in the Scheduler for PCF <strong>Errands</strong> pane of Ops Manager. 
 
