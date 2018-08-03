@@ -22,14 +22,17 @@ To migrate to a MySQL for PCF v2 database, do the following:
 1. Install MySQL for PCF v2.x in the same PCF environment as your PCF v1.x service instance. 
 For more information on installing MySQL for PCF v2.x, see [Download and Install the Tile](http://docs.pivotal.io/p-mysql/2-3/install-config.html#install).
 1. Upgrade Scheduler for PCF to v1.2 with all errands enabled.
-	<p class="note"><strong>Note:</strong> All <strong>Post-Deploy Errands</strong> must be enabled to successfully migrate from a MySQL for PCF v1 database to MySQL for PCF v2 database. These settings are found in the Scheduler for PCF <strong>Errands</strong> pane of Ops Manager. 
+	<p class="note"><strong>Note:</strong> All <strong>Post-Deploy Errands</strong> must be enabled to successfully migrate from a MySQL for PCF v1 database to MySQL for PCF v2 database. 
+	These settings are found in the Scheduler for PCF <strong>Errands</strong> pane of Ops Manager. 
 
-During the upgrade, Scheduler for PCF will detect your MySQL v1 service binding.
-It will then automatically migrate the MySQL for PCF v1 database instance to a MySQL for PCF v2 instance.
-The errand will migrate the database and execute smoke tests. When the migration has completed successfully, the errand automatically removes the previous service binding to the MySQL for PCF v1 instance.
+During the upgrade, Scheduler for PCF detects your MySQL v1 service binding.
+It then automatically migrates the MySQL for PCF v1 database instance to a MySQL for PCF v2 instance.
+The errand migrates the database and execute smoke tests. When the migration has completed successfully, 
+the errand automatically removes the previous service binding to the MySQL for PCF v1 instance.
 
 ##<a id="new-install"></a>Database Creation with new installations of Scheduler for PCF v1.2
-If you are newly installing Scheduler for PCF v1.2 and you do not have an existing MySQL for PCF database, no migration is necessary because Scheduler for PCF is configured to create the MySQL for PCF v2 instance.
+If you are newly installing Scheduler for PCF v1.2 and you do not have an existing MySQL for PCF database, 
+no migration is necessary because Scheduler for PCF is configured to create the MySQL for PCF v2 instance.
 
 If you have the MySQL for PCF v2 tile installed and you install Scheduler for PCF v1.2--and configure it to use a service broker database source--it creates a MySQL for PCF v2 database instance, which it uses as the database source.
 
