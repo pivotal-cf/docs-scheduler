@@ -17,12 +17,31 @@ to a MySQL for PCF v2 database. This migration reduces dependency on MySQL for P
            This is because upgrading your Scheduler for PCF installation from v1.1 to v1.2 triggers automatic migration of your data to a MySQL for PCF v2 database.
            For information about performing the backup, see [Perform Manual Backup](http://docs.pivotal.io/p-mysql/1-10/backup.html#manual-process).</p>
 
+## <a id="update-addons"></a>Update Add-ons to Run with Xenial Stemcell
+
+Scheduler for PCF v1.2.3 and later requires a Xenial stemcell.
+If you are using any of the following BOSH add-ons with your PCF deployment,
+you must update the add-on definition to include the Xenial stemcell before you deploy Scheduler for PCF v1.2.3:
+
++ File Integrity Monitoring for PCF Add-on.
+  For update instructions,
+  see [Updating FIM Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-fim/updating-for-xenial.html).
++ ClamAV for PCF Add-on.
+  For update instructions,
+  see [Updating ClamAV Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-antivirus/updating-for-xenial.html).
++ IPsec for PCF Add-on.
+  For update instructions,
+  see [Updating IPsec Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-ipsec/updating-for-xenial.html).
+
 ##<a id="upgrade_scheduler"></a>Upgrade to Scheduler for PCF v1.2
 
 During upgrade, Scheduler for PCF automatically migrates your data from 
 MySQL for PCF v1 to MySQL for PCF v2 if you have have the MySQL for PCF v2 tile installed.
 
 To upgrade from Scheduler for PCF v1.1.x to v1.2.x, do the following:
+
+1. Download the Ubuntu Xenial stemcell from [Pivotal Network](https://network.pivotal.io/products/stemcells-ubuntu-xenial),
+and import it into the Ops Manager Stemcell Library. For instructions, see [Update Stemcell](./installing.html#stemcell).
 
 1. Install MySQL for PCF v2.2 or later in the same PCF environment as 
 your MySQL for PCF v1.x service instance. 
@@ -49,6 +68,8 @@ Scheduler for PCF v1.2 continues to use the MySQL for PCF v1 database and servic
 
 To migrate your data and service bindings to the MySQL for PCF v2 instance:
 
+1. Download the Ubuntu Xenial stemcell from [Pivotal Network](https://network.pivotal.io/products/stemcells-ubuntu-xenial),
+and import it into the Ops Manager Stemcell Library. For instructions, see [Update Stemcell](./installing.html#stemcell).
 1. Install the MySQL for PCF v2 tile.
 1. Set all post-deploy errands to **On**.
 1. Apply changes.
