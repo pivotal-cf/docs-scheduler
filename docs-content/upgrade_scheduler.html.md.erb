@@ -26,10 +26,10 @@ To upgrade from Scheduler for PCF v1.1.x to v1.2.x, do the following:
 
 1. Install MySQL for PCF v2.2 or later in the same PCF environment as 
 your MySQL for PCF v1.x service instance. 
-For information about installing MySQL for PCF v2.x, see [Download and Install the Tile](http://docs.pivotal.io/p-mysql/2-3/install-config.html#install).
+For information about installing MySQL for PCF v2.x, see [Download and Install the Tile](http://docs.pivotal.io/p-mysql/install-config.html#install).
 
 1. Upgrade Scheduler for PCF to v1.2 with all errands enabled. For general information about upgrading
-a tile, see [Upgrading PCF Products](https://docs.pivotal.io/pivotalcf/2-2/customizing/upgrading-products.html#other-products).
+a tile, see [Upgrading PCF Products](https://docs.pivotal.io/pivotalcf/customizing/upgrading-products.html#other-products).
 
 	<p class="note"><strong>Note:</strong> All <strong>Post-Deploy Errands</strong> must be enabled 
     to migrate from a MySQL for PCF v1 database to MySQL for PCF v2 database. 
@@ -51,4 +51,7 @@ To migrate your data and service bindings to the MySQL for PCF v2 instance:
 
 1. Install the MySQL for PCF v2 tile.
 1. Set all post-deploy errands to **On**.
-1. Apply changes.
+1. If you are using Ops Manager v2.3 or later,  click **Review Pending Changes**. 
+For more information about this Ops Manager page, 
+see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
+1. Click **Apply Changes**.
