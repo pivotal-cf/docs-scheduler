@@ -96,12 +96,12 @@ Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler 
 
 1. Click **Stemcell**.
 
-1. Verify the settings. If you need to import a new stemcell version, see the _Download Stemcell_ section for your IaaS:
-   [AWS](https://docs.pivotal.io/pivotalcf/customizing/cloudform-er-config.html#stemcell),
-   [Azure](https://docs.pivotal.io/pivotalcf/customizing/azure-er-config.html#stemcell), 
-   [GCP](https://docs.pivotal.io/pivotalcf/customizing/gcp-er-config.html#stemcell), or
-   [vSphere](https://docs.pivotal.io/pivotalcf/customizing/config-er-vmware.html#stemcell).
+1. Verify the settings. If you need to import a new stemcell version, do the following:  
+1. Download the stemcell from [Pivotal Network](https://network.pivotal.io/products/stemcells-ubuntu-xenial).
+1. In the Ops Manager, click **Stemcell Library**.
+1. Click **Import Stemcell**, and then select the stemcell you downloaded from Pivotal Network.
 
+    <br>![Stemcell Library](stemcell-library.png)
 1. Click **Save**.
 
 1.  <a name="apply-changes"></a> Return to the Ops Manager Installation Dashboard.
