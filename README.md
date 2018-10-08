@@ -1,21 +1,3 @@
-## Which branch to use?
-
-**Note**: Provide instructions in your PRs to indicate which branches you want Docs to apply your commits to. 
-
-| Branch name | Use for… | Protected?| Published URL |
-|-------------| ------| -------------| --------------|
-| master      | v1.0 | yes           | https://docs.pivotal.io/pcf-scheduler/1-0/ |
-| 1.1         | v1.1 | yes           | https://docs.pivotal.io/pcf-scheduler/1-1/ |
-| 1.2         | v1.2 | yes           | https://docs.pivotal.io/pcf-scheduler/1-2/ |
-
-Write access given to:
-
-+ Allen Duet, 2018-07-06 [JD]
-
-## Which Book?
-https://github.com/pivotal-cf/docs-book-pcfservices
-
-
 ## Pivotal Cloud Foundry Partners Template
 
 This template helps partners prepare documentation for Pivotal Cloud Foundry (PCF) partner services that appear on [Pivotal Network](https://network.pivotal.io/). 
@@ -161,5 +143,6 @@ In Terminal window:
 After each session of writing or revising your docs source files, commit and push them to your github repo.
 
 Happy documenting!
+
 
 
