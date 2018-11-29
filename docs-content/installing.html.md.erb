@@ -80,10 +80,15 @@ Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler 
         <td>The field is enabled by default. Disable this feature if you want to prevent users from scheduling outbound HTTP calls from the Scheduler for PCF service.</td>
       </tr>
       <tr>
-        <td><strong>MySQL Service Plan Name</strong></td>
-        <td>Enter the name of your MySQL for PCF service plan, which is used to provision a database for persistent storage of Scheduler data, including jobs, calls, and history.</td>
+        <td><strong>Name</strong></td>
+        <td>Enter the name of your MySQL service broker. For example, <code>p.mysql</code>.</td>
       </tr>
-    </table>
+      <tr>
+        <td><strong>Plan Name</strong></td>
+        <td>Enter the name of your MySQL service plan, which is used to provision a database for persistent storage of Scheduler data, including jobs, calls, and history.</td>
+      </tr>
+      </table>
+
 1. Click **Save**.
 
 ###<a id="resources"></a> Verify Resource Config
