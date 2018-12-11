@@ -11,13 +11,6 @@ This topic contains release notes for Scheduler for Pivotal Cloud Foundry (PCF).
 
 ### Features included in this release:
 
-<p class="note breaking"><strong>Breaking Change: </strong>Scheduler for PCF v1.2.3 and later requires a Xenial stemcell.
-You must manually download and import a new stemcell into the Ops Manager Stemcell Library before deploying Scheduler for PCF v1.2.3.
-This might break automation you have set up to update Scheduler for PCF deployments that used Trusty stemcells. 
-To download the Xenial stemcell from Pivotal Network,
-go to <a href="https://network.pivotal.io/products/stemcells-ubuntu-xenial"> Stemcells for PCF (Ubuntu Xenial)</a>.
-For instructions on importing the stemcell, see <a href="./installing.html#stemcell"> Update Stemcell</a>.</p>
-
 New features and changes in this release:
 
 * Updated OpenJDK
@@ -33,16 +26,14 @@ There are no known issues for this release.
 
 ### Features included in this release:
 
-<p class="note breaking"><strong>Breaking Change: </strong>Scheduler for PCF v1.2.3 and later requires a Xenial stemcell.
-You must manually download and import a new stemcell into the Ops Manager Stemcell Library before deploying Scheduler for PCF v1.2.3.
-This might break automation you have set up to update Scheduler for PCF deployments that used Trusty stemcells. 
-To download the Xenial stemcell from Pivotal Network,
-go to <a href="https://network.pivotal.io/products/stemcells-ubuntu-xenial"> Stemcells for PCF (Ubuntu Xenial)</a>.
-For instructions on importing the stemcell, see <a href="./installing.html#stemcell"> Update Stemcell</a>.</p>
+<p class="note breaking"><strong>Breaking Change</strong>: Any automated process that updates Scheduler for PCF to v1.2.3 or later might break if the deployment does not use a Xenial stemcell.  
+</p>
 
-New features and changes in this release:
+The new feature in this release:
 
-* Includes support for Xenial Stemcell 97.
+* Scheduler for PCF v1.2.3 and later requires a Xenial stemcell.
+  - To download a Xenial stemcell from Pivotal Network,
+go to <a href="https://network.pivotal.io/products/stemcells-ubuntu-xenial"> Stemcells for PCF (Ubuntu Xenial)</a>. For more information about updating BOSH add-ons and importing the stemcell, see <a href="./installing.html">Installing and Configuring Scheduler for PCF</a>.
 
 ### Known Issues
 
