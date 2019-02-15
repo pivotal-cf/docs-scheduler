@@ -7,15 +7,10 @@ This topic describes how to install and configure Scheduler for Pivotal Cloud Fo
 
 ##<a id='prereqs'></a> Prerequisites
 
-If you are installing Scheduler for PCF v1.2, Pivotal recommends having the MySQL for PCF v2.x tile installed. 
+Before you install Scheduler for PCF v1.2, you must have a MySQL for PCF v2.x tile with **TLS Options** set to **Optional** or **Not Configured**. See [Configure Security](https://docs.pivotal.io/p-mysql/install-config.html#security).
 
-Before you install the Scheduler for PCF tile, you need to configure a MySQL for PCF service plan. The minimum resource configuration of the MySQL plan requires the following:
+For more information about installing and configuring a MySQL for PCF v2.x tile, see [Installing and Configuring MySQL for PCF](https://docs.pivotal.io/p-mysql/install-config.html).
 
-  * Service plan name: 1gb
-  * Storage quota: 1,000 MB
-  * Concurrent connections quota: 40
-
-For more information, see [Add a Plan](https://docs.pivotal.io/p-mysql/index.html#service-plan) in the MySQL for PCF documentation.
 
 ## <a id="download-install"></a> Download and Install Scheduler for PCF
 
