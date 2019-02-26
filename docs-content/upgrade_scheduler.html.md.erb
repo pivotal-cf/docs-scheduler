@@ -3,12 +3,14 @@ breadcrumb: PCF Services
 title: Upgrading to Scheduler for PCF v1.2
 ---
 This topic explains how to upgrade Scheduler for PCF. It also explains
-how Scheduler for PCF v1.2 automatically migrates data from a MySQL for PCF v1 database 
-to a MySQL for PCF v2.3 or later database. This migration reduces dependency on MySQL for PCF v1.
+how Scheduler for PCF v1.2 automatically migrates data from a MySQL for PCF v1 database
+to a MySQL for PCF v2 database. MySQL for PCF v1 has reached its End of Availability.
+This migration removes dependency on MySQL for PCF v1.
 
 ##<a id="Prerequisites"></a>Prerequisites
 
 Before you upgrade to Scheduler v1.2, you must have the following:
+
 
    + Scheduler for PCF v1.1
    + A MySQL for PCF v1.x or later tile with the data you want to migrate
@@ -16,13 +18,17 @@ Before you upgrade to Scheduler v1.2, you must have the following:
 
 ##<a id="backup"></a>(Optional) Back up MySQL for PCF Database
 
-Pivotal recommends backing up your MySQL for PCF database before installing Scheduler for PCF v1.2.
-This is because upgrading your Scheduler for PCF installation from v1.1 to v1.2 triggers automatic migration of your data to a MySQL for PCF v2.3 or later database.
+Pivotal recommends backing up your MySQL for PCF database before installing
+Scheduler for PCF v1.2.
+This is because upgrading your Scheduler for PCF installation from v1.1 to v1.2
+triggers automatic migration of your data to a MySQL for PCF v2.x database.
 
 To back up your MySQL for PCF database, do one of the following:
 
-+ If you are backing up a MySQL for PCF v1.x database, see [Perform Manual Backup](http://docs.pivotal.io/p-mysql/1-10/backup.html#manual-process).
-+ If you are backing up a MySQL for PCF v2.3 or later database, see [Manual Backup](https://docs.pivotal.io/p-mysql/backup-and-restore.html#manual-backup).
++ If you are backing up a MySQL for PCF v1.x database,
+see [Perform Manual Backup](http://docs.pivotal.io/p-mysql/1-10/backup.html#manual-process).
++ If you are backing up a MySQL for PCF v2.x database,
+see [Manual Backup](https://docs.pivotal.io/p-mysql/backup-and-restore.html#manual-backup).
 
 ## <a id="update-addons"></a>Update Add-Ons to Run with Xenial Stemcell
 
@@ -42,49 +48,35 @@ you must update the add-on definition to include the Xenial stemcell before you 
 
 ##<a id="upgrade_scheduler"></a>Upgrade to Scheduler for PCF v1.2
 
-During upgrade, Scheduler for PCF automatically migrates your data from 
-MySQL for PCF v1.x to MySQL for PCF v2.3 or later if you have the MySQL for PCF v2.3 or later tile installed.
+During upgrade, Scheduler for PCF automatically migrates your data from
+MySQL for PCF v1.x to MySQL for PCF v2.x.
+
+During the upgrade, Scheduler for PCF detects your MySQL for PCF v1.x service binding.
+It then automatically migrates the MySQL for PCF v1.x database instance to a
+MySQL for PCF v2.x instance.
+The errand migrates the database and executes smoke tests.
+When the migration has completed successfully, the errand
+removes the service binding to the MySQL for PCF v1.x instance.
 
 To upgrade from Scheduler for PCF v1.1 to v1.2, do the following:
 
 1. Download the Ubuntu Xenial stemcell from [Pivotal Network](https://network.pivotal.io/products/stemcells-ubuntu-xenial),
-and import it into the Ops Manager Stemcell Library. For instructions, see [Update Stemcell](./installing.html#stemcell).
+and import it into the Ops Manager Stemcell Library.
+For instructions, see [Update Stemcell](./installing.html#stemcell).
 
-1. Install MySQL for PCF v2.3 or later in the same PCF environment as 
-your MySQL for PCF v1.x service instance. In the **Security** pane in the MySQL for PCF v2.3 or later tile, set **TLS Options** to **Optional** or **Not Configured**.
-For information about installing MySQL for PCF v2.3 or later, see [Installing and Configuring MySQL for PCF](http://docs.pivotal.io/p-mysql/install-config.html).
+1. Install MySQL for PCF v2.3 or later in the same PCF environment as
+your MySQL for PCF v1.x service instance.
+In the **Security** pane in the MySQL for PCF v2.x tile,
+set **TLS Options** to **Optional** or **Not Configured**.
+For information about installing MySQL for PCF v2.x,
+see [Installing and Configuring MySQL for PCF](http://docs.pivotal.io/p-mysql/install-config.html).
 
-1. Upgrade Scheduler for PCF to v1.2 with all errands enabled. For general information about upgrading
-a tile, see [Upgrading PCF Products](https://docs.pivotal.io/pivotalcf/customizing/upgrading-products.html#other-products).
+1. Upgrade Scheduler for PCF to v1.2 with all errands enabled.
+For general information about upgrading
+a tile,
+see [Upgrading PCF Products](https://docs.pivotal.io/pivotalcf/customizing/upgrading-products.html#other-products).
 
-	<p class="note"><strong>Note:</strong> All <strong>Post-Deploy Errands</strong> must be enabled 
-    to migrate from a MySQL for PCF v1.x database to MySQL for PCF v2.3 or later database. 
-	These settings are in the Scheduler for PCF <strong>Errands</strong> pane of 
-    the Scheduler for PCF tile.</p> 
-
-    During the upgrade, Scheduler for PCF detects your MySQL for PCF v1.x service binding.
-    It then automatically migrates the MySQL for PCF v1.x database instance to a 
-    MySQL for PCF v2.3 or later instance.
-    The errand migrates the database and executes smoke tests.
-    When the migration has completed successfully, the errand removes the service binding to the MySQL for PCF v1.x instance.
-
-##<a id="migrate_later"></a>Migrate after Upgrading Scheduler for PCF 
-
-If you upgrade Scheduler for PCF without the MySQL for PCF v2.3 or later tile installed, 
-Scheduler for PCF v1.2 continues to use the MySQL for PCF v1.x database and service bindings. 
-
-To migrate your data and service bindings to the MySQL for PCF v2.3 or later instance:
-
-1. Download the Ubuntu Xenial stemcell from [Pivotal Network](https://network.pivotal.io/products/stemcells-ubuntu-xenial),
-and import it into the Ops Manager Stemcell Library. For instructions, see [Update Stemcell](./installing.html#stemcell).
-1. Install the MySQL for PCF v2.3 or later tile. In the **Security** pane in the MySQL for PCF v2.3 or later tile, set **TLS Options** to **Optional** or **Not Configured**.
-For information about installing MySQL for PCF v2.3 or later, see [Installing and Configuring MySQL for PCF](http://docs.pivotal.io/p-mysql/install-config.html).
-1. Set all post-deploy errands to **On**.
-
-1. In the Ops Manager Dashboard, do the following:
-
-    1. If you are using Ops Manager v2.3 or later, click **Review Pending Changes**.
-    For more information about this Ops Manager page, see
-    [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).<br><br>
-
-    1. Click **Apply Changes**.
+	<p class="note"><strong>Note:</strong> All <strong>Post-Deploy Errands</strong> must be enabled
+    to migrate from a MySQL for PCF v1.x database to MySQL for PCF v2.x database.
+	These settings are in the Scheduler for PCF <strong>Errands</strong> pane of
+    the Scheduler for PCF tile.</p>
