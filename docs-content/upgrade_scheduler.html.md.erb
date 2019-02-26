@@ -7,16 +7,7 @@ how Scheduler for PCF v1.2 automatically migrates data from a MySQL for PCF v1 d
 to a MySQL for PCF v2 database. MySQL for PCF v1 has reached its End of Availability.
 This migration removes dependency on MySQL for PCF v1.
 
-##<a id="Prerequisites"></a>Prerequisites
-
-Before you upgrade to Scheduler v1.2, you must have the following:
-
-
-   + Scheduler for PCF v1.1
-   + A MySQL for PCF v1.x or later tile with the data you want to migrate
-
-
-##<a id="backup"></a>(Optional) Back up MySQL for PCF Database
+##<a id="backup"></a>(Optional) Back Up MySQL for PCF Database
 
 Pivotal recommends backing up your MySQL for PCF database before installing
 Scheduler for PCF v1.2.
@@ -48,12 +39,12 @@ you must update the add-on definition to include the Xenial stemcell before you 
 
 ##<a id="upgrade_scheduler"></a>Upgrade to Scheduler for PCF v1.2
 
-During upgrade, Scheduler for PCF automatically migrates your data from
-MySQL for PCF v1.x to MySQL for PCF v2.x.
-
-During the upgrade, Scheduler for PCF detects your MySQL for PCF v1.x service binding.
-It then automatically migrates the MySQL for PCF v1.x database instance to a
+During the upgrade, Scheduler for PCF automatically migrates your data from
+MySQL for PCF v1.x to MySQL for PCF v2.x. Scheduler for PCF detects your MySQL for 
+PCF v1.x service binding
+ and automatically migrates the MySQL for PCF v1.x database instance to a
 MySQL for PCF v2.x instance.
+
 The errand migrates the database and executes smoke tests.
 When the migration has completed successfully, the errand
 removes the service binding to the MySQL for PCF v1.x instance.
