@@ -9,6 +9,14 @@ This topic contains release notes for Scheduler for Pivotal Cloud Foundry (PCF).
 
 **Release Date:** December 6, 2018
 
+<p class="note breaking"><strong>Breaking Change</strong>: Any automated
+  process that updates Scheduler for PCF breaks if the deployment has TLS
+  enabled on the MySQL for PCF tile. For information about configuring TLS in
+  MySQL for PCF, see
+  see <a href="https://docs.pivotal.io/p-mysql/2-5/install-config.html#security">Configure Security</a>.
+
+</p>
+
 ### Features included in this release:
 
 New features and changes in this release:
@@ -30,14 +38,6 @@ There are no known issues for this release.
 <p class="note breaking"><strong>Breaking Change</strong>: Any automated
   process that updates Scheduler for PCF might break if the deployment does not
   use a Xenial stemcell.
-</p>
-
-<p class="note breaking"><strong>Breaking Change</strong>: Any automated
-  process that updates Scheduler for PCF breaks if the deployment has TLS
-  enabled on the MySQL for PCF tile. For information about configuring TLS in
-  MySQL for PCF, see
-  see <a href="https://docs.pivotal.io/p-mysql/2-5/install-config.html#security">Configure Security</a>.
-
 </p>
 
 The new feature in this release:
