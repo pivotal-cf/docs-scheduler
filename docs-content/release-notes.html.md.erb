@@ -11,14 +11,26 @@ This topic contains release notes for Scheduler for Pivotal Cloud Foundry (PCF).
 
 ### Features included in this release:
 
-<p class="note breaking"><strong>Breaking Change</strong>: Any automated process that updates Scheduler for PCF might break if the deployment does not use a Xenial stemcell.  
+<p class="note breaking"><strong>Breaking Change</strong>: Any automated
+  process that updates Scheduler for PCF might break if the deployment does not
+  use a Xenial stemcell.
+</p>
+
+<p class="note breaking"><strong>Breaking Change</strong>: Any automated
+  process that updates Scheduler for PCF breaks if the deployment has TLS
+  enabled on the MySQL for PCF tile. For information about configuring TLS in
+  MySQL for PCF, see
+  see <a href="https://docs.pivotal.io/p-mysql/2-5/install-config.html#security">Configure Security</a>.
 </p>
 
 New features and changes in this release:
 
 * Scheduler for PCF v1.2.3 and later requires a Xenial stemcell.
   - To download a Xenial stemcell from Pivotal Network,
-go to <a href="https://network.pivotal.io/products/stemcells-ubuntu-xenial"> Stemcells for PCF (Ubuntu Xenial)</a>. For more information about updating BOSH add-ons and importing the stemcell, see <a href="./installing.html">Installing and Configuring Scheduler for PCF</a>.
+go to <a href="https://network.pivotal.io/products/stemcells-ubuntu-xenial">
+  Stemcells for PCF (Ubuntu Xenial)</a>.
+  For more information about updating BOSH add-ons and importing the
+  stemcell, see <a href="./installing.html">Installing and Configuring Scheduler for PCF</a>.
 
 ### Known Issues
 
@@ -42,5 +54,5 @@ There are no known issues for this release.
 
 ## <a id="view"></a> View Release Notes for Another Version
 
-To view the release notes for another product version, select the version from 
+To view the release notes for another product version, select the version from
 the dropdown at the top of this page.
