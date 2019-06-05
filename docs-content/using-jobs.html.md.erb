@@ -31,7 +31,7 @@ See the following example:
 
 ### <a id="exec-jobs"></a>Execute a Job
 
-You can execute a job manually. This is often useful to test the configuration of a job prior to scheduling it for recurring execution.
+You can execute a job manually. This is often useful to test the configuration of a job prior to it for recurring execution.
 
 Run `cf run-job JOB-NAME`. See the following example:
 
@@ -50,6 +50,8 @@ For example, to execute a job at noon every day, run the following command:
 <pre class="terminal">$ cf schedule-job my-job "0 12 ? * * "</pre>
 
 A single job can have multiple schedules. Each schedule has a GUID to distinguish it from similar schedules.
+
+<p class="note"><strong>Note</strong>: Scheduled jobs automatically execute in UTC.</p>
 
 ### <a id="list-jobs"></a>View Jobs
 
