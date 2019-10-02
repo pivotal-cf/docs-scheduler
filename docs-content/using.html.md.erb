@@ -1,6 +1,6 @@
 ---
 title: Using Pivotal Scheduler
-owner: PCF Autoscaler and Scheduler
+owner: Pivotal Autoscaler and Scheduler
 ---
 
 This topic provides instructions for using Pivotal Scheduler.
@@ -11,13 +11,13 @@ You can interact with the service through the Cloud Foundry Command Line Interfa
 
 To start using Pivotal Scheduler, you need the following:
 
-* A PCF deployment with [Pivotal Scheduler](https://network.pivotal.io/products/p-scheduler-for-pcf) installed and listed in the [Marketplace](http://docs.pivotal.io/devguide/services/#instances).
+* A PAS deployment with [Pivotal Scheduler](https://network.pivotal.io/products/p-scheduler-for-pcf) installed and listed in the [Marketplace](http://docs.pivotal.io/devguide/services/#instances).
 * A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account.
 * (Optional) The cf CLI v6.23.0 or greater and the Pivotal Scheduler CLI plugin installed on your local machine. The Pivotal Scheduler CLI plugin is packaged with the Pivotal Scheduler tile on [Pivotal Network](https://network.pivotal.io/products/p-scheduler).
 
 ## <a id='create-service'></a>Create and Bind a Service Instance Using the cf CLI
 
-Every app and service in PCF is scoped to a [space](http://docs.pivotal.io/pivotalcf/concepts/roles.html#spaces). This means that an app can use a service only if an instance of the service exists in the same space.
+Every app and service in PAS is scoped to a [space](http://docs.pivotal.io/pivotalcf/concepts/roles.html#spaces). This means that an app can use a service only if an instance of the service exists in the same space.
 
 The Pivotal Scheduler service is a singleton service. Only one service instance can be created in a space.
 
