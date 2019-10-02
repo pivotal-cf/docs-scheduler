@@ -1,15 +1,15 @@
 ---
-title: Scheduler for PCF 
+title: Pivotal Scheduler 
 owner: PCF Autoscaler and Scheduler
 ---
-This documentation describes Scheduler for Pivotal Cloud Foundry (PCF).
+This documentation describes Pivotal Scheduler.
 
 ## <a id='overview'></a>Overview
 
-Scheduler for PCF is a service for scheduling the execution of Diego tasks, 
+Pivotal Scheduler is a service for scheduling the execution of Diego tasks, 
 such as database migrations, emails, or batch jobs, as well as the execution of outbound HTTP calls.
 
-Scheduler for PCF enables developers to do the following:
+Pivotal Scheduler enables developers to do the following:
 
 * Create, run, and schedule jobs and view job history.
 * Create, run, and schedule calls and view call history.
@@ -20,7 +20,7 @@ and the [Scheduler HTTP API](http://docs.pivotal.io/pcf-scheduler/1-1/api).
 
 ## <a id="snapshot"></a>Product Snapshot
 
-The following table provides version and version-support information about Scheduler for PCF.
+The following table provides version and version-support information about Pivotal Scheduler.
 
 <table class="nice">
     <th>Element</th>
@@ -48,11 +48,11 @@ The following table provides version and version-support information about Sched
 
 ## <a id="reqs"></a>Requirements
 
-Scheduler for PCF requires a MySQL database.
+Pivotal Scheduler requires a MySQL database.
 
 You can use either of the following:
 
-+ MySQL for PCF v2.3 or later. See [MySQL for PCF](http://docs.pivotal.io/p-mysql). 
++ MySQL for Pivotal Platform v2.3 or later. See [MySQL for Pivotal Platform](http://docs.pivotal.io/p-mysql). 
 + An external MySQL database
 
 ## <a id="limitations"></a>Limitations
@@ -69,5 +69,5 @@ such as Ruby or Python, you should do the following:
     the cf CLI after you create Scheduler jobs for it.
 
 * The maximum number of tasks that you can schedule is determined by the memory 
-and disk quotas in the Scheduler for PCF org and space. 
+and disk quotas in the Pivotal Scheduler org and space. 
 For more information, see [Running Tasks](http://docs.pivotal.io/pivotalcf/devguide/using-tasks.html#manage-tasks).

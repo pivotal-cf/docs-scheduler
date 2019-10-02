@@ -3,13 +3,13 @@ title: Scheduling Calls
 owner: PCF Autoscaler and Scheduler
 ---
 
-This topic provides instructions for managing outbound HTTP calls in Scheduler for Pivotal Cloud Foundry (PCF).
+This topic provides instructions for managing outbound HTTP calls in Pivotal Scheduler.
 
 ## <a id="manage-calls"></a>Manage Calls
 
-You can use Scheduler for PCF to schedule execution of HTTP calls to external HTTP services. See the following sections to learn more about creating, running, and scheduling calls and viewing call history.
+You can use Pivotal Scheduler to schedule execution of HTTP calls to external HTTP services. See the following sections to learn more about creating, running, and scheduling calls and viewing call history.
 
-<p class="note"><strong>Note</strong>: If you want to use the Cloud Foundry Command Line Interface (cf CLI) for managing calls, you must install the Scheduler for PCF CLI plugin on your local machine. This plugin is packaged with the Scheduler for PCF tile on <a href="https://network.pivotal.io/products/p-scheduler-for-pcf">Pivotal Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section of the Using Scheduler for PCF topic.</p>
+<p class="note"><strong>Note</strong>: If you want to use the Cloud Foundry Command Line Interface (cf CLI) for managing calls, you must install the Pivotal Scheduler CLI plugin on your local machine. This plugin is packaged with the Pivotal Scheduler tile on <a href="https://network.pivotal.io/products/p-scheduler-for-pcf">Pivotal Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section of the Using Pivotal Scheduler topic.</p>
 
 ### <a id="create-calls"></a>Create a Call
 
@@ -33,7 +33,7 @@ OK
 
 ### <a id="schedule-call"></a>Schedule a Call
 
-You can schedule a call to execute at any time using a schedule expression. Scheduler for PCF requires Cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format.
+You can schedule a call to execute at any time using a schedule expression. Pivotal Scheduler requires Cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format.
 
 For example, to execute a call at noon every day, run the following command:
 
