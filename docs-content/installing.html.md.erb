@@ -1,37 +1,37 @@
 ---
-title: Installing and Configuring Scheduler for PCF
-owner: PCF Autoscaler and Scheduler
+title: Installing and Configuring Pivotal Scheduler
+owner: Pivotal Autoscaler and Scheduler
 ---
 
-This topic describes how to install and configure Scheduler for Pivotal Cloud Foundry (PCF).
+This topic describes how to install and configure Pivotal Scheduler.
 
 ##<a id='prereqs'></a> Prerequisites
 
-Before you install Scheduler for PCF v1.2, you must have one of the following:
+Before you install Pivotal Scheduler v1.2, you must have one of the following:
 
-+ A MySQL for PCF v2.3 or later tile with **TLS Options** set to **Optional** or **Not Configured**. 
++ A MySQL for Pivotal Platform v2.3 or later tile with **TLS Options** set to **Optional** or **Not Configured**. 
 See [Configure Security](https://docs.pivotal.io/p-mysql/install-config.html#security).
 + A external MySQL database with TLS disabled
 
-For more information about installing and configuring a MySQL for PCF v2 tile, see [Installing and Configuring MySQL for PCF](https://docs.pivotal.io/p-mysql/install-config.html).
+For more information about installing and configuring a MySQL for Pivotal Platform v2 tile, see [Installing and Configuring MySQL for Pivotal Platform](https://docs.pivotal.io/p-mysql/install-config.html).
 
 
-## <a id="download-install"></a> Download and Install Scheduler for PCF
+## <a id="download-install"></a> Download and Install Pivotal Scheduler
 
-<p class="note"><strong>Note:</strong> Before using Scheduler for PCF v1.2.3 and later, you must update any BOSH add-ons to support Xenial stemcells. See <a href="./upgrade_scheduler.html#update-addons">Update Add-ons to Run with Xenial Stemcell</a>.</p>
+<p class="note"><strong>Note:</strong> Before using Pivotal Scheduler v1.2.3 and later, you must update any BOSH add-ons to support Xenial stemcells. See <a href="./upgrade_scheduler.html#update-addons">Update Add-ons to Run with Xenial Stemcell</a>.</p>
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/p-scheduler-for-pcf).
 
 1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
 
-1. Under the **Import a Product** button, click **+** next to the version number of Scheduler for PCF. 
+1. Under the **Import a Product** button, click **+** next to the version number of Pivotal Scheduler. 
   This adds the tile to your staging area.
 
-1. Click the newly added **Scheduler for PCF** tile.
+1. Click the newly added **Pivotal Scheduler** tile.
 
-## <a id="config-tile"></a> Configure Scheduler for PCF
+## <a id="config-tile"></a> Configure Pivotal Scheduler
 
-Follow the steps below to configure the Scheduler for PCF tile.
+Follow the steps below to configure the Pivotal Scheduler tile.
 
 ###<a id="azs"></a> Configure AZs and Networks
 
@@ -76,7 +76,7 @@ Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler 
       </tr>
       <tr>
         <td><strong>Enable outbound HTTP calls</strong></td>
-        <td>The field is enabled by default. Disable this feature if you want to prevent users from scheduling outbound HTTP calls from the Scheduler for PCF service.</td>
+        <td>The field is enabled by default. Disable this feature if you want to prevent users from scheduling outbound HTTP calls from the Pivotal Scheduler service.</td>
       </tr>
       <tr>
         <td><strong>Name</strong></td>
@@ -100,13 +100,13 @@ Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler 
 
 ###<a id="stemcell"></a> Verify Stemcell Version
 
-To verify that you have the correct stemcell version for the Scheduler for PCF tile, do the following:
+To verify that you have the correct stemcell version for the Pivotal Scheduler tile, do the following:
 
 1. Click **Stemcell**.
 
 1. Verify the settings.
 
-    Scheduler for PCF v1.2.3 and later requires a Xenial stemcell. Scheduler for PCF v1.2.2 and earlier requires a Trusty stemcell.
+    Pivotal Scheduler v1.2.3 and later requires a Xenial stemcell. Pivotal Scheduler v1.2.2 and earlier requires a Trusty stemcell.
     If you need to import a new stemcell version, do the following:  
 
 1. Download the stemcell from [Pivotal Network](https://network.pivotal.io/products).
