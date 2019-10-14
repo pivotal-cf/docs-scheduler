@@ -123,10 +123,11 @@ OK
 
 ### <a id="delete-schedule"></a>Delete a Job Schedule  
 
-You can delete a specific schedule by running `cf delete-job-schedule SCHEDULE-GUID`, where `SCHEDULE-GUID` is the GUID found in the output of the `cf job-schedules` command. See the following example:
+You can delete a specific schedule by running `cf delete-job-schedule JOB-NAME SCHEDULE-GUID`, where `JOB-NAME` is the name of the job and `SCHEDULE-GUID` is the GUID found in the output of the `cf job-schedules` command. See the following example:
 
 <pre class="terminal">
-$ cf delete-job-schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d<br>
+$ cf delete-job-schedule my-job 2b69e0c2-9664-46bb-4817-54afcedbb65d<br>
 Really delete the schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d / 0 12 ? * * and all associated history?> [yN]: y
+Deleting schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d for job my-job in org test / space scheduler as admin
 OK
 </pre>	
