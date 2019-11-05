@@ -7,10 +7,11 @@ This topic describes how to install and configure Pivotal Scheduler.
 
 ##<a id='prereqs'></a> Prerequisites
 
-Before you install Pivotal Scheduler v1.2, you must have a MySQL for Pivotal Platform v2.x tile with **TLS Options** set to **Optional** or **Not Configured**. See [Configure Security](https://docs.pivotal.io/p-mysql/install-config.html#security).
++ A [MySQL for Pivotal Platform](https://network.pivotal.io/products/pivotal-mysql/) v2.3 or later tile with **TLS Options** set to **Optional** or **Not Configured**. 
+See [Configure Security](https://docs.pivotal.io/p-mysql/install-config.html#security).
++ An external MySQL database with TLS disabled
 
-For more information about installing and configuring a MySQL for Pivotal Platform v2.x tile, see [Installing and Configuring MySQL for Pivotal Platform](https://docs.pivotal.io/p-mysql/install-config.html).
-
+<p class="note"><strong>Note:</strong> Pivotal Scheduler is tested against MariaDB and [MySQL for Pivotal Platform](https://network.pivotal.io/products/pivotal-mysql/). Other MySQL drop in alternatives may be compatible, but are not guaranteed to work reliably with Pivotal Scheduler.</p>
 
 ## <a id="download-install"></a> Download and Install Pivotal Scheduler
 
