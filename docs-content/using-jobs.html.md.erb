@@ -9,9 +9,9 @@ This topic provides instructions for managing jobs in Pivotal Scheduler.
 
 You can use Pivotal Scheduler to schedule execution of tasks on the Pivotal Platform, including database migrations, emails, and batch jobs. See the following sections to learn more about creating, running, and scheduling jobs and viewing job history.
 
-If you want to use the Cloud Foundry Command Line Interface (cf CLI) for managing jobs, you must install the Pivotal Scheduler CLI plugin on your local machine. This plugin is packaged with the Pivotal Scheduler tile on <a href="https://network.pivotal.io/products/p-scheduler-for-pcf">Pivotal Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section of the Using Pivotal Scheduler topic.
+<p class="note"><strong>Note:</strong> Pivotal Scheduler does not take into account the outcome of previously run jobs. It assumes that scheduled jobs are idempotent and can be re-run. Jobs that are not idempotent may cause unintended consequences even if they complete successfully.</p>
 
-<p class="note"><strong>Note:</strong> Pivotal Scheduler does not follow the lifecycle of a task beyond submitting it to the Cloud Controller API. Because of this, Scheduler doesn't take into account the outcome of previously run jobs and assumes that scheduled jobs are idempotent and re-runnable. Jobs that are not idempotent may result in unintended consequences even if they complete successfully. </p>
+To use the Cloud Foundry Command Line Interface (cf CLI) for managing jobs, you must install the Pivotal Scheduler CLI plugin on your local machine. This plugin is packaged with the Pivotal Scheduler tile on <a href="https://network.pivotal.io/products/p-scheduler-for-pcf">Pivotal Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section of the Using Pivotal Scheduler topic.
 
 ### <a id="create-jobs"></a>Create a Job
 
