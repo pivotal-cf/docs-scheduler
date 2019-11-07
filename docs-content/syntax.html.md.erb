@@ -1,0 +1,73 @@
+---
+title: Scheduler Cron Syntax
+owner: Pivotal Autoscaler and Scheduler
+---
+
+This topic provides instructions for using Quartz Cron syntax with Pivotal Scheduler.
+
+## <a id="cron-syntax"></a> Scheduler Cron Syntax
+
+Pivotal Scheduler uses Quartz Cron, a custom form of Cron syntax, for scheduling tasks. This format is based on traditional Cron syntax.
+
+The following table describes the cron syntax for creating scaling rules with Pivotal Scheduler.
+
+<table id='scaling-rule-metrics' border="1" class="nice" >
+<tr>
+    <td>*</td>
+    <td>
+        Every
+    </td>
+</tr>
+<tr>
+    <td>?</td>
+    <td>
+        Any
+    </td>
+</tr>
+<tr>
+    <td>##</td>
+    <td>
+        Value
+    </td>
+</tr>
+<tr>
+    <td>#-#</td>
+    <td>
+        Range
+    </td>
+</tr>
+</table>
+
+For more information about special characters, see [Cron Trigger Tutorial](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html#special-characters).
+
+## <a id="cron-syntax-examples"></a> Examples of Cron Syntax
+
+The following are examples of custom scaling rules with Pivotal Scheduler:
+
+* Every Hour: 
+        
+        ```
+        cf schedule-call my-call "0 * * * ?"
+        ```
+* Every day at 8:30am:
+        
+        ```
+        cf schedule-call my-call "29 8 ? * *"
+        ```
+* Every week at 6pm on Friday:
+        
+        ```
+        cf schedule-call my-call "0 18 ? * 5"
+        ```
+
+For more examples, see [Cron Trigger Tutorial](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html#examples).
+
+## <a id="requirements-limitations"></a> Quartz Cron Requirements and Limitations
+
+The following are requirements and limitations of Quartz cron:
+
+* Quartz cron does not support seconds. To convert a traditional Cron expression to Quartz Cron, remove the first value, leaving 5 total values. For example, `"0 0 * * * 3"` in traditional cron is `"0 * * * 3"` in Quartz cron.
+
+* The day of week cannot conflict with the day of the month in the cron expression. Quartz cron requires at least one of the "Day" fields to be non-wild (*). For example, `"* * ? * *"` and `"* * * * ?"` both run the task at the same interval.
+
+* Day of week starts at `0` for Sunday.
