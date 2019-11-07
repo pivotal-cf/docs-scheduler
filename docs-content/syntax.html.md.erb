@@ -1,0 +1,59 @@
+---
+title: Scheduler Cron Syntax
+owner: Pivotal Autoscaler and Scheduler
+---
+
+This topic provides instructions for using Quartz Cron syntax with Pivotal Scheduler.
+
+## <a id="manage-jobs"></a>Scheduler Cron Syntax
+
+Pivotal Scheduler uses Quartz Cron, a custom form of Cron syntax, for scheduling tasks. This format is based on traditional Cron syntax, with a few key differences.
+
+### Key:
+<table id='scaling-rule-metrics' border="1" class="nice" >
+<tr>
+    <td>*</td>
+    <td>
+        every
+    </td>
+</tr>
+<tr>
+    <td>?</td>
+    <td>
+        any
+    </td>
+</tr>
+<tr>
+    <td>##</td>
+    <td>
+        value
+    </td>
+</tr>
+<tr>
+    <td>#-#</td>
+    <td>
+        range
+    </td>
+</tr>
+</table>
+
+[Check here](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html#special-characters) for more special characters.
+
+## Examples
+
+#### Every Hour: 
+<pre class="terminal">$ cf schedule-call my-call "0 * * * ?"</pre>
+
+#### Every day at 8:30am:
+<pre class="terminal">$ cf schedule-call my-call "29 8 ? * *"</pre>
+
+#### Every week at 6pm on Friday:
+<pre class="terminal">$ cf schedule-call my-call "0 18 ? * 5"</pre>
+
+[Look here](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html#examples) for more examples, but remember to omit the seconds field. 
+
+<p class="note"><strong>Note:</strong> Quartz Cron does not support seconds. To convert a traditional Cron expression to quartz Cron, remove the first value, leaving 5. For example: <code>"0 0 * * * 3"</code> should be written as <code>"0 * * * 3"</code></p>
+
+<p class="note"><strong>Note:</strong> Day of week can't conflict with day of month. Quartz Cron requires at least one of the "Day" fields to be non-wild (*) in order to form a valid Cron expression. For example, these two expressions will each run the task at the same interval: <code>"* * ? * *"</code> and <code>"* * * * ?"</code></p>
+
+<p class="note"><strong>Note:</strong> Day of week starts at <code>0</code> for Sunday.</p>
