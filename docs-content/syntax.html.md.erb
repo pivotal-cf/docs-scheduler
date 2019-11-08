@@ -3,13 +3,17 @@ title: Scheduler Cron Syntax
 owner: Pivotal Autoscaler and Scheduler
 ---
 
-This topic provides instructions for using Quartz Cron syntax with Pivotal Scheduler.
+This topic provides instructions for using Quartz cron syntax with Pivotal Scheduler.
+
+## <a id="overview"></a> Overview
+
+Pivotal Scheduler uses Quartz cron, a custom form of cron syntax, for scheduling tasks. This format is based on traditional cron syntax.
+
+See the sections below for more information about Quartz cron syntax, requirements, and limitations.
 
 ## <a id="cron-syntax"></a> Scheduler Cron Syntax
 
-Pivotal Scheduler uses Quartz Cron, a custom form of Cron syntax, for scheduling tasks. This format is based on traditional Cron syntax.
-
-The following table describes the cron syntax for creating scaling rules with Pivotal Scheduler.
+The following table describes special characters in Quartz cron syntax. You can use these special characters to create scaling rules with Pivotal Scheduler.
 
 <table id='scaling-rule-metrics' border="1" class="nice" >
 <tr>
@@ -46,19 +50,19 @@ The following are examples of custom scaling rules with Pivotal Scheduler:
 
 * Every Hour: 
         
-        ```
-        cf schedule-call my-call "0 * * * ?"
-        ```
+    ```
+    cf schedule-call my-call "0 * * * ?"
+    ```
 * Every day at 8:30am:
         
-        ```
-        cf schedule-call my-call "29 8 ? * *"
-        ```
+    ```
+    cf schedule-call my-call "29 8 ? * *"
+    ```
 * Every week at 6pm on Friday:
-        
-        ```
-        cf schedule-call my-call "0 18 ? * 5"
-        ```
+    
+    ```
+    cf schedule-call my-call "0 18 ? * 5"
+    ```
 
 For more examples, see [Cron Trigger Tutorial](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html#examples).
 
