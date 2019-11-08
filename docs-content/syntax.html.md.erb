@@ -72,6 +72,6 @@ The following are requirements and limitations of Quartz cron:
 
 * Quartz cron does not support seconds. To convert a traditional Cron expression to Quartz Cron, remove the first value, leaving 5 total values. For example, `"0 0 * * * 3"` in traditional cron is `"0 * * * 3"` in Quartz cron.
 
-* The day of week cannot conflict with the day of the month in the cron expression. Quartz cron requires at least one of the "Day" fields to be non-wild (*). For example, `"* * ? * *"` and `"* * * * ?"` both run the task at the same interval.
+* The day of week cannot conflict with the day of the month in the cron expression. Quartz cron requires at least one of the "Day" fields to be non-wild. For example, `"* * ? * *"` and `"* * * * ?"` both run the task at the same interval.
 
 * Day of week starts at `0` for Sunday.
