@@ -9,12 +9,14 @@
 | 1.1         | v1.1  | yes           | no      | https://docs.pivotal.io/archives/scheduler-1.1.pdf |
 | 1.0         | v1.0  | yes           | no      | https://docs.pivotal.io/archives/scheduler-1.0.pdf|
 
-Write access given to:
-
-+ Allen Duet, 2018-07-06 [JD]
 
 ## Which Book?
 https://github.com/pivotal-cf/docs-book-pcfservices
+
+There is a docs-book directory in this repo.
+This docs-book directory can be used to build a local version for watching
+or a one-off staged app for the doc.
+However, it is not used for publication.
 
 
 ## Pivotal Cloud Foundry Partners Template
