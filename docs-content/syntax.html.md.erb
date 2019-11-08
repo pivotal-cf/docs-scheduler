@@ -3,57 +3,75 @@ title: Scheduler Cron Syntax
 owner: Pivotal Autoscaler and Scheduler
 ---
 
-This topic provides instructions for using Quartz Cron syntax with Pivotal Scheduler.
+This topic provides instructions for using Quartz cron syntax with Pivotal Scheduler.
 
-## <a id="manage-jobs"></a>Scheduler Cron Syntax
+## <a id="overview"></a> Overview
 
-Pivotal Scheduler uses Quartz Cron, a custom form of Cron syntax, for scheduling tasks. This format is based on traditional Cron syntax, with a few key differences.
+Pivotal Scheduler uses Quartz cron, a custom form of cron syntax, for scheduling tasks. This format is based on traditional cron syntax.
 
-### Key:
+See the sections below for more information about Quartz cron syntax, requirements, and limitations.
+
+## <a id="cron-syntax"></a> Scheduler Cron Syntax
+
+The following table describes special characters in Quartz cron syntax. You can use these special characters to create scaling rules with Pivotal Scheduler.
+
 <table id='scaling-rule-metrics' border="1" class="nice" >
 <tr>
     <td>*</td>
     <td>
-        every
+        Every
     </td>
 </tr>
 <tr>
     <td>?</td>
     <td>
-        any
+        Any
     </td>
 </tr>
 <tr>
     <td>##</td>
     <td>
-        value
+        Value
     </td>
 </tr>
 <tr>
     <td>#-#</td>
     <td>
-        range
+        Range
     </td>
 </tr>
 </table>
 
-[Check here](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html#special-characters) for more special characters.
+For more information about special characters, see [Cron Trigger Tutorial](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html#special-characters).
 
-## Examples
+## <a id="cron-syntax-examples"></a> Examples of Cron Syntax
 
-#### Every Hour: 
-<pre class="terminal">$ cf schedule-call my-call "0 * * * ?"</pre>
+The following are examples of custom scaling rules with Pivotal Scheduler:
 
-#### Every day at 8:30am:
-<pre class="terminal">$ cf schedule-call my-call "29 8 ? * *"</pre>
+* Every Hour: 
+        
+    ```
+    cf schedule-call my-call "0 * * * ?"
+    ```
+* Every day at 8:30am:
+        
+    ```
+    cf schedule-call my-call "29 8 ? * *"
+    ```
+* Every week at 6pm on Friday:
+    
+    ```
+    cf schedule-call my-call "0 18 ? * 5"
+    ```
 
-#### Every week at 6pm on Friday:
-<pre class="terminal">$ cf schedule-call my-call "0 18 ? * 5"</pre>
+For more examples, see [Cron Trigger Tutorial](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html#examples).
 
-[Look here](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html#examples) for more examples, but remember to omit the seconds field. 
+## <a id="requirements-limitations"></a> Quartz Cron Requirements and Limitations
 
-<p class="note"><strong>Note:</strong> Quartz Cron does not support seconds. To convert a traditional Cron expression to quartz Cron, remove the first value, leaving 5. For example: <code>"0 0 * * * 3"</code> should be written as <code>"0 * * * 3"</code></p>
+The following are requirements and limitations of Quartz cron:
 
-<p class="note"><strong>Note:</strong> Day of week can't conflict with day of month. Quartz Cron requires at least one of the "Day" fields to be non-wild (*) in order to form a valid Cron expression. For example, these two expressions will each run the task at the same interval: <code>"* * ? * *"</code> and <code>"* * * * ?"</code></p>
+* Quartz cron does not support seconds. To convert a traditional Cron expression to Quartz Cron, remove the first value, leaving 5 total values. For example, `"0 0 * * * 3"` in traditional cron is `"0 * * * 3"` in Quartz cron.
 
-<p class="note"><strong>Note:</strong> Day of week starts at <code>0</code> for Sunday.</p>
+* The day of week cannot conflict with the day of the month in the cron expression. Quartz cron requires at least one of the "Day" fields to be non-wild (*). For example, `"* * ? * *"` and `"* * * * ?"` both run the task at the same interval.
+
+* Day of week starts at `0` for Sunday.
