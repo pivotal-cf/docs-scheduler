@@ -1,10 +1,29 @@
 ---
-title: Pivotal Scheduler Release Notes
+title: Scheduler Release Notes
 owner: PCF Autoscaler and Scheduler
 ---
 
 
-This topic contains release notes for Pivotal Scheduler.
+This topic contains release notes for Scheduler.
+
+## <a id="1-2-33"></a>v1.2.33
+
+**Release Date:** May 27, 2020
+
+### Features included in this release:
+
+- **Security Fix** a Swagger CVE is addressed
+- **Feature** the API permits setting memory and disk limits for tasks
+- **Feature Improvement** the service broker supports using TLS on database connection when using MySQL service
+- **Bug Fix** smoke tests should not take so long when fetching logs
+- **Bug Fix** deployment errand should fail when `cf push` fails
+- **Bump** Go to 1.14.2
+- **Remove** "test-scheduler-diagnostics" BOSH errand
+
+### Known Issues
+
+- The Scheduler CLI does not handle paging properly for some endpoints.
+  For example, if a user runs `cf jobs` they may not see all the jobs; only the first page of jobs are shown.
 
 ## <a id="1-2-30"></a>v1.2.30
 
