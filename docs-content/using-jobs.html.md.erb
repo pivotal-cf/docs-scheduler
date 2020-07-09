@@ -20,7 +20,17 @@ To execute a task related to an app, create a job by running the `cf create-job 
   * `APP-NAME` is the app you want to execute a task against.
   * `JOB-NAME` is the name for your job.
   * `COMMAND` is the command you want to execute.
-    
+
+With Scheduler `1.2.33` and newer, Disk and memory limits can be configured via the following optional command flags.
+
+- `--memory LIMIT`, `-m LIMIT` sets the task memory limit.
+- `--disk LIMIT`, `-k LIMIT` sets the task disk limit.
+
+The value must be an integer and be suffixed by a unit (MB for Megabytes or GB for Gigabytes).
+For example, `--memory 1024MB` sets a memory limit of 1024 megabytes and `--disk 5GB` sets a disk limit of 5 gigabytes.
+
+If the neither memory nor disk limits are set, the platform defaults will be used.
+
 See the following example:
 
 <pre class="terminal">
