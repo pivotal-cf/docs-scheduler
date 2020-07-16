@@ -21,17 +21,7 @@ To execute a task related to an app, create a job by running the `cf create-job 
   * `JOB-NAME` is the name for your job.
   * `COMMAND` is the command you want to execute.
 
-With Scheduler `1.2.33` and newer, disk and memory limits can be configured via the following optional command flags.
-
-- `--memory LIMIT`, `-m LIMIT` sets the task memory limit.
-- `--disk LIMIT`, `-k LIMIT` sets the task disk limit.
-
-The value must be an integer and be suffixed by a unit (MB for Megabytes or GB for Gigabytes).
-For example, `--memory 1024MB` sets a memory limit of 1024 megabytes and `--disk 5GB` sets a disk limit of 5 gigabytes.
-
-If the neither memory nor disk limits are set, the platform defaults will be used.
-
-See the following example:
+Example:
 
 <pre class="terminal">
  $ cf create-job my-app my-job "pwd"<br>
@@ -40,6 +30,15 @@ See the following example:
  my-job     my-app          pwd
  OK
 </pre>
+
+In Scheduler v1.2.33 and later, you can use the following optional command flags to configure disk and memory limits. If
+you do not use an option command flag to set a limit, the platform default is used.
+
+- `--memory LIMIT`, `-m LIMIT` sets the task memory limit.
+- `--disk LIMIT`, `-k LIMIT` sets the task disk limit.
+
+The value of `LIMIT` must be an integer and be suffixed either `MB` for megabytes or `GB` for gigabytes.
+For example, `--memory 1024MB` sets a memory limit of 1024 megabytes and `--disk 5GB` sets a disk limit of 5 gigabytes.
 
 ### <a id="exec-jobs"></a>Execute a Job
 
