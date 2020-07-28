@@ -31,15 +31,6 @@ Example:
  OK
 </pre>
 
-In Scheduler v1.2.33 and later, you can use the following optional command flags to configure disk and memory limits. If
-you do not use an option command flag to set a limit, the platform default is used.
-
-- `--memory LIMIT`, `-m LIMIT` sets the task memory limit.
-- `--disk LIMIT`, `-k LIMIT` sets the task disk limit.
-
-The value of `LIMIT` must be an integer and be suffixed either `MB` for megabytes or `GB` for gigabytes.
-For example, `--memory 1024MB` sets a memory limit of 1024 megabytes and `--disk 5GB` sets a disk limit of 5 gigabytes.
-
 ### <a id="exec-jobs"></a>Execute a Job
 
 You can execute a job manually. This is often useful to test the configuration of a job prior to scheduling it for recurring execution.
