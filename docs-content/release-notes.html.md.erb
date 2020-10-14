@@ -3,42 +3,41 @@ title: Scheduler Release Notes
 owner: PCF Autoscaler and Scheduler
 ---
 
-This topic contains release notes for Scheduler.
+This topic contains release notes for Scheduler v1.3.0.
 
 ## <a id='releases'></a> Releases
 
-### <a id="1-3-0"></a>v1.3.0
+### <a id="1-3-0"></a> v1.3.0
 
-**Release Date:** ~~Oct 13, 2020~~
+**Release Date:** October 13, 2020
 
-- **Security Fix** Updated dependencies mitigate multiple CVEs
-- **Security Fix** Secrets such as the admin password are scrubbed from the errands
-- **Feature** CLI now enables specifying a memory and disk limits for jobs so large jobs can successfully run
-- **Bug Fix** Increase java scheduler app memory from 1G to 2G to address problems of large foundation's scheduler failing to start
-- **Bug Fix** Scheduler CLI Plugin now returns data beyond the first page
-- **Bug Fix** Scheduler no longer incorrectly logs errors caused by jobs that have been deleted
+- **[Security Fix]** Updated dependencies mitigate multiple CVEs
+- **[Security Fix]** Secrets such as the admin password are scrubbed from the errands
+- **[Feature]** CLI now enables specifying a memory and disk limits for jobs so
+large jobs can successfully run
+- **[Bug Fix]** Increase java scheduler app memory from 1G to 2G to address
+problems of large foundation's scheduler failing to start
+- **[Bug Fix]** Scheduler CLI Plugin now returns data beyond the first page
+- **[Bug Fix]** Scheduler no longer incorrectly logs errors caused by jobs that
+have been deleted
 
-This update has a breaking change. Please see [breaking changes](#breaking-changes).
 
-## <a id="known-issues"></a> Known Issues
-
-There are no known issues for this release.
-
-## <a id="breaking-changes"></a> Breaking Changes
+## <a id="breaking-changes"></a> Breaking Changes in Scheduler v1.3.0
 
 Scheduler v1.3.0 includes the following breaking change:
 
-### Internal `database_source.external.url` property is now a secret
+### <a id='internal-property'></a> Internal database_source.external.url property
+is secret
 
-This will only affect users of [`om`](https://github.com/pivotal-cf/om) or Pivotal Platform Automation.
-
-If you do not update the product configuration, you will see an error message like the following:
+Users of the `pivotal-cf/om` GitHub repository or Pivotal Platform Automation will
+see an error message similar to the following:
 
 ```json
-{"errors":{".properties.database_source.external.url":["cannot assign 'mysql://user:password@example.com:3306' type String, expected Object"]}}
+{"errors":{".properties.database_source.external.url":["cannot assign
+'mysql://user:password@example.com:3306' type String, expected Object"]}}
 ```
 
-To fix the issue, update your product configuration like this.
+To fix the issue, update your product configuration by running:
 
 ```diff
  product-name: p-scheduler
@@ -51,6 +50,9 @@ To fix the issue, update your product configuration like this.
 +    value:
 +      secret: mysql://user:password@example.com:3306
 ```
+## <a id="known-issues"></a> Known Issues
+
+There are no known issues for this release.
 
 ## <a id="view"></a> View Release Notes for Another Version
 
