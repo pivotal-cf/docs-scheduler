@@ -31,6 +31,13 @@ Example:
  OK
 </pre>
 
+You can use the following optional command flags to configure disk and memory limits. Otherwise the platform default is used.
+
+- `--memory LIMIT`, `-m LIMIT` sets the task memory limit.
+- `--disk LIMIT`, `-k LIMIT` sets the task disk limit.
+
+The value of `LIMIT` must be an integer and be suffixed either `MB` for megabytes or `GB` for gigabytes. For example, `--memory 1024MB` sets a memory limit of 1024 megabytes and `--disk 5GB` sets a disk limit of 5 gigabytes.
+
 ### <a id="exec-jobs"></a>Execute a Job
 
 You can execute a job manually. This is often useful to test the configuration of a job prior to scheduling it for recurring execution.
@@ -41,7 +48,7 @@ Run `cf run-job JOB-NAME`. See the following example:
 $ cf run-job my-job<br>
 Enqueuing job my-job for app my-app in org my-org / space my-space as user<span>@</span>example.com...
 OK
-</pre>	
+</pre>
 
 ### <a id="schedule-job"></a>Schedule a Job
 
@@ -123,7 +130,7 @@ Really delete the job my-job with command pwd and all associated schedules and h
 OK
 </pre>
 
-### <a id="delete-schedule"></a>Delete a Job Schedule  
+### <a id="delete-schedule"></a>Delete a Job Schedule
 
 You can delete a specific schedule by running `cf delete-job-schedule JOB-NAME SCHEDULE-GUID`, where `JOB-NAME` is the name of the job and `SCHEDULE-GUID` is the GUID found in the output of the `cf job-schedules` command. See the following example:
 
@@ -132,4 +139,4 @@ $ cf delete-job-schedule my-job 2b69e0c2-9664-46bb-4817-54afcedbb65d<br>
 Really delete the schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d / 0 12 ? * * and all associated history?> [yN]: y
 Deleting schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d for job my-job in org test / space scheduler as admin
 OK
-</pre>	
+</pre>
