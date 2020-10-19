@@ -15,6 +15,7 @@ In a highly available resource configuration, the Pivotal Scheduler service uses
 
 You can reduce the number of Scheduler instances to one using the Cloud Foundry Command Line Interface (cf CLI).
 
-## <a id="persitence"></a> Data Persistence
+## <a id="persistence"></a> Data Persistence
 
 Scheduler relies on a MySQL datastore to persist data, including jobs, calls, and history. Each call or schedule can require up to 10 MB of database capacity to store history.
+A large foundations's database disk footprint would be approximately 500MB.

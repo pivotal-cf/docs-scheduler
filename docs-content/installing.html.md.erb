@@ -7,9 +7,9 @@ This topic describes how to install and configure Pivotal Scheduler.
 
 ##<a id='prereqs'></a> Prerequisites
 
-Before you install Pivotal Scheduler v1.2, you must have one of the following:
+Before you install Pivotal Scheduler v1.3, you must have one of the following:
 
-+ A MySQL for Pivotal Platform v2.3 or later tile with **TLS Options** set to **Optional** or **Not Configured**. To download MySQL for Pivotal Platform, see [MySQL for Pivotal Platform](https://network.pivotal.io/products/pivotal-mysql/) on Pivotal Network. For information about installing MySQL for Pivotal Platform, see [Installing and Configuring MySQL for Pivotal Platform](https://docs.pivotal.io/p-mysql/2-7/install-config.html). For information about configuring TLS options, see [Configure Security](https://docs.pivotal.io/p-mysql/install-config.html#security).
++ A MySQL for Pivotal Platform v2.7 or later tile with **TLS Options** set to **Optional** or **Not Configured**. To download MySQL for Pivotal Platform, see [MySQL for Pivotal Platform](https://network.pivotal.io/products/pivotal-mysql/) on Pivotal Network. For information about installing MySQL for Pivotal Platform, see [Installing and Configuring MySQL for Pivotal Platform](https://docs.pivotal.io/p-mysql/2-7/install-config.html). For information about configuring TLS options, see [Configure Security](https://docs.pivotal.io/p-mysql/install-config.html#security).
 
 + An external MySQL database with TLS disabled.
 
@@ -17,13 +17,11 @@ Before you install Pivotal Scheduler v1.2, you must have one of the following:
 
 ## <a id="download-install"></a> Download and Install Pivotal Scheduler
 
-<p class="note"><strong>Note:</strong> Before using Pivotal Scheduler v1.2.3 and later, you must update any BOSH add-ons to support Xenial stemcells. See <a href="./upgrade_scheduler.html#update-addons">Update Add-ons to Run with Xenial Stemcell</a>.</p>
-
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/p-scheduler-for-pcf).
 
-1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
+1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file.
 
-1. Under the **Import a Product** button, click **+** next to the version number of Pivotal Scheduler. 
+1. Under the **Import a Product** button, click **+** next to the version number of Pivotal Scheduler.
   This adds the tile to your staging area.
 
 1. Click the newly added **Pivotal Scheduler** tile.
@@ -66,26 +64,25 @@ Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler 
 
 1. Click **Scheduler Configuration**.
 
-1. Configure the fields as follows:
+#### Enable outbound HTTP calls
 
-    <table class="nice">
-      <tr>
-        <th>Field</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td><strong>Enable outbound HTTP calls</strong></td>
-        <td>The field is enabled by default. Disable this feature if you want to prevent users from scheduling outbound HTTP calls from the Pivotal Scheduler service.</td>
-      </tr>
-      <tr>
-        <td><strong>Name</strong></td>
-        <td>Enter the name of your MySQL service broker. For example, <code>p.mysql</code>.</td>
-      </tr>
-      <tr>
-        <td><strong>Plan Name</strong></td>
-        <td>Enter the name of your MySQL service plan, which is used to provision a database for persistent storage of Scheduler data, including jobs, calls, and history.</td>
-      </tr>
-      </table>
+This field is enabled by default. Disable this feature if you want to prevent users from scheduling outbound HTTP requests (calls) from the Pivotal Scheduler service. This does not affect outbound connectivity from Diego tasks (jobs).
+
+#### Database Source
+
+##### Service Broker
+
+###### Name
+
+Enter the name of your MySQL service broker. For example, `p.mysql`.
+
+###### Plan Name
+
+Enter the name of your MySQL service plan, which is used to provision a database for persistent storage of Scheduler data, including jobs, calls, and history. For example, `db-small`.
+
+##### External
+
+Enter a database URL. It must have a scheme, user, password, host, and port (e.g. `mysql://user:password@db.example.com:3306`). Query parameters are ignored (e.g. `mysql://user:password@db.example.com:3306/?useTLS=false` the query parameter "useTLS" is not propagated to Scheduler).
 
 1. Click **Save**.
 
@@ -93,7 +90,7 @@ Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler 
 
 1. Click **Resource Config**.
 
-1. Verify the settings.  
+1. Verify the settings.
 
 1. Click **Save**.
 
@@ -105,11 +102,8 @@ To verify that you have the correct stemcell version for the Pivotal Scheduler t
 
 1. Verify the settings.
 
-    Pivotal Scheduler v1.2.3 and later requires a Xenial stemcell. Pivotal Scheduler v1.2.2 and earlier requires a Trusty stemcell.
-    If you need to import a new stemcell version, do the following:  
-
 1. Download the stemcell from [Pivotal Network](https://network.pivotal.io/products).
-   
+
 1. In the Ops Manager, click **Stemcell Library**.
 
     <br>![Stemcell Library](stemcell-library-xenial.png)
@@ -120,8 +114,8 @@ To verify that you have the correct stemcell version for the Pivotal Scheduler t
 
 1.  <a name="apply-changes"></a> Return to the Ops Manager Installation Dashboard.
 
-1. If you are using Ops Manager v2.3 or later,  click **Review Pending Changes**. 
-For more information about this Ops Manager page, 
+1. Click **Review Pending Changes**.
+For more information about this Ops Manager page,
 see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
 
 1. Click **Apply Changes**.

@@ -1,74 +1,18 @@
 ---
 breadcrumb: PCF Services
-title: Upgrading to Pivotal Scheduler v1.2
+title: Upgrading to Pivotal Scheduler v1.3
 ---
-This topic explains how to upgrade Pivotal Scheduler. It also explains
-how Pivotal Scheduler v1.2 automatically migrates data from a MySQL for Pivotal Platform v1 database
-to a MySQL for Pivotal Platform v2 database. MySQL for Pivotal Platform v1 has reached its End of Availability.
-This migration removes dependency on MySQL for PCF v1.
+This topic explains how to upgrade Pivotal Scheduler.
 
 ##<a id="backup"></a>(Optional) Back Up MySQL for Pivotal Platform Database
 
-Pivotal recommends backing up your MySQL for Pivotal Platform database before installing
-Pivotal Scheduler v1.2.
-This is because upgrading your Pivotal Scheduler installation from v1.1 to v1.2
-triggers automatic migration of your data to a MySQL for Pivotal Platform v2.x database.
+Pivotal recommends backing up your MySQL for Pivotal Platform database before installing Pivotal Scheduler v1.3.
 
-To back up your MySQL for Pivotal Platform database, do one of the following:
+To back up your MySQL for Pivotal Platform database, see [Manual Backup](https://docs.pivotal.io/p-mysql/backup-and-restore.html#manual-backup).
 
-+ If you are backing up a MySQL for PCF v1.x database,
-see [Perform Manual Backup](http://docs.pivotal.io/p-mysql/1-10/backup.html#manual-process).
-+ If you are backing up a MySQL for Pivotal Platform v2.x database,
-see [Manual Backup](https://docs.pivotal.io/p-mysql/backup-and-restore.html#manual-backup).
+##<a id="upgrade-tile"></a>Upgrade Pivotal Scheduler to v1.3 with all errands enabled.
 
-## <a id="update-addons"></a>Update Add-Ons to Run with Xenial Stemcell
-
-Pivotal Scheduler v1.2.3 and later requires a Xenial stemcell.
-If you are using any of the following BOSH add-ons with your PCF deployment,
-you must update the add-on definition to include the Xenial stemcell before you deploy Pivotal Scheduler v1.2.3:
-
-+ File Integrity Monitoring for PCF Add-on.
-  For update instructions,
-  see [Updating FIM Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-fim/updating-for-xenial.html).
-+ ClamAV for PCF Add-on.
-  For update instructions,
-  see [Updating ClamAV Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-antivirus/1-4/updating-for-xenial.html).
-+ IPsec for PCF Add-on.
-  For update instructions,
-  see [Updating IPsec Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-ipsec/updating-for-xenial.html).
-
-##<a id="upgrade_scheduler"></a>Upgrade to Pivotal Scheduler v1.2
-
-During the upgrade, Pivotal Scheduler automatically migrates your data from
-MySQL for PCF v1.x to MySQL for Pivotal Platform v2.x. Pivotal Scheduler detects your MySQL for 
-PCF v1.x service binding
- and automatically migrates the MySQL for PCF v1.x database instance to a
-MySQL for Pivotal Platform v2.x instance.
-
-The errand migrates the database and executes smoke tests.
-When the migration has completed successfully, the errand
-removes the service binding to the MySQL for PCF v1.x instance.
-
-To upgrade from Scheduler for PCF v1.1 to v1.2, do the following:
-
-1. Download the Ubuntu Xenial stemcell from [Pivotal Network](https://network.pivotal.io/products/stemcells-ubuntu-xenial),
-and import it into the Ops Manager Stemcell Library.
-For instructions, see [Update Stemcell](./installing.html#stemcell).
-
-1. Install MySQL for Pivotal Platform v2.3 or later in the same PCF environment as
-your MySQL for PCF v1.x service instance.
-In the **Security** pane in the MySQL for Pivotal Platform v2.x tile,
-set **TLS Options** to **Optional** or **Not Configured**.
-For information about installing MySQL for Pivotal Platform v2.x,
-see [Installing and Configuring MySQL for Pivotal Platform](http://docs.pivotal.io/p-mysql/install-config.html).
-
-1. Add the new database details to the **Scheduler Configuration**. 
-Update the configuration for the Pivotal Scheduler tile under **Scheduler Configuration > Database Source** to include the MySQL for Pivotal Platform service name and the desired service plan name in order to trigger the migration. For example, `p.mysql` or  `db-small`. MySQL for PCF plans can be found in the settings for the MySQL tile or by checking the output  of `cf marketplace` under `plans` using the cf cli. 
-
-1. Upgrade Pivotal Scheduler to v1.2 with all errands enabled.
-For general information about upgrading
-a tile,
-see [Upgrading PCF Products](https://docs.pivotal.io/pivotalcf/customizing/upgrading-products.html#other-products).
+For general information about upgrading a tile, see [Upgrading PCF Products](https://docs.pivotal.io/pivotalcf/customizing/upgrading-products.html#other-products).
 
 	<p class="note"><strong>Note:</strong> All <strong>Post-Deploy Errands</strong> must be enabled
     to migrate from a MySQL for PCF v1.x database to MySQL for Pivotal Platform v2.x database.
