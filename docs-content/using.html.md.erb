@@ -5,19 +5,22 @@ owner: Pivotal Autoscaler and Scheduler
 
 This topic provides instructions for using Pivotal Scheduler.
 
-You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI), [Apps Manager](https://docs.pivotal.io/pivotalcf/console/manage-apps.html#enable-scheduling), and the [Scheduler HTTP API](http://docs.pivotal.io/scheduler/1-3/api/) to configure jobs and outbound HTTP calls and to review history. For general information, see [Managing Service Instances with the cf CLI](http://docs.pivotal.io/platform/devguide/services/managing-services.html).
+You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI),
+[Apps Manager](https://docs.pivotal.io/application-service/console/manage-apps.html#enable-scheduling),
+and the Scheduler HTTP API to configure jobs and outbound HTTP calls and to review history. For
+general information, see [Managing Service Instances with the cf CLI](https://docs.pivotal.io/application-service/devguide/services/managing-services.html).
 
 ## <a id="prereqs"></a>Prerequisites
 
 To start using Pivotal Scheduler, you need the following:
 
-* A PAS deployment with [Pivotal Scheduler](https://network.pivotal.io/products/p-scheduler-for-pcf) installed and listed in the [Marketplace](http://docs.pivotal.io/devguide/services/#instances).
-* A [Space Developer](http://docs.pivotal.io/pivotalcf/concepts/roles.html#roles) account.
+* A PAS deployment with [Pivotal Scheduler](https://network.pivotal.io/products/p-scheduler-for-pcf) installed and listed in the Marketplace.
+* A [Space Developer](https://docs.pivotal.io/application-service/concepts/roles.html#roles) account.
 * (Optional) The cf CLI v6.23.0 or greater and the Pivotal Scheduler CLI plugin installed on your local machine. The Pivotal Scheduler CLI plugin is packaged with the Pivotal Scheduler tile on [Pivotal Network](https://network.pivotal.io/products/p-scheduler).
 
 ## <a id='create-service'></a>Create and Bind a Service Instance Using the cf CLI
 
-Every app and service in PAS is scoped to a [space](http://docs.pivotal.io/pivotalcf/concepts/roles.html#spaces). This means that an app can use a service only if an instance of the service exists in the same space.
+Every app and service in PAS is scoped to a [space](https://docs.pivotal.io/application-service/concepts/roles.html#spaces). This means that an app can use a service only if an instance of the service exists in the same space.
 
 The Pivotal Scheduler service is a singleton service. Only one service instance can be created in a space.
 
@@ -74,8 +77,8 @@ TIP: Use 'cf push' to ensure your env variable changes take effect
 
 For information about the CLI operations that you can perform to manage jobs and calls in Pivotal Scheduler, see [Using Jobs](using-jobs.html) and [Using Calls](using-calls.html).
 
-If you want to manage jobs and calls through the Scheduler HTTP API, see the [Pivotal Scheduler API Documentation](http://docs.pivotal.io/scheduler/1-3/api/).
+If you want to manage jobs and calls through the Scheduler HTTP API, see the [Pivotal Scheduler API Documentation](https://docs.pivotal.io/scheduler/api/).
 
 ## <a id="using-am"></a> Using Pivotal Scheduler in Apps Manager
 
-For information about binding Pivotal Scheduler to your app and scheduling tasks through Apps Manager, see [Managing Apps and Service Instances Using Apps Manager](http://docs.pivotal.io/pivotalcf/console/manage-apps.html#enable-scheduling).
+For information about binding Pivotal Scheduler to your app and scheduling tasks through Apps Manager, see [Managing Apps and Service Instances Using Apps Manager](https://docs.pivotal.io/application-service/console/manage-apps.html#enable-scheduling).

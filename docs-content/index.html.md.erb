@@ -7,7 +7,8 @@ This documentation describes Pivotal Scheduler.
 ## <a id='overview'></a>Overview
 
 Pivotal Scheduler is a service for scheduling the execution of Diego tasks (jobs),
-such as database migrations, emails, or batch jobs, as well as the execution of outbound HTTP requests (calls).
+such as database migrations, emails, or batch jobs, as well as the execution of outbound HTTP
+requests (calls).
 
 Pivotal Scheduler enables developers to do the following:
 
@@ -15,8 +16,8 @@ Pivotal Scheduler enables developers to do the following:
 * Create, run, and schedule calls and view call history.
 
 You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI),
-[Apps Manager](https://docs.pivotal.io/pivotalcf/console/manage-apps.html#enable-scheduling),
-and the [Scheduler HTTP API](http://docs.pivotal.io/scheduler/1-3/api).
+[Apps Manager](https://docs.pivotal.io/application-service/console/manage-apps.html#enable-scheduling),
+and the [Scheduler HTTP API](https://docs.pivotal.io/scheduler/api/).
 
 ## <a id="snapshot"></a>Product Snapshot
 
@@ -52,7 +53,7 @@ Pivotal Scheduler requires a MySQL database.
 
 You can use either of the following:
 
-+ MySQL for Pivotal Platform v2.7 or later. See [MySQL for Pivotal Platform](http://docs.pivotal.io/p-mysql)
++ MySQL for Pivotal Platform v2.7 or later. See [MySQL for Pivotal Platform](https://docs.pivotal.io/p-mysql/index.html)
 + An external MySQL database
 
 ## <a id="limitations"></a>Limitations
@@ -61,7 +62,7 @@ You can use either of the following:
 such as Ruby or Python, you should do the following:
 <br><br>
     1. Before pushing your app, create a
-    [Procfile](https://docs.pivotal.io/pivotalcf/buildpacks/prod-server.html#procfile)
+    [Procfile](https://docs.pivotal.io/application-service/buildpacks/prod-server.html#procfile)
     in the root directory of the app.
     2. Declare a `web` process type in the file.
 
@@ -70,4 +71,4 @@ such as Ruby or Python, you should do the following:
 
 * The maximum number of tasks that you can schedule is determined by the memory
 and disk quotas in the Pivotal Scheduler org and space.
-For more information, see [Running Tasks](http://docs.pivotal.io/pivotalcf/devguide/using-tasks.html#manage-tasks).
+For more information, see [Running Tasks](https://docs.pivotal.io/application-service/devguide/using-tasks.html#manage-tasks).
