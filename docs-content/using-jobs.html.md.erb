@@ -31,12 +31,15 @@ Example:
  OK
 </pre>
 
-You can use the following optional command flags to configure disk and memory limits. Otherwise the platform default is used.
+By default, the job is created with the platform defaults for disk and memory limits. Use the
+following command flags to override the default disk and memory limits when you create a job.
 
-- `--memory LIMIT`, `-m LIMIT` sets the task memory limit.
-- `--disk LIMIT`, `-k LIMIT` sets the task disk limit.
+  * `--disk LIMIT` or `-k LIMIT` sets the task disk limit.
+  * `--memory LIMIT` or `-m LIMIT` sets the task memory limit.
 
-The value of `LIMIT` must be an integer and be suffixed either `MB` for megabytes or `GB` for gigabytes. For example, `--memory 1024MB` sets a memory limit of 1024 megabytes and `--disk 5GB` sets a disk limit of 5 gigabytes.
+The value of `LIMIT` must be an integer and be suffixed with either `MB` for megabytes or `GB` for
+gigabytes. For example, `--memory 1024MB` sets a memory limit of 1024 megabytes and `--disk 5GB`
+sets a disk limit of 5 gigabytes.
 
 ### <a id="exec-jobs"></a>Execute a Job
 
