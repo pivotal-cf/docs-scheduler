@@ -63,32 +63,22 @@ Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler 
 ###<a id="scheduler-config"></a> Configure Scheduler Options
 
 1. Click **Scheduler Configuration**.
-
-#### Enable outbound HTTP calls
-
-This field is enabled by default. Disable this feature to prevent users from scheduling outbound
-HTTP requests (calls) from the Pivotal Scheduler service. This does not affect outbound
-connectivity from Diego tasks (jobs).
-
-#### Database Source
-
-##### Service Broker
-
-###### Name
-
-Enter the name of your MySQL service broker. For example, `p.mysql`.
-
-###### Plan Name
-
-Enter the name of your MySQL service plan, which is used to provision a database for persistent
-storage of Scheduler data, including jobs, calls, and history. For example, `db-small`.
-
-##### External
-
-Enter a database URL. It must have a scheme, user, password, host, and port, for example
-`mysql://user:password@db.example.com:3306`). Query parameters are ignored. For example, with
-`mysql://user:password@db.example.com:3306/?useTLS=false`, the query parameter `useTLS` is not
-propagated to Scheduler.
+    * **Enable outbound HTTP calls**:
+      This field is enabled by default. Disable this feature to prevent users from scheduling
+      outbound HTTP requests (calls) from the Pivotal Scheduler service. This does not affect
+      outbound connectivity from Diego tasks (jobs).
+    * **Database Source > Service Broker**: 
+      * **Name**
+        Enter the name of your MySQL service broker. For example, `p.mysql`.
+      * **Plan Name**
+        Enter the name of your MySQL service plan, which is used to provision a database for
+        persistent storage of Scheduler data, including jobs, calls, and history. For example,
+        `db-small`.
+      * **External**
+        Enter a database URL. It must have a scheme, user, password, host, and port, for example
+        `mysql://user:password@db.example.com:3306`. Query parameters are ignored. For example, with
+        `mysql://user:password@db.example.com:3306/?useTLS=false`, the query parameter `useTLS` is
+        not propagated to Scheduler.
 
 1. Click **Save**.
 
