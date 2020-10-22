@@ -1,17 +1,17 @@
 ---
 title: Scheduling Jobs
-owner: Pivotal Autoscaler and Scheduler
+owner: Autoscaler and Scheduler
 ---
 
-This topic provides instructions for managing jobs in Pivotal Scheduler.
+This topic provides instructions for managing jobs in Scheduler.
 
 ## <a id="manage-jobs"></a>Manage Jobs
 
-You can use Pivotal Scheduler to schedule execution of tasks on the Pivotal Platform, including database migrations, emails, and batch jobs. See the following sections to learn more about creating, running, and scheduling jobs and viewing job history.
+You can use Scheduler to schedule execution of tasks on Ops Manager runtimes, including database migrations, emails, and batch jobs. See the following sections to learn more about creating, running, and scheduling jobs and viewing job history.
 
-<p class="note"><strong>Note:</strong> Pivotal Scheduler does not take into account the outcome of previously run jobs. It assumes that scheduled jobs are idempotent and can be re-run. Jobs that are not idempotent may cause unintended consequences even if they complete successfully.</p>
+<p class="note"><strong>Note:</strong> Scheduler does not take into account the outcome of previously run jobs. It assumes that scheduled jobs are idempotent and can be re-run. Jobs that are not idempotent may cause unintended consequences even if they complete successfully.</p>
 
-To use the Cloud Foundry Command Line Interface (cf CLI) for managing jobs, you must install the Pivotal Scheduler CLI plugin on your local machine. This plugin is packaged with the Pivotal Scheduler tile on <a href="https://network.pivotal.io/products/p-scheduler-for-pcf">Pivotal Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section of the Using Pivotal Scheduler topic.
+To use the Cloud Foundry Command Line Interface (cf CLI) for managing jobs, you must install the Scheduler CLI plugin on your local machine. This plugin is packaged with the Scheduler tile on <a href="https://network.pivotal.io/products/p-scheduler">VMware Tanzu Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section of the Using Scheduler topic.
 
 ### <a id="create-jobs"></a>Create a Job
 
@@ -55,7 +55,7 @@ OK
 
 ### <a id="schedule-job"></a>Schedule a Job
 
-You can schedule a job to execute at any time using a schedule expression. Pivotal Scheduler requires Quartz cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format. For more information on how to use this syntax, see [Scheduler Cron Syntax](syntax.html).
+You can schedule a job to execute at any time using a schedule expression. Scheduler requires Quartz cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format. For more information on how to use this syntax, see [Scheduler Cron Syntax](syntax.html).
 
 For example, to execute a job at noon every day, run the following command:
 
@@ -63,7 +63,7 @@ For example, to execute a job at noon every day, run the following command:
 
 A single job can have multiple schedules. Each schedule has a GUID to distinguish it from similar schedules.
 
-<p class="note"><strong>Note</strong>: Scheduler for PCF does not support cron expressions with seconds or years.</p>
+<p class="note"><strong>Note</strong>: Scheduler does not support cron expressions with seconds or years.</p>
 <p class="note"><strong>Note</strong>: Scheduled jobs automatically execute in UTC.</p>
 
 ### <a id="list-jobs"></a>View Jobs
@@ -121,7 +121,7 @@ Connected, dumping recent logs for app my-app in org my-org / space my-space as 
 [...]
 </pre>
 
-<p class="note"><strong>Note</strong>: Pivotal Scheduler jobs are executed as <a href="https://docs.pivotal.io/pivotalcf/devguide/using-tasks.html">CF Tasks</a>.</p>
+<p class="note"><strong>Note</strong>: Scheduler jobs are executed as <a href="https://docs.pivotal.io/pivotalcf/devguide/using-tasks.html">CF Tasks</a>.</p>
 
 ### <a id="delete-job"></a>Delete a Job
 

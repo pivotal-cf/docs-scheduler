@@ -1,9 +1,9 @@
 ---
-title: Using Pivotal Scheduler
-owner: Pivotal Autoscaler and Scheduler
+title: Using Scheduler
+owner: Autoscaler and Scheduler
 ---
 
-This topic provides instructions for using Pivotal Scheduler.
+This topic provides instructions for using Scheduler.
 
 You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI),
 [Apps Manager](https://docs.pivotal.io/application-service/console/manage-apps.html#enable-scheduling),
@@ -12,24 +12,24 @@ general information, see [Managing Service Instances with the cf CLI](https://do
 
 ## <a id="prereqs"></a>Prerequisites
 
-To start using Pivotal Scheduler, you need the following:
+To start using Scheduler, you need the following:
 
-* A PAS deployment with [Pivotal Scheduler](https://network.pivotal.io/products/p-scheduler-for-pcf) installed and listed in the Marketplace.
+* A Tanzu Application Service for VMs (TAS for VMs) deployment with [Scheduler](https://network.pivotal.io/products/p-scheduler) installed and listed in the Marketplace.
 * A [Space Developer](https://docs.pivotal.io/application-service/concepts/roles.html#roles) account.
-* (Optional) The cf CLI v6.23.0 or greater and the Pivotal Scheduler CLI plugin installed on your local machine. The Pivotal Scheduler CLI plugin is packaged with the Pivotal Scheduler tile on [Pivotal Network](https://network.pivotal.io/products/p-scheduler).
+* (Optional) The cf CLI v6.23.0 or greater and the Scheduler CLI plugin installed on your local machine. The Scheduler CLI plugin is packaged with the Scheduler tile on [VMware Tanzu Network](https://network.pivotal.io/products/p-scheduler).
 
 ## <a id='create-service'></a>Create and Bind a Service Instance Using the cf CLI
 
-Every app and service in PAS is scoped to a [space](https://docs.pivotal.io/application-service/concepts/roles.html#spaces). This means that an app can use a service only if an instance of the service exists in the same space.
+Every app and service in TAS for VMs is scoped to a [space](https://docs.pivotal.io/application-service/concepts/roles.html#spaces). This means that an app can use a service only if an instance of the service exists in the same space.
 
-The Pivotal Scheduler service is a singleton service. Only one service instance can be created in a space.
+The Scheduler service is a singleton service. Only one service instance can be created in a space.
 
 ### <a id='run-marketplace'></a>Confirm Service Availability
 
-For apps to use a service, the service must be available in the Marketplace. To confirm the availability of Pivotal Scheduler, perform the following steps:
+For apps to use a service, the service must be available in the Marketplace. To confirm the availability of Scheduler, perform the following steps:
 
 1. Run `cf marketplace` from the command line.
-1. If the output lists `scheduler-for-pcf` in the `service` column, Pivotal Scheduler is available. If the service is not available, install it. See [Installing and Configuring Pivotal Scheduler](./installing.html) for more information.
+1. If the output lists `scheduler-for-pcf` in the `service` column, Scheduler is available. If the service is not available, install it. See [Installing and Configuring Scheduler](./installing.html) for more information.
 
     <pre class="terminal">
     $ cf marketplace
@@ -43,7 +43,7 @@ For apps to use a service, the service must be available in the Marketplace. To 
 
 ### <a id='create'></a>Create a Service Instance
 
-To create an instance of the Pivotal Scheduler service, run `cf create-service scheduler-for-pcf standard SERVICE-INSTANCE-NAME`, replacing `SERVICE-INSTANCE-NAME` with a name of your choice. After you create the service instance, this instance name appears under `name` in the output of the `cf services` command.
+To create an instance of the Scheduler service, run `cf create-service scheduler-for-pcf standard SERVICE-INSTANCE-NAME`, replacing `SERVICE-INSTANCE-NAME` with a name of your choice. After you create the service instance, this instance name appears under `name` in the output of the `cf services` command.
 
 See the following example:
 
@@ -64,7 +64,7 @@ You can create only one instance in a space. If you attempt to create more than 
 
 For an app to use a service, you must bind it to a service instance. Do this after you push or re-push the app using `cf push`.
 
-To bind an app to a Pivotal Scheduler instance, run `cf bind-service APP-NAME SERVICE-INSTANCE-NAME`, replacing `APP-NAME` with the name of the app you want to use the Pivotal Scheduler service for and `SERVICE-INSTANCE-NAME` with the name you provided when you ran `cf create-service`.
+To bind an app to a Scheduler instance, run `cf bind-service APP-NAME SERVICE-INSTANCE-NAME`, replacing `APP-NAME` with the name of the app you want to use the Scheduler service for and `SERVICE-INSTANCE-NAME` with the name you provided when you ran `cf create-service`.
 
 <pre class="terminal">
 $ cf bind-service my-app my-instance<br>
@@ -75,10 +75,10 @@ TIP: Use 'cf push' to ensure your env variable changes take effect
 
 ## <a id="manage-jobs"></a>Manage Jobs and Calls
 
-For information about the CLI operations that you can perform to manage jobs and calls in Pivotal Scheduler, see [Using Jobs](using-jobs.html) and [Using Calls](using-calls.html).
+For information about the CLI operations that you can perform to manage jobs and calls in Scheduler, see [Using Jobs](using-jobs.html) and [Using Calls](using-calls.html).
 
-If you want to manage jobs and calls through the Scheduler HTTP API, see the [Pivotal Scheduler API Documentation](https://docs.pivotal.io/scheduler/api/).
+If you want to manage jobs and calls through the Scheduler HTTP API, see the [Scheduler API Documentation](https://docs.pivotal.io/scheduler/api/).
 
-## <a id="using-am"></a> Using Pivotal Scheduler in Apps Manager
+## <a id="using-am"></a> Using Scheduler in Apps Manager
 
-For information about binding Pivotal Scheduler to your app and scheduling tasks through Apps Manager, see [Managing Apps and Service Instances Using Apps Manager](https://docs.pivotal.io/application-service/console/manage-apps.html#enable-scheduling).
+For information about binding Scheduler to your app and scheduling tasks through Apps Manager, see [Managing Apps and Service Instances Using Apps Manager](https://docs.pivotal.io/application-service/console/manage-apps.html#enable-scheduling).

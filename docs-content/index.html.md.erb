@@ -1,16 +1,16 @@
 ---
-title: Pivotal Scheduler
-owner: Pivotal Autoscaler and Scheduler
+title: Scheduler
+owner: Autoscaler and Scheduler
 ---
-This documentation describes Pivotal Scheduler.
+This documentation describes Scheduler.
 
 ## <a id='overview'></a>Overview
 
-Pivotal Scheduler is a service for scheduling the execution of Diego tasks (jobs),
+Scheduler is a service for scheduling the execution of Diego tasks (jobs),
 such as database migrations, emails, or batch jobs, as well as the execution of outbound HTTP
 requests (calls).
 
-Pivotal Scheduler enables developers to do the following:
+Scheduler enables developers to do the following:
 
 * Create, run, and schedule jobs and view job history.
 * Create, run, and schedule calls and view call history.
@@ -21,7 +21,7 @@ and the [Scheduler HTTP API](https://docs.pivotal.io/scheduler/api/).
 
 ## <a id="snapshot"></a>Product Snapshot
 
-The following table provides version and version-support information about Pivotal Scheduler.
+The following table provides version and version-support information about Scheduler.
 
 <table class="nice">
     <th>Element</th>
@@ -49,11 +49,11 @@ The following table provides version and version-support information about Pivot
 
 ## <a id="reqs"></a>Requirements
 
-Pivotal Scheduler requires a MySQL database.
+Scheduler requires a MySQL database.
 
 You can use either of the following:
 
-+ MySQL for Pivotal Platform v2.7 or later. See [MySQL for Pivotal Platform](https://docs.pivotal.io/p-mysql/index.html)
++ VMware Tanzu SQL with MySQL for VMs v2.7 or later. See [VMware Tanzu SQL with MySQL for VMs](https://docs.pivotal.io/p-mysql/index.html)
 + An external MySQL database
 
 ## <a id="limitations"></a>Limitations
@@ -70,5 +70,5 @@ such as Ruby or Python, you should do the following:
     the cf CLI after you create Scheduler jobs for it.
 
 * The maximum number of tasks that you can schedule is determined by the memory
-and disk quotas in the Pivotal Scheduler org and space.
+and disk quotas in the Scheduler org and space.
 For more information, see [Running Tasks](https://docs.pivotal.io/application-service/devguide/using-tasks.html#manage-tasks).
