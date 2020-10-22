@@ -1,6 +1,6 @@
 ---
 title: Scheduling Calls
-owner: Pivotal Autoscaler and Scheduler
+owner: Autoscaler and Scheduler
 ---
 
 This topic provides instructions for managing outbound HTTP calls in Pivotal Scheduler.
@@ -91,7 +91,7 @@ Really delete the call my-call with url https://example.com and all associated s
 OK
 </pre>
 
-### <a id="delete-schedule"></a>Delete a Call Schedule  
+### <a id="delete-schedule"></a>Delete a Call Schedule
 
 You can delete a specific schedule by running `cf delete-call-schedule SCHEDULE-GUID`, where `SCHEDULE-GUID` is the GUID found in the output of the `cf call-schedules` command. See the following example:
 
@@ -99,4 +99,4 @@ You can delete a specific schedule by running `cf delete-call-schedule SCHEDULE-
 $ cf delete-call-schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d<br>
 Really delete the schedule 2b69e0c2-9664-46bb-4817-54afcedbb65d / 0 12 ? * * and all associated history?> [yN]: y
 OK
-</pre>	
+</pre>

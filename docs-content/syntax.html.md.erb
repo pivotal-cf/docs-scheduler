@@ -1,6 +1,6 @@
 ---
 title: Scheduler Cron Syntax
-owner: Pivotal Autoscaler and Scheduler
+owner: Autoscaler and Scheduler
 ---
 
 This topic provides instructions for using Quartz cron syntax with Pivotal Scheduler.
@@ -48,18 +48,18 @@ For more information about special characters, see [Cron Trigger Tutorial](http:
 
 The following are examples of custom scaling rules with Pivotal Scheduler:
 
-* Every Hour: 
-        
+* Every Hour:
+
     ```
     cf schedule-call my-call "0 * * * ?"
     ```
 * Every day at 8:30am:
-        
+
     ```
     cf schedule-call my-call "29 8 ? * *"
     ```
 * Every week at 6pm on Friday:
-    
+
     ```
     cf schedule-call my-call "0 18 ? * 5"
     ```
