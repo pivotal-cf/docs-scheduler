@@ -7,7 +7,7 @@ repo_link_enabled: true
 
 pcf_header: &local_pcf
   use_local_header: true
-  latest_stable_version: 1.7
+  latest_stable_version: 1.4
   changelog_href: https://docs.pivotal.io/scheduler/1-2/index.html
   local_header_img: /images/cloud_rings.png
   local_header_title: Pivotal Cloud Foundry
@@ -17,7 +17,7 @@ sections:
   - repository:
       name: docs-content
     directory: scheduler-for-pcf
-    subnav_template: scheduler-for-pcf_subnav.erb       
+    subnav_template: scheduler-for-pcf_subnav.erb
 
 template_variables:                             # optional
 
