@@ -33,10 +33,14 @@ occurs within a transaction that is not yet visible to the scheduling thread.
 This release bumps the minimum stemcell version from 456.x to 621.90. In addition we now
 specify a minimum patch version for the stemcell.
 
-## <a id="known-issues"></a> Known Issues
+## <a id="known-issues"></a> Known Issues in Scheduler v1.4.0
 
-- Scheduler v1.4.0 fails when an attempt is made to delete a service key created against
-  a scheduler service instance.
+Scheduler v1.4.0 includes the following known issue:
+
+### <a id='metadata-path'></a> Deleting Service Key Fails
+
+Scheduler v1.4.0 fails when an attempt is made to delete a service key created against
+a scheduler service instance.
 
 ## <a id="breaking-changes"></a> Breaking Changes in Scheduler v1.4.0
 
