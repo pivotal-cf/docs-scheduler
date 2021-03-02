@@ -1,45 +1,44 @@
 ---
-title: Scheduler
-owner: Autoscaler and Scheduler
+title: Pivotal Scheduler
+owner: Pivotal Autoscaler and Scheduler
 ---
-This documentation describes Scheduler.
+This documentation describes Pivotal Scheduler.
 
 ## <a id='overview'></a>Overview
 
-Scheduler is a service for scheduling the execution of Diego tasks (jobs),
-such as database migrations, emails, or batch jobs, as well as the execution of outbound HTTP
-requests (calls).
+Pivotal Scheduler is a service for scheduling the execution of Diego tasks,
+such as database migrations, emails, or batch jobs, as well as the execution of outbound HTTP calls.
 
-Scheduler enables developers to do the following:
+Pivotal Scheduler enables developers to do the following:
 
 * Create, run, and schedule jobs and view job history.
 * Create, run, and schedule calls and view call history.
 
 You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI),
-[Apps Manager](https://docs.pivotal.io/application-service/console/manage-apps.html#enable-scheduling),
-and the [Scheduler HTTP API](https://docs.pivotal.io/scheduler/1-3/api/).
+[Apps Manager](https://docs.pivotal.io/pivotalcf/console/manage-apps.html#enable-scheduling),
+and the [Scheduler HTTP API](https://docs.pivotal.io/scheduler/1-2/api).
 
 ## <a id="snapshot"></a>Product Snapshot
 
-The following table provides version and version-support information about Scheduler.
+The following table provides version and version-support information about Pivotal Scheduler.
 
 <table class="nice">
     <th>Element</th>
     <th>Details</th>
     <tr>
         <td>Version</td>
-        <td>v1.3.0</td>
+        <td>v1.2.23</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>October 16, 2020</td>
+        <td>February 21, 2019</td>
     </tr>
     <tr>
-        <td>Compatible Ops Manager versions</td>
-        <td>v2.7.x or later</td>
+        <td>Compatible Ops Manager version(s)</td>
+        <td>v2.3.x or later</td>
     <tr>
-        <td>Compatible Application Service versions</td>
-        <td>v2.7.x or later</td>
+        <td>Compatible Pivotal Application Service version(s) <sup>*</sup></td>
+        <td>v2.3.x or later</td>
     </tr>
     <tr>
         <td>IaaS support</td>
@@ -49,11 +48,11 @@ The following table provides version and version-support information about Sched
 
 ## <a id="reqs"></a>Requirements
 
-Scheduler requires a MySQL database.
+Pivotal Scheduler requires a MySQL database.
 
 You can use either of the following:
 
-+ VMware Tanzu SQL with MySQL for VMs v2.7 or later. See [VMware Tanzu SQL with MySQL for VMs](https://docs.pivotal.io/p-mysql/index.html)
++ MySQL for Pivotal Platform v2.3 or later. See [MySQL for Pivotal Platform](https://docs.pivotal.io/p-mysql).
 + An external MySQL database
 
 ## <a id="limitations"></a>Limitations
@@ -62,7 +61,7 @@ You can use either of the following:
 such as Ruby or Python, you should do the following:
 <br><br>
     1. Before pushing your app, create a
-    [Procfile](https://docs.pivotal.io/application-service/buildpacks/prod-server.html#procfile)
+    [Procfile](https://docs.pivotal.io/pivotalcf/buildpacks/prod-server.html#procfile)
     in the root directory of the app.
     2. Declare a `web` process type in the file.
 
@@ -70,5 +69,5 @@ such as Ruby or Python, you should do the following:
     the cf CLI after you create Scheduler jobs for it.
 
 * The maximum number of tasks that you can schedule is determined by the memory
-and disk quotas in the Scheduler org and space.
-For more information, see [Running Tasks](https://docs.pivotal.io/application-service/devguide/using-tasks.html#manage-tasks).
+and disk quotas in the Pivotal Scheduler org and space.
+For more information, see [Running Tasks](https://docs.pivotal.io/pivotalcf/devguide/using-tasks.html#manage-tasks).
