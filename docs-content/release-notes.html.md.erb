@@ -3,58 +3,68 @@ title: Scheduler Release Notes
 owner: Autoscaler and Scheduler
 ---
 
-This topic contains release notes for Scheduler v1.4.0.
+This topic contains release notes for Scheduler v1.5.0.
 
 ## <a id='releases'></a> Releases
 
-### <a id="1-4-0"></a> v1.4.0
+### <a id="1-5-0"></a> v1.5.0
 
-**Release Date:** October 30, 2020
+**Release Date:** March 15, 2021
 
-- **[Security Fix]** UAA client token is no longer transmitted in plaintext ([CVE-2020-5426](https://tanzu.vmware.com/security/cve-2020-5426))
 - **[Security Fix]** Updated dependencies to mitigate CVE
-- **[Bug Fix]** Scheduling actions now take place in transactions.
-- **[Bug Fix]** Improved error handling when deleting service instances
+- **[Bug Fix]** Bump Go to 1.16 (see Breaking Changes below)
+- **[Bug Fix]** Scheduler could exhaust available RAM with a large amount of history. Instead Scheduler now paginates through history.
+- **[Bug Fix]** Service keys can be deleted. In v1.4.0 attempting to delete a service key errored.
 
-## <a id="database-transactions"></a> Database Transactions in Scheduler v1.4.0
+## <a id="breaking-changes"></a> Breaking Changes in Scheduler v1.5.0
 
-Scheduler v1.4.0 includes a significant change to its operation: database
-transactions. Scheduler's database has several interdependent tables; in
-previous releases, it was possible under certain circumstances for records in
-those tables to go out of sync. This could result in jobs that did not run and
-could not be deleted.  Now, with database transactions enabled, the tables will
-stay in sync.
+### <a id="x509-certificates"></a> X.509 Certificates
 
-An implication of this change is that the scheduler may have a delay of up to 5 seconds
-before executing a job or call. This is because the creation of the scheduled job
-occurs within a transaction that is not yet visible to the scheduling thread.
+Scheduler v1.5.0 bumps Go to 1.16. This version of Go changes the treatment of X.509 certificates. This applies to the scheduler-broker
+application and the scheduler cf CLI plugin.
 
-## <a id="stemcell-line-bumped"></a> Stemcell line bumped to 621
+The `CommonName` field on certificates [will not be treated as a hostname](https://golang.org/doc/go1.15#commonname) when no Subject Alternative
+Names are present.
 
-This release bumps the minimum stemcell version from 456.x to 621.90. In addition we now
-specify a minimum patch version for the stemcell.
+Refer to [the Go 1.16 release notes](https://golang.org/doc/go1.16#crypto/x509) for further details of other changes to treatment of certificates.
 
-## <a id="known-issues"></a> Known Issues in Scheduler v1.4.0
+#### <a id="tls-termination"></a> TLS Termination
 
-Scheduler v1.4.0 includes the following known issue:
+Before upgrading you should verify that the system domain for Tanzu Application Service is terminating TLS with a certificate that includes a Subject
+Alternative Name (SAN) for domains under the system domain.
 
-### <a id='metadata-path'></a> Deleting Service Key Fails
+* For example if your system domain is configured as `sys.example.com` then you should verify that the certificate presented by `api.sys.example.com`
+  includes a SAN for `api.sys.example.com` (or a wildcard `*.sys.example.com`).
+* The `login.sys.example.com` and `scheduler.sys.example.com` endpoints should also present certificates that include a SAN for these subdomains
+  (these can be covered by the same wildcard).
 
-Scheduler v1.4.0 fails when an attempt is made to delete a service key created against
-a scheduler service instance.
+If your configured certificates do not include a SAN for these domains then you will need to regenerate the certificates. If you attempt to upgrade to
+Scheduler v1.5.0 without regenerating the certificates then you will see an error similar to the following in the scheduler service broker logs:
 
-## <a id="breaking-changes"></a> Breaking Changes in Scheduler v1.4.0
+```
+http: panic serving 192.0.2.2:41122: Post "https://login.example.com/check_token": x509: certificate relies on legacy Common Name field, use SANs or temporarily enable Common Name matching with GODEBUG=x509ignoreCN=0
+```
 
-Scheduler v1.4.0 includes the following breaking change:
+This change also impacts the Scheduler cf CLI plugin shipped in this release. If the certificates do not include a SAN then the cf CLI end user will see
+an error similar to the following:
 
-### <a id='metadata-path'></a> Metadata path within product has changed
+```
+Get "https://scheduler.example.com/jobs?page=1&space_guid=d7759aae-22da-440c-aac8-1bdb0d58ff51": x509: certificate relies on legacy Common Name field, use SANs or temporarily enable Common Name matching with GODEBUG=x509ignoreCN=0
+```
 
-The path to the tile metadata within the product has changed from `metadata/p_scheduler.yml`
-to `metadata/metadata.yml`. This is an internal implementation detail, however if you
-have built automation that relies on the previous path of the metadata within the tile
-it will need to be updated.
+For both cases the solution is to ensure that your certificates include SANs for these domains.
 
-This change should not affect most users of the scheduler.
+#### <a id="database-tls-connections"></a> Database TLS connections
+
+Before upgrading to this release you should also verify that any certificates associated with your MySQL instances that scheduler is configured to use
+include Subject Alternative Names (SANs).
+
+For example if you have configured Scheduler with an external Amazon RDS database you should confirm that it is presenting a certificate with a SAN.
+See the [AWS RDS documentation on certificate rotation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html) for more information.
+
+### macOS cf CLI plugin
+
+Scheduler v1.5.0 bumps Go to 1.16. The cf CLI plugin now requires macOS 10.12 Sierra or later.
 
 ## <a id="view"></a> View Release Notes for Another Version
 
