@@ -30,41 +30,40 @@ Refer to [the Go 1.16 release notes](https://golang.org/doc/go1.16#crypto/x509) 
 
 #### <a id="tls-termination"></a> TLS Termination
 
-Before upgrading you should verify that the system domain for Tanzu Application Service is terminating TLS with a certificate that includes a Subject
+Before upgrading, verify that the system domain for Tanzu Application Service is terminating TLS with a certificate that includes a Subject
 Alternative Name (SAN) for domains under the system domain.
 
-* For example if your system domain is configured as `sys.example.com` then you should verify that the certificate presented by `api.sys.example.com`
-  includes a SAN for `api.sys.example.com` (or a wildcard `*.sys.example.com`).
-* The `login.sys.example.com` and `scheduler.sys.example.com` endpoints should also present certificates that include a SAN for these subdomains
-  (these can be covered by the same wildcard).
+* For example, if your system domain is configured as `sys.example.com`, verify that the certificate presented by `api.sys.example.com`
+  includes a SAN for `api.sys.example.com` or a wildcard `*.sys.example.com`.
+* The `login.sys.example.com` and `scheduler.sys.example.com` endpoints should also present certificates that include a SAN for these subdomains. These can be covered by the same wildcard.
 
-If your configured certificates do not include a SAN for these domains then you will need to regenerate the certificates. If you attempt to upgrade to
-Scheduler v1.5.0 without regenerating the certificates then you will see an error similar to the following in the scheduler service broker logs:
+If your configured certificates do not include a SAN for these domains, you must regenerate the certificates. If you attempt to upgrade to
+Scheduler v1.5.0 without regenerating the certificates, you see an error similar to the following in the scheduler service broker logs:
 
 ```
 http: panic serving 192.0.2.2:41122: Post "https://login.example.com/check_token": x509: certificate relies on legacy Common Name field, use SANs or temporarily enable Common Name matching with GODEBUG=x509ignoreCN=0
 ```
 
-This change also impacts the Scheduler cf CLI plugin shipped in this release. If the certificates do not include a SAN then the cf CLI end user will see
+This change impacts the Scheduler cf CLI plugin shipped in this release. If the certificates do not include a SAN, the cf CLI produces
 an error similar to the following:
 
 ```
 Get "https://scheduler.example.com/jobs?page=1&space_guid=d7759aae-22da-440c-aac8-1bdb0d58ff51": x509: certificate relies on legacy Common Name field, use SANs or temporarily enable Common Name matching with GODEBUG=x509ignoreCN=0
 ```
 
-For both cases the solution is to ensure that your certificates include SANs for these domains.
+For both cases, check that your certificates include SANs for these domains.
 
 #### <a id="database-tls-connections"></a> Database TLS connections
 
-Before upgrading to this release you should also verify that any certificates associated with your MySQL instances that scheduler is configured to use
+Before upgrading to this release, verify that certificates associated with your MySQL instances that scheduler is configured to use
 include Subject Alternative Names (SANs).
 
-For example if you have configured Scheduler with an external Amazon RDS database you should confirm that it is presenting a certificate with a SAN.
-See the [AWS RDS documentation on certificate rotation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html) for more information.
+For example, if you configure Scheduler with an external Amazon RDS database, confirm that it is presenting a certificate with a SAN.
+For more information, see [Rotating your SSL/TLS certificate](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html).
 
 ### macOS cf CLI plugin
 
-Scheduler v1.5.0 bumps Go to 1.16. The cf CLI plugin now requires macOS 10.12 Sierra or later.
+Scheduler v1.5.0 bumps Go to v1.16. The cf CLI plugin requires macOS 10.12 Sierra or later.
 
 ## <a id="view"></a> View Release Notes for Another Version
 
