@@ -2,21 +2,24 @@
 
 **Note**: Provide instructions in your PRs to indicate which branches you want Docs to apply your commits to. 
 
-| Branch name | Use for… | Protected?| Active? | Published URL |
-|-------------| ------| -------------| --------| --------------|
-| master      |not used | yes           | no      | Not published anywhere |
-| 1.2         | v1.2  | yes           | yes     | https://docs.pivotal.io/pcf-scheduler/1-2/ |
-| 1.1         | v1.1  | yes           | no      | https://docs.pivotal.io/archives/scheduler-1.1.pdf |
-| 1.0         | v1.0  | yes           | no      | https://docs.pivotal.io/archives/scheduler-1.0.pdf|
+| Branch name | Use for ... | Protected?   | Active? | Published URL |
+|-------------| ------------| -------------| --------| --------------|
+| master      |not used     | yes          | no      | Not published |
+| 1.5         | v1.5        | yes          | yes     | https://docs.pivotal.io/pcf-scheduler/1-5/ |
+| 1.4         | v1.4        | yes          | yes     | https://docs.pivotal.io/pcf-scheduler/1-4/ |
+| 1.3         | v1.3        | yes          | yes     | https://docs.pivotal.io/pcf-scheduler/1-3/ |
+| 1.2         | v1.2        | yes          | yes     | https://docs.pivotal.io/pcf-scheduler/1-2/ |
+| 1.1         | v1.1        | yes          | no      | https://docs.pivotal.io/archives/scheduler-1.1.pdf |
+| 1.0         | v1.0        | yes          | no      | https://docs.pivotal.io/archives/scheduler-1.0.pdf |
 
 
 ## Which Book?
 https://github.com/pivotal-cf/docs-book-pcfservices
 
-There is a docs-book directory in this repo.
+There is a docs-book directory in this repository.
 This docs-book directory can be used to build a local version for watching
 or a one-off staged app for the doc.
-However, it is not used for publication.
+It is not used for publication.
 
 
 ## Pivotal Cloud Foundry Partners Template
