@@ -9,17 +9,20 @@ This topic describes how to install and configure Scheduler.
 
 Before you install Scheduler v1.6, you must have one of the following:
 
-+ A VMware Tanzu SQL with MySQL for VMs v2.7 or later tile. To download VMware Tanzu SQL with MySQL for VMs, see [VMware Tanzu SQL with MySQL for VMs](https://network.pivotal.io/products/pivotal-mysql/) on VMware Tanzu Network. For information about installing VMware Tanzu SQL with MySQL for VMs, see [Installing and Configuring VMware Tanzu SQL with MySQL for VMs](https://docs.pivotal.io/p-mysql/install-config.html). For information about configuring TLS options, see [Configure Security](https://docs.pivotal.io/p-mysql/install-config.html#security).
++ A VMware Tanzu SQL with MySQL for VMs v2.7 or later tile. To download VMware Tanzu SQL with MySQL for VMs, see [VMware Tanzu SQL with MySQL for VMs](https://network.pivotal.io/products/pivotal-mysql/) on VMware Tanzu Network. For information about installing VMware Tanzu SQL with MySQL for VMs, see [Installing and Configuring VMware Tanzu SQL with MySQL for VMs](https://docs.pivotal.io/p-mysql/install-config.html). For information about configuring TLS, see [Configure Security](https://docs.pivotal.io/p-mysql/install-config.html#security).
 
-+ An external MySQL database with TLS disabled.
++ An external MySQL database with TLS deactivated.
 
-<p class="note"><strong>Note:</strong> Scheduler is compatible with VMware Tanzu SQL with MySQL for VMs. Compatibility with MySQL alternatives like MariaDB is not tested or guaranteed.</p>
+<p class="note"><strong>Note:</strong> Scheduler is compatible with VMware Tanzu SQL with MySQL for VMs.
+  Compatibility with MySQL alternatives such as MariaDB are not tested or guaranteed.</p>
 
 ## <a id="download-install"></a> Download and Install Scheduler
 
+To download and install scheduler:
+
 1. Download the product file from [VMware Tanzu Network](https://network.pivotal.io/products/p-scheduler).
 
-1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file.
+1. Navigate to the **Ops Manager Installation Dashboard** and click **Import a Product** to upload the product file.
 
 1. Under the **Import a Product** button, click **+** next to the version number of Scheduler.
   This adds the tile to your staging area.
@@ -28,11 +31,11 @@ Before you install Scheduler v1.6, you must have one of the following:
 
 ## <a id="config-tile"></a> Configure Scheduler
 
-Follow the steps below to configure the Scheduler tile.
+Configure the Scheduler tile by using the following steps:
 
 ###<a id="azs"></a> Configure AZs and Networks
 
-Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler Service Broker and to select networks.
+Choose an Availability Zone (AZ) to run the Scheduler Service Broker and to select networks:
 
 1. Click **Assign AZs and Networks**.
 
@@ -56,7 +59,7 @@ Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler 
       </tr>
     </table>
 
-    <p class="note"><strong>NOTE</strong>: The network selected is used only by Errand VMs and does not apply to the Scheduler runtime.</p>
+    <p class="note"><strong>Note:</strong> The network selected is used only by Errand VMs and does not apply to the Scheduler runtime.</p>
 
 1. Click **Save**.
 
@@ -92,7 +95,7 @@ Follow the steps below to choose an Availability Zone (AZ) to run the Scheduler 
 
 ###<a id="stemcell"></a> Verify Stemcell Version
 
-To verify that you have the correct stemcell version for the Scheduler tile, do the following:
+To verify that you have the correct stemcell version for the Scheduler tile:
 
 1. Click **Stemcell**.
 
@@ -102,7 +105,7 @@ To verify that you have the correct stemcell version for the Scheduler tile, do 
 
 1. In the Ops Manager, click **Stemcell Library**.
 
-    <br>![Stemcell Library](stemcell-library-xenial.png)
+    <br>![Stemcell Library](stemcell-library-xenial.png) <!-- TODO: Alt text that describes the image in detail. -->
 
 1. Click **Import Stemcell**, and then select the stemcell you downloaded from VMware Tanzu Network.
 

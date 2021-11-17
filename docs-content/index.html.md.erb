@@ -7,15 +7,15 @@ This documentation describes Scheduler.
 ## <a id='overview'></a>Overview
 
 Scheduler is a service for scheduling the execution of Diego tasks (jobs),
-such as database migrations, emails, or batch jobs, as well as the execution of outbound HTTP
+such as database migrations, emails, or batch jobs, and the execution of outbound HTTP
 requests (calls).
 
-Scheduler enables developers to do the following:
+Scheduler enables developers to:
 
 * Create, run, and schedule jobs and view job history.
 * Create, run, and schedule calls and view call history.
 
-You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI),
+You can interact with the service by using the Cloud Foundry Command Line Interface (cf CLI),
 [Apps Manager](https://docs.pivotal.io/application-service/console/manage-apps.html#enable-scheduling),
 and the [Scheduler HTTP API](https://docs.pivotal.io/scheduler/1-6/api/).
 
@@ -61,12 +61,12 @@ You can use either of the following:
 * If your app uses a buildpack that does not generate a `web` process type,
 such as Ruby or Python, you should do the following:
 <br><br>
-    1. Before pushing your app, create a
+    1. Create a
     [Procfile](https://docs.pivotal.io/application-service/buildpacks/prod-server.html#procfile)
-    in the root directory of the app.
+    in the root directory of the app before pushing it.
     2. Declare a `web` process type in the file.
 
-    If you do not declare this process type, your app will not be accessible through
+    If you do not declare this process type, your app is not accessible when using
     the cf CLI after you create Scheduler jobs for it.
 
 * The maximum number of tasks that you can schedule is determined by the memory
