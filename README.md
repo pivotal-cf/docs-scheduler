@@ -5,6 +5,7 @@
 | Branch name | Use for ... | Protected?   | Active? | Published URL |
 |-------------| ------------| -------------| --------| --------------|
 | master      |not used     | yes          | no      | Not published |
+| 1.6         | v1.6        | yes          | yes     | https://docs.pivotal.io/pcf-scheduler/1-6/ |
 | 1.5         | v1.5        | yes          | yes     | https://docs.pivotal.io/pcf-scheduler/1-5/ |
 | 1.4         | v1.4        | yes          | yes     | https://docs.pivotal.io/pcf-scheduler/1-4/ |
 | 1.3         | v1.3        | yes          | yes     | https://docs.pivotal.io/pcf-scheduler/1-3/ |
