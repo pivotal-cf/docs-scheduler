@@ -1,10 +1,12 @@
 ---
 breadcrumb: PCF Services
-title: Upgrading to Scheduler v1.6
+title: Upgrading to Tanzu Scheduler v1.6
 ---
-This topic explains how to upgrade Scheduler.
 
-##<a id="backup"></a>(Optional) Back Up VMware Tanzu SQL with MySQL for VMs Database
+
+This topic explains how to upgrade VMware Tanzu Scheduler.
+
+##<a id="backup"></a>(Optional) Back up VMware Tanzu SQL with MySQL for VMs database
 
 VMware recommends backing up your VMware Tanzu SQL with MySQL for VMs database before installing Scheduler v1.6.
 
@@ -14,7 +16,9 @@ To back up your VMware Tanzu SQL with MySQL for VMs database, see [Manual Backup
 
 For general information about upgrading a tile, see [Upgrading Tanzu Operations Manager Products](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-upgrading-products.html#other-products).
 
-<p class="note"><strong>Note:</strong> All <strong>Post-Deploy Errands</strong> must be enabled
+<p class="note important">
+<span class="note__title">Important</span>
+All <strong>Post-Deploy Errands</strong> must be enabled
 to migrate from a MySQL for PCF v1.x database to VMware Tanzu SQL with MySQL for VMs v2.x database.
 These settings are in the Scheduler <strong>Errands</strong> pane of
 the Scheduler tile.</p>

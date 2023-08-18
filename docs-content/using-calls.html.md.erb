@@ -1,17 +1,17 @@
 ---
-title: Scheduling Calls
+title: Scheduling calls
 owner: Autoscaler and Scheduler
 ---
 
-This topic provides instructions for managing outbound HTTP calls in Scheduler.
+This topic provides instructions for managing outbound HTTP calls in VMware Tanzu Scheduler.
 
-## <a id="manage-calls"></a>Manage Calls
+## <a id="manage-calls"></a>Manage calls
 
 You can use Scheduler to schedule execution of HTTP calls to external HTTP services. See the following sections to learn more about creating, running, and scheduling calls and viewing call history.
 
 To use the Cloud Foundry Command Line Interface (cf CLI) for managing calls, you must install the Scheduler CLI plugin on your local machine. This plugin is packaged with the Scheduler tile on <a href="https://network.tanzu.vmware.com/products/p-scheduler/">VMware Tanzu Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section of the Using Scheduler topic.
 
-### <a id="create-calls"></a>Create a Call
+### <a id="create-calls"></a>Create a call
 
 You can create a call by running the `cf create-call APP-NAME CALL-NAME URL` command, where:
 
@@ -19,7 +19,7 @@ You can create a call by running the `cf create-call APP-NAME CALL-NAME URL` com
   * `CALL-NAME` is the name for your call.
   * `URL` is the URL to execute a HTTP POST call against.
 
-### <a id="exec-calls"></a>Execute a Call
+### <a id="exec-calls"></a>Execute a call
 
 You can execute a call manually by running the `cf run-call CALL-NAME` command. This is often useful to test the configuration of a call prior to scheduling it for recurring execution.
 
@@ -31,9 +31,11 @@ Enqueuing call my-call for app my-app in org my-org / space my-space as user<spa
 OK
 </pre>
 
-<p class="note"><strong>Note</strong>: Call execution must complete within 10 seconds.</p>
+<p class="note">
+<span class="note__title">Note</span>
+Call execution must complete within 10 seconds.</p>
 
-### <a id="schedule-call"></a>Schedule a Call
+### <a id="schedule-call"></a>Schedule a call
 
 You can schedule a call to execute at any time using a schedule expression. Scheduler requires Quartz cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format. For more information on how to use this syntax, see [Scheduler Cron Syntax](syntax.html).
 
@@ -43,9 +45,11 @@ For example, to execute a call at noon every day, run the following command:
 
 A single call can have multiple schedules. Each schedule has a GUID to distinguish it from similar schedules.
 
-<p class="note"><strong>Note</strong>: Scheduled calls automatically execute in UTC.</p>
+<p class="note">
+<span class="note__title">Note</span>
+Scheduled calls automatically execute in UTC.</p>
 
-### <a id="list-calls"></a>View Calls
+### <a id="list-calls"></a>View calls
 
 You can use the cf CLI to list all calls in a space by running `cf calls`. See the following example:
 
@@ -57,7 +61,7 @@ my-call      my-app          https://example.com
 OK
 </pre>
 
-### <a id="view-schedules"></a>View Schedules for Calls
+### <a id="view-schedules"></a>View schedules for calls
 
 You can review schedules for all calls in a space by running `cf call-schedules`. See the following example:
 
@@ -69,7 +73,7 @@ my-call    2b69e0c2-9664-46bb-4817-54afcedbb65d   0 12 ? * *
 OK
 </pre>
 
-### <a id="call-history"></a>View Call History
+### <a id="call-history"></a>View call history
 
 You can review call history by running `cf call-history CALL-NAME`. See the following example:
 
@@ -81,7 +85,7 @@ Execution GUID                         Execution State   Scheduled Time         
 d288a4ba-e0bc-48c9-969c-6ee79e380b20   SUCCEEDED         Mon, 16 Oct 2017 12:10:55 UTC   Mon, 16 Oct 2017 12:10:55 UTC   Mon, 16 Oct 2017 12:10:55 UTC    201 - Created
 </pre>
 
-### <a id="delete-call"></a>Delete a Call
+### <a id="delete-call"></a>Delete a call
 
 You can delete a call by running `cf delete-call CALL-NAME`. See the following example:
 
@@ -91,7 +95,7 @@ Really delete the call my-call with url https://example.com and all associated s
 OK
 </pre>
 
-### <a id="delete-schedule"></a>Delete a Call Schedule
+### <a id="delete-schedule"></a>Delete a call schedule
 
 You can delete a specific schedule by running `cf delete-call-schedule SCHEDULE-GUID`, where `SCHEDULE-GUID` is the GUID found in the output of the `cf call-schedules` command. See the following example:
 

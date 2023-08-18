@@ -1,19 +1,17 @@
 ---
-title: Scheduling Jobs
+title: Scheduling jobs
 owner: Autoscaler and Scheduler
 ---
 
-This topic provides instructions for managing jobs in Scheduler.
+You can use VMware Tanzu Scheduler to schedule execution of tasks on VMware Tanzu Operations Manager runtimes, including database migrations, emails, and batch jobs. See the following sections to learn more about creating, running, and scheduling jobs and viewing job history.
 
-## <a id="manage-jobs"></a>Manage Jobs
-
-You can use Scheduler to schedule execution of tasks on VMware Tanzu Operations Manager runtimes, including database migrations, emails, and batch jobs. See the following sections to learn more about creating, running, and scheduling jobs and viewing job history.
-
-<p class="note"><strong>Note:</strong> Scheduler does not take into account the outcome of previously run jobs. It assumes that scheduled jobs are idempotent and can be re-run. Jobs that are not idempotent may cause unintended consequences even if they complete successfully.</p>
+class="note important">
+<span class="note__title">Important</span>
+Scheduler does not take into account the outcome of previously run jobs. It assumes that scheduled jobs are idempotent and can be re-run. Jobs that are not idempotent may cause unintended consequences even if they complete successfully.</p>
 
 To use the Cloud Foundry Command Line Interface (cf CLI) for managing jobs, you must install the Scheduler CLI plugin on your local machine. This plugin is packaged with the Scheduler tile on <a href="https://network.tanzu.vmware.com/products/p-scheduler/">VMware Tanzu Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section of the Using Scheduler topic.
 
-### <a id="create-jobs"></a>Create a Job
+### <a id="create-jobs"></a>Create a job
 
 To execute a task related to an app, create a job by running the `cf create-job APP-NAME JOB-NAME COMMAND` command, where:
 
@@ -41,7 +39,7 @@ The value of `LIMIT` must be an integer and be suffixed with either `MB` for meg
 gigabytes. For example, `--memory 1024MB` sets a memory limit of 1024 megabytes and `--disk 5GB`
 sets a disk limit of 5 gigabytes.
 
-### <a id="exec-jobs"></a>Execute a Job
+### <a id="exec-jobs"></a>Execute a job
 
 You can execute a job manually. This is often useful to test the configuration of a job prior to scheduling it for recurring execution.
 
@@ -53,7 +51,7 @@ Enqueuing job my-job for app my-app in org my-org / space my-space as user<span>
 OK
 </pre>
 
-### <a id="schedule-job"></a>Schedule a Job
+### <a id="schedule-job"></a>Schedule a job
 
 You can schedule a job to execute at any time using a schedule expression. Scheduler requires Quartz cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format. For more information on how to use this syntax, see [Scheduler Cron Syntax](syntax.html).
 
@@ -63,10 +61,12 @@ For example, to execute a job at noon every day, run the following command:
 
 A single job can have multiple schedules. Each schedule has a GUID to distinguish it from similar schedules.
 
-<p class="note"><strong>Note</strong>: Scheduler does not support cron expressions with seconds or years.</p>
-<p class="note"><strong>Note</strong>: Scheduled jobs automatically execute in UTC.</p>
+<p class="note">
+<span class="note__title">Note</span>
+Scheduler does not support cron expressions with seconds or years. Scheduled jobs automatically execute in UTC.</p>
 
-### <a id="list-jobs"></a>View Jobs
+
+### <a id="list-jobs"></a>View jobs
 
 You can use the cf CLI to list all jobs in a space by running `cf jobs`. See the following example:
 
@@ -78,7 +78,7 @@ my-job      my-app          pwd
 OK
 </pre>
 
-### <a id="view-schedules"></a>View Schedules for Jobs
+### <a id="view-schedules"></a>View schedules for jobs
 
 You can review schedules for all jobs in a space by running `cf job-schedules`. See the following example:
 
@@ -90,7 +90,7 @@ my-job        pwd    2b69e0c2-9664-46bb-4817-54afcedbb65d   0 12 ? * *
 OK
 </pre>
 
-### <a id="job-history"></a>View Job History
+### <a id="job-history"></a>View job history
 
 You can review job history by running `cf job-history JOB-NAME`. See the following example:
 
@@ -102,7 +102,7 @@ Execution GUID                     Execution State   Scheduled Time             
 8a7e808a5b883a25015b89b4a12c0001   SUCCEEDED         Mon, 10 Apr 2017 13:00:00 UTC   Mon, 10 Apr 2017 13:00:00 UTC   Mon, 10 Apr 2017 13:00:01 UTC   202 - Cloud Controller Accepted Task
 </pre>
 
-### <a id="view-logs"></a>View Logs
+### <a id="view-logs"></a>View logs
 
 You can view logs for jobs by running `cf logs APP-NAME --recent`.
 See the following example:
@@ -122,7 +122,7 @@ Connected, dumping recent logs for app my-app in org my-org / space my-space as 
 </pre>
 
 
-### <a id="delete-job"></a>Delete a Job
+### <a id="delete-job"></a>Delete a job
 
 You can delete a job by running `cf delete-job JOB-NAME`. See the following example:
 
@@ -132,7 +132,7 @@ Really delete the job my-job with command pwd and all associated schedules and h
 OK
 </pre>
 
-### <a id="delete-schedule"></a>Delete a Job Schedule
+### <a id="delete-schedule"></a>Delete a job schedule
 
 You can delete a specific schedule by running `cf delete-job-schedule JOB-NAME SCHEDULE-GUID`, where `JOB-NAME` is the name of the job and `SCHEDULE-GUID` is the GUID found in the output of the `cf job-schedules` command. See the following example:
 

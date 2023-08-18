@@ -3,9 +3,9 @@ title: Architecture
 owner: Autoscaler and Scheduler
 ---
 
-This topic describes the architecture of Scheduler.
+This topic describes the architecture of VMware Tanzu Scheduler.
 
-## <a id="topology"></a> HA Topology
+## <a id="topology"></a> HA topology
 
 In a highly available resource configuration, the Scheduler service uses the following:
 
@@ -15,7 +15,7 @@ In a highly available resource configuration, the Scheduler service uses the fol
 
 You can reduce the number of Scheduler instances to one using the Cloud Foundry Command Line Interface (cf CLI).
 
-## <a id="persistence"></a> Data Persistence
+## <a id="persistence"></a> Data persistence
 
 Scheduler relies on a MySQL datastore to persist data, including jobs, calls, and history. Each
 call or schedule can require up to 10&nbsp;MB of database capacity to store history.
