@@ -6,21 +6,21 @@ owner: Autoscaler and Scheduler
 This topic provides instructions for using Scheduler.
 
 You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI),
-[Apps Manager](https://docs.pivotal.io/application-service/console/manage-apps.html#enable-scheduling),
+[Apps Manager](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/manage-apps.html#enable-scheduling),
 and the Scheduler HTTP API to configure jobs and outbound HTTP calls and to review history. For
-general information, see [Managing Service Instances with the cf CLI](https://docs.pivotal.io/application-service/devguide/services/managing-services.html).
+general information, see [Managing Service Instances with the cf CLI](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/services-managing-services.html).
 
 ## <a id="prereqs"></a>Prerequisites
 
 To start using Scheduler, you need the following:
 
-* A Tanzu Application Service for VMs (TAS for VMs) deployment with [Scheduler](https://network.pivotal.io/products/p-scheduler) installed and listed in the Marketplace.
-* A [Space Developer](https://docs.pivotal.io/application-service/concepts/roles.html#roles) account.
-* (Optional) The cf CLI v6.23.0 or greater and the Scheduler CLI plugin installed on your local machine. The Scheduler CLI plugin is packaged with the Scheduler tile on [VMware Tanzu Network](https://network.pivotal.io/products/p-scheduler).
+* A Tanzu Application Service for VMs (TAS for VMs) deployment with [Scheduler](https://network.tanzu.vmware.com/products/p-scheduler/) installed and listed in the Marketplace.
+* A [Space Developer](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/roles.html#roles) account.
+* (Optional) The cf CLI v6.23.0 or greater and the Scheduler CLI plugin installed on your local machine. The Scheduler CLI plugin is packaged with the Scheduler tile on [VMware Tanzu Network](https://network.tanzu.vmware.com/products/p-scheduler/).
 
 ## <a id='create-service'></a>Create and Bind a Service Instance Using the cf CLI
 
-Every app and service in TAS for VMs is scoped to a [space](https://docs.pivotal.io/application-service/concepts/roles.html#spaces). This means that an app can use a service only if an instance of the service exists in the same space.
+Every app and service in TAS for VMs is scoped to a [space](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/roles.html#spaces). This means that an app can use a service only if an instance of the service exists in the same space.
 
 The Scheduler service is a singleton service. Only one service instance can be created in a space.
 
@@ -81,4 +81,4 @@ If you want to manage jobs and calls through the Scheduler HTTP API, see the [Sc
 
 ## <a id="using-am"></a> Using Scheduler in Apps Manager
 
-For information about binding Scheduler to your app and scheduling tasks through Apps Manager, see [Managing Apps and Service Instances Using Apps Manager](https://docs.pivotal.io/application-service/console/manage-apps.html#enable-scheduling).
+For information about binding Scheduler to your app and scheduling tasks through Apps Manager, see [Managing your orgs and spaces using Apps Manager](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/manage-apps.html#enable-scheduling).

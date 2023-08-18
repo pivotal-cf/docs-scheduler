@@ -7,11 +7,11 @@ This topic provides instructions for managing jobs in Scheduler.
 
 ## <a id="manage-jobs"></a>Manage Jobs
 
-You can use Scheduler to schedule execution of tasks on Ops Manager runtimes, including database migrations, emails, and batch jobs. See the following sections to learn more about creating, running, and scheduling jobs and viewing job history.
+You can use Scheduler to schedule execution of tasks on VMware Tanzu Operations Manager runtimes, including database migrations, emails, and batch jobs. See the following sections to learn more about creating, running, and scheduling jobs and viewing job history.
 
 <p class="note"><strong>Note:</strong> Scheduler does not take into account the outcome of previously run jobs. It assumes that scheduled jobs are idempotent and can be re-run. Jobs that are not idempotent may cause unintended consequences even if they complete successfully.</p>
 
-To use the Cloud Foundry Command Line Interface (cf CLI) for managing jobs, you must install the Scheduler CLI plugin on your local machine. This plugin is packaged with the Scheduler tile on <a href="https://network.pivotal.io/products/p-scheduler">VMware Tanzu Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section of the Using Scheduler topic.
+To use the Cloud Foundry Command Line Interface (cf CLI) for managing jobs, you must install the Scheduler CLI plugin on your local machine. This plugin is packaged with the Scheduler tile on <a href="https://network.tanzu.vmware.com/products/p-scheduler/">VMware Tanzu Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section of the Using Scheduler topic.
 
 ### <a id="create-jobs"></a>Create a Job
 
@@ -121,7 +121,6 @@ Connected, dumping recent logs for app my-app in org my-org / space my-space as 
 [...]
 </pre>
 
-<p class="note"><strong>Note</strong>: Scheduler jobs are executed as <a href="https://docs.pivotal.io/pivotalcf/devguide/using-tasks.html">CF Tasks</a>.</p>
 
 ### <a id="delete-job"></a>Delete a Job
 

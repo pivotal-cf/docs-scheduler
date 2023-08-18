@@ -9,7 +9,7 @@ This topic describes how to install and configure Scheduler.
 
 Before you install Scheduler v1.6, you must have one of the following:
 
-+ A VMware Tanzu SQL with MySQL for VMs v2.7 or later tile. To download VMware Tanzu SQL with MySQL for VMs, see [VMware Tanzu SQL with MySQL for VMs](https://network.pivotal.io/products/pivotal-mysql/) on VMware Tanzu Network. For information about installing VMware Tanzu SQL with MySQL for VMs, see [Installing and Configuring VMware Tanzu SQL with MySQL for VMs](https://docs.pivotal.io/p-mysql/install-config.html). For information about configuring TLS, see [Configure Security](https://docs.pivotal.io/p-mysql/install-config.html#security).
++ A VMware Tanzu SQL with MySQL for VMs v2.7 or later tile. To download VMware Tanzu SQL with MySQL for VMs, see [VMware Tanzu SQL with MySQL for VMs](https://network.tanzu.vmware.com/products/pivotal-mysql/) on VMware Tanzu Network. For information about installing VMware Tanzu SQL with MySQL for VMs, see [Installing and configuring VMware Tanzu SQL with MySQL for VMs](https://docs.vmware.com/en/VMware-SQL-with-MySQL-for-Tanzu-Application-Service/2.10/mysql-for-tas/install-config.html). For information about configuring TLS, see [Configure security](https://docs.vmware.com/en/VMware-SQL-with-MySQL-for-Tanzu-Application-Service/2.10/mysql-for-tas/install-config.html#security).
 
 + An external MySQL database with TLS deactivated.
 
@@ -101,9 +101,9 @@ To verify that you have the correct stemcell version for the Scheduler tile:
 
 1. Verify the settings.
 
-1. Download the stemcell from [VMware Tanzu Network](https://network.pivotal.io/products).
+1. Download the stemcell from [VMware Tanzu Network](https://network.tanzu.vmware.com/).
 
-1. In the Ops Manager, click **Stemcell Library**.
+1. In the Tanzu Operations Manager, click **Stemcell Library**.
 
     <br>![The Stemcell Library screen shows the state of each item in the library, whether it is staged or deployed, for example. You can also import stemcells using the Import Stemcell button.](./images/stemcell-library-xenial.png)
 
@@ -111,10 +111,10 @@ To verify that you have the correct stemcell version for the Scheduler tile:
 
 3. Click **Save**.
 
-4.  <a name="apply-changes"></a> Return to the Ops Manager Installation Dashboard.
+4.  <a name="apply-changes"></a> Return to the Tanzu Operations Manager Installation Dashboard.
 
 5. Click **Review Pending Changes**.
-For more information about this Ops Manager page,
-see [Reviewing Pending Product Changes](http://docs.pivotal.io/ops-manager/install/review-pending-changes.html).
+For more information about this Tanzu Operations Manager page,
+see [Reviewing Pending Product Changes](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-review-pending-changes.html).
 
 1. Click **Apply Changes**.

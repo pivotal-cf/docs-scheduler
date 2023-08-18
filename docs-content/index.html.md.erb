@@ -16,7 +16,7 @@ Scheduler enables developers to:
 * Create, run, and schedule calls and view call history.
 
 You can interact with the service by using the Cloud Foundry Command Line Interface (cf CLI),
-[Apps Manager](https://docs.pivotal.io/application-service/console/manage-apps.html#enable-scheduling),
+[Apps Manager](hhttps://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/manage-apps.html#enable-scheduling),
 and the [Scheduler HTTP API](https://docs.pivotal.io/scheduler/1-6/api/).
 
 ## <a id="snapshot"></a>Product Snapshot
@@ -35,7 +35,7 @@ The following table provides version and version-support information about Sched
         <td>November 7, 2022</td>
     </tr>
     <tr>
-        <td>Compatible Ops Manager versions</td>
+        <td>Compatible VMware Tanzu Operations Manager versions</td>
         <td>v2.7 or later</td>
     <tr>
         <td>Compatible Application Service versions</td>
@@ -53,7 +53,7 @@ Scheduler requires a MySQL database.
 
 You can use either of the following:
 
-+ VMware Tanzu SQL with MySQL for VMs v2.7 or later. See [VMware Tanzu SQL with MySQL for VMs](https://docs.pivotal.io/p-mysql/index.html)
++ VMware Tanzu SQL with MySQL for VMs v2.7 or later. See [VMware Tanzu SQL with MySQL for VMs](https://docs.vmware.com/en/VMware-SQL-with-MySQL-for-Tanzu-Application-Service/2.10/mysql-for-tas/index.html)
 + An external MySQL database
 
 ## <a id="limitations"></a>Limitations
@@ -62,7 +62,7 @@ You can use either of the following:
 such as Ruby or Python, you should do the following:
 <br><br>
     1. Create a
-    [Procfile](https://docs.pivotal.io/application-service/buildpacks/prod-server.html#procfile)
+    [Procfile](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/prod-server.html#procfile)
     in the root directory of the app before pushing it.
     2. Declare a `web` process type in the file.
 
@@ -71,4 +71,4 @@ such as Ruby or Python, you should do the following:
 
 * The maximum number of tasks that you can schedule is determined by the memory
 and disk quotas in the Scheduler org and space.
-For more information, see [Running Tasks](https://docs.pivotal.io/application-service/devguide/using-tasks.html#manage-tasks).
+For more information, see [Running Tasks](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/using-tasks.html#manage-tasks).
