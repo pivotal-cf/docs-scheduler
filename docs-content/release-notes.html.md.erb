@@ -3,70 +3,24 @@ title: Scheduler Release Notes
 owner: Autoscaler and Scheduler
 ---
 
-This topic contains release notes for VMware Tanzu Scheduler v1.6.0.
+This topic contains release notes for VMware Tanzu Scheduler v2.0.
 
 ## <a id='releases'></a> Releases
 
-### <a id="1-6-5"></a> v1.6.6
+### <a id="2-0"></a> v2.0
 
-**Release Date:** July 10, 2023
+**Release Date:** November 7, 2023
 
-- **[Bug Fix]** Allow upgrading scheduler instances from MySQL 5.7 to 8.0 by removing the SQL mode `NO_AUTO_CREATE_USER`
-- **[Bug Fix]** Increase the disk quota of the test app used for smoke tests
 - **[Dependency Bump]** Update Go to v1.20.7
-- **[Dependency Bump]** Update Spring Boot to v2.7.14
+- **[Dependency Bump]** Update Spring Boot to v3.1.5
 
-### <a id="1-6-5"></a> v1.6.5
-
-**Release Date:** July 10, 2023
-
-- **[Dependency Bump]** Update Go to v1.20.5
-- **[Dependency Bump]** Update Spring Boot to v2.7.13
-
-### <a id="1-6-4"></a> v1.6.4
-
-**Release Date:** April 19, 2023
-
-- **[Feature]** Scheduler deploys on cflinuxfs4 if available
-- **[Dependency Bump]** Update Go to v1.20.3
-- **[Dependency Bump]** Update Spring Boot to v2.7.10
-
-### <a id="1-6-3"></a> v1.6.3
-
-**Release Date:** November 7, 2022
-- **[Note]** requires a minimum of Java Buildpack 4.49
-
-- **[Bug Fix]** Resolve deployment issue when using Java Buildpack >=v4.52
-- **[Bug Fix]** Update Go to v1.19.2
-- **[Bug Fix]** Update Spring Boot to v2.7.5
-
-### <a id="1-6-2"></a> v1.6.2
-
-**Release Date:** April 21, 2022
-
-- **[Bug Fix]** Update Go to v1.18
-- **[Bug Fix]** Update Spring Boot to v2.6.6
-
-### <a id="1-6-1"></a> v1.6.1
-
-**Release Date:** December 14, 2021
-
-- **[Security Fix]** Update log4j to resolve [CVE-2021-44228](https://nvd.nist.gov/vuln/detail/CVE-2021-44228)
-
-### <a id="1-6-0"></a> v1.6.0
-
-**Release Date:** November 18, 2021
-
-- **[Bug Fix]** Update Go to v1.17 (see Breaking Changes below)
-- **[Bug Fix]** Update Spring Boot to v2.5.4
-- **[Bug Fix]** Prevent duplicate jobs from scheduling with a new configuration: "Acquire triggers within a lock".
-- **[Bug Fix]** Scheduler no longer fails to deploy on VMware Tanzu Operations Manager v2.10.19 and later.
-
-## <a id="breaking-changes"></a> Breaking changes in Scheduler v1.6.0
+## <a id="breaking-changes"></a> Breaking changes in Scheduler v2.0
 
 This release has the following breaking change:
 
-* **macOS cf CLI plugin:** Scheduler v1.6.0 bumps Go to v1.17. The cf CLI plugin requires macOS 10.13 High Sierra or later.
+* **Stemcell version:** Scheduler v2.0 requires the Jammy stemcell rather than Xenial
+* **MySQL version:** Scheduler v2.0 contains Spring Boot v3.1.5 and thus requires a MySQL v8.0 datbase. 
+* **Java buildpack version:** Scheduler v2.0 contains Java 17 and thus requires Java Buildpack v4.42 or later
 
 ## <a id="view"></a> View Release Notes for another version
 
