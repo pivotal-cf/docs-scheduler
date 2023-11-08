@@ -3,18 +3,18 @@ publication:
     RootMapFile: toc.md
 
     # fields for DocWorks publication details
-    PublicationName: Application Service Adapter for VMware Tanzu Application Platform v1.0
-    ProductName: Application Service Adapter for VMware Tanzu Application Platform
-    ProductVersion: 1.0
-    PublicationGuid: tas-adapter
-    OutputFileName: tas-adapter
-    PublicationAuthor: emalm@vmware.com
+    PublicationName: Scheduler for VMware Tanzu v2.0
+    ProductName: Scheduler for VMware Tanzu
+    ProductVersion: 2.0
+    PublicationGuid: Scheduler for VMware Tanzu
+    OutputFileName: scheduler-vmware-tanzu
+    PublicationAuthor: VMware.com
     Language: en
-    PDFLink: tas-adapter
+    PDFLink: tanzu-scheduler
 
     # additional fields
     BatchProcessingInstruction:
-    PublicationVersion: 1.0
+    PublicationVersion: 2.0
     PublicationVersionComments:
     PublicationKeywords:
     WordLink:
