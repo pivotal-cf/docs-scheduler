@@ -7,8 +7,8 @@ repo_link_enabled: true
 public_host: docs.pivotal.io
 pcf_header: &local_pcf
   use_local_header: true
-  latest_stable_version: 1.4
-  changelog_href: https://docs.pivotal.io/scheduler/1-2/index.html
+  latest_stable_version: 1.2
+  changelog_href: https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/1.2/scheduler-vmware-tanzu/GUID-release-notes.html
   local_header_img: /images/cloud_rings.png
   local_header_title: Pivotal Cloud Foundry
   use_local_header: true
