@@ -7,7 +7,7 @@ This is the table of contents from which Scheduler for VMware Tanzu Documentatio
   - [Architecture](./architecture.html)
   - [Operator guide](./installing.html)
       - [Installing and configuring Scheduler for VMware Tanzu](./installing.html)
-      - [Upgrading Scheduler](./upgrade_scheduler)
+      - [Upgrading Scheduler](./upgrade_scheduler.html)
   - [User guide](./using.html)
       - [Using Scheduler](./using.html)
       - [Scheduling Jobs](./using-jobs.html)
