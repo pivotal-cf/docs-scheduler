@@ -10,6 +10,6 @@ This is the table of contents from which Scheduler for VMware Tanzu Documentatio
       - [Upgrading Scheduler](./upgrade_scheduler.html)
   - [User guide](./using.html)
       - [Using Scheduler](./using.html)
-      - [Scheduling Jobs](./using-jobs.html)
-      - [Scheduling Calls](./using-calls.html)
+      - [Scheduling jobs](./using-jobs.html)
+      - [Scheduling calls](./using-calls.html)
       - [Scheduler cron syntax](./syntax.html.md.erb)
