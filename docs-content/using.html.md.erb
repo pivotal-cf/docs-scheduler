@@ -7,7 +7,7 @@ owner: Autoscaler and Scheduler
 To start using VMware Tanzu Scheduler, you need:
 
 * A Tanzu Application Service for VMs (TAS for VMs) deployment with [Scheduler](https://network.tanzu.vmware.com/products/p-scheduler/) installed and listed in the Marketplace.
-* A [Space Developer](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/roles.html#roles) account.
+* A [Space developer](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/roles.html#roles) account.
 * (Optional) The cf CLI v6.23.0 or greater and the Scheduler CLI plugin installed on your local machine. The Scheduler CLI plugin is packaged with the Scheduler tile on [VMware Tanzu Network](https://network.tanzu.vmware.com/products/p-scheduler/).
 
 You can interact with the service through the Cloud Foundry Command Line Interface (cf CLI),
@@ -28,7 +28,7 @@ The Scheduler service is a singleton service. Only one service instance can be c
 For apps to use a service, the service must be available in the Marketplace. To confirm the availability of Scheduler, perform the following steps:
 
 1. Run `cf marketplace` from the command line.
-1. If the output lists `scheduler-for-pcf` in the `service` column, Scheduler is available. If the service is not available, install it. See [Installing and Configuring Scheduler](./installing.html) for more information.
+1. If the output lists `scheduler-for-pcf` in the `service` column, Scheduler is available. If the service is not available, install it. See [Installing and configuring Scheduler](./installing.html) for more information.
 
     <pre class="terminal">
     $ cf marketplace
@@ -74,7 +74,7 @@ TIP: Use 'cf push' to ensure your env variable changes take effect
 
 ## <a id="manage-jobs"></a>Manage jobs and calls
 
-For information about the CLI operations that you can perform to manage jobs and calls in Scheduler, see [Using Jobs](using-jobs.html) and [Using Calls](using-calls.html).
+For information about the CLI operations that you can perform to manage jobs and calls in Scheduler, see [Using jobs](using-jobs.html) and [Using calls](using-calls.html).
 
 If you want to manage jobs and calls through the Scheduler HTTP API, see the [Scheduler API Documentation](https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/services/scheduler-vmware-tanzu-api/index.html).
 

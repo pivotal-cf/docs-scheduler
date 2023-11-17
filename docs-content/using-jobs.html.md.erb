@@ -9,7 +9,7 @@ You can use VMware Tanzu Scheduler to schedule execution of tasks on VMware Tanz
 <span class="note__title">Important</span>
 Scheduler does not take into account the outcome of previously run jobs. It assumes that scheduled jobs are idempotent and can be re-run. Jobs that are not idempotent may cause unintended consequences even if they complete successfully.</p>
 
-To use the Cloud Foundry Command Line Interface (cf CLI) for managing jobs, you must install the Scheduler CLI plugin on your local machine. This plugin is packaged with the Scheduler tile on <a href="https://network.tanzu.vmware.com/products/p-scheduler/">VMware Tanzu Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section of the Using Scheduler topic.
+To use the Cloud Foundry Command Line Interface (cf CLI) for managing jobs, you must install the Scheduler CLI plugin on your local machine. This plugin is packaged with the Scheduler tile on <a href="https://network.tanzu.vmware.com/products/p-scheduler/">VMware Tanzu Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section in *Using Scheduler*.
 
 ## <a id="create-jobs"></a>Create a job
 
@@ -53,7 +53,7 @@ OK
 
 ## <a id="schedule-job"></a>Schedule a job
 
-You can schedule a job to execute at any time using a schedule expression. Scheduler requires Quartz cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format. For more information on how to use this syntax, see [Scheduler Cron Syntax](syntax.html).
+You can schedule a job to execute at any time using a schedule expression. Scheduler requires Quartz cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format. For more information on how to use this syntax, see [Scheduler cron syntax](syntax.html).
 
 For example, to execute a job at noon every day, run the following command:
 

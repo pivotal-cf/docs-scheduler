@@ -9,7 +9,7 @@ This topic provides instructions for managing outbound HTTP calls in VMware Tanz
 
 You can use Scheduler to schedule execution of HTTP calls to external HTTP services. See the following sections to learn more about creating, running, and scheduling calls and viewing call history.
 
-To use the Cloud Foundry Command Line Interface (cf CLI) for managing calls, you must install the Scheduler CLI plugin on your local machine. This plugin is packaged with the Scheduler tile on <a href="https://network.tanzu.vmware.com/products/p-scheduler/">VMware Tanzu Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section of the Using Scheduler topic.
+To use the Cloud Foundry Command Line Interface (cf CLI) for managing calls, you must install the Scheduler CLI plugin on your local machine. This plugin is packaged with the Scheduler tile on <a href="https://network.tanzu.vmware.com/products/p-scheduler/">VMware Tanzu Network</a>. For more information, see the <a href="using.html#prereqs">Prerequisites</a> section in *Using Scheduler*.
 
 ### <a id="create-calls"></a>Create a call
 
@@ -37,7 +37,7 @@ Call execution must complete within 10 seconds.</p>
 
 ### <a id="schedule-call"></a>Schedule a call
 
-You can schedule a call to execute at any time using a schedule expression. Scheduler requires Quartz cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format. For more information on how to use this syntax, see [Scheduler Cron Syntax](syntax.html).
+You can schedule a call to execute at any time using a schedule expression. Scheduler requires Quartz cron expressions in the `MIN HOUR DAY-OF-MONTH MONTH DAY-OF-WEEK` format. For more information on how to use this syntax, see [Scheduler cron syntax](syntax.html).
 
 For example, to execute a call at noon every day, run the following command:
 
