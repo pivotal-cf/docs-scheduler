@@ -4,7 +4,7 @@
 
 | Branch name | Use for ... | Protected?   | Active? | Published URL |
 |-------------| ------------| -------------| --------| --------------|
-| master      | not used    | yes          | no      | Not published |
+| master      | NOT USED    | yes          | no      | Not published |
 | 2.0         | v2.0        | yes          | yes     | https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/2.0/scheduler-vmware-tanzu/GUID-docs-content-index.html |
 | 1.6         | v1.6        | yes          | yes     | https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/1.6/scheduler-vmware-tanzu/GUID-index.html |
 | 1.5         | v1.5        | yes          | yes     | https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/1.5/scheduler-vmware-tanzu/GUID-index.html |
