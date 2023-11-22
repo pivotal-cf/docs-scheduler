@@ -11,8 +11,6 @@
 | 1.4         | v1.4        | yes          | yes     | https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/1.5/scheduler-vmware-tanzu/GUID-index.html |
 | 1.3         | v1.3        | yes          | yes     | https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/1.3/scheduler-vmware-tanzu/GUID-index.html |
 | 1.2         | v1.2        | yes          | yes     | https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/1.2/scheduler-vmware-tanzu/GUID-index.html |
-| 1.1         | v1.1        | yes          | no      | https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/1.1/scheduler-vmware-tanzu.pdf |
-| 1.0         | v1.0        | yes          | no      | https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/1.0/scheduler-vmware-tanzu.pdf |
 
 API docs: https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/services/scheduler-vmware-tanzu-api/index.html
 
