@@ -12,6 +12,8 @@
 | 1.3         | v1.3        | yes          | yes     | https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/1.3/scheduler-vmware-tanzu.pdf |
 | 1.2         | v1.2        | yes          | yes     | https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/1.2/scheduler-vmware-tanzu.pdf |
 
+Landing page in DocWorks: https://docworks.vmware.com/one/scene?permalink=uniqueId%3DMarkdown-Project-905
+
 API docs: https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/services/scheduler-vmware-tanzu-api/index.html
 
 
