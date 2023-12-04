@@ -14,6 +14,8 @@
 | 1.1         | v1.1        | yes          | no      | https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/1.1/scheduler-vmware-tanzu.pdf |
 | 1.0         | v1.0        | yes          | no      | https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/1.0/scheduler-vmware-tanzu.pdf |
 
+Landing page in DocWorks: https://docworks.vmware.com/one/scene?permalink=uniqueId%3DMarkdown-Project-905
+
 API docs: https://docs.vmware.com/en/Scheduler-for-VMware-Tanzu/services/scheduler-vmware-tanzu-api/index.html
 
 Tanzu Scheduler is scheduler service exposed as a service broker in the Marketplace. App developers use Scheduler to create, schedule, and interact with jobs that execute on VMware Tanzu Application Service.
