@@ -34,10 +34,11 @@ following command flags to override the default disk and memory limits when you 
 
   * `--disk LIMIT` or `-k LIMIT` sets the task disk limit.
   * `--memory LIMIT` or `-m LIMIT` sets the task memory limit.
+  * `--logs LIMIT` or `-l LIMIT` sets the task log rate limit.
 
 The value of `LIMIT` must be an integer and be suffixed with either `MB` for megabytes or `GB` for
-gigabytes. For example, `--memory 1024MB` sets a memory limit of 1024 megabytes and `--disk 5GB`
-sets a disk limit of 5 gigabytes.
+gigabytes for disk and memory limits. For example, `--memory 1024MB` sets a memory limit of 1024 megabytes and `--disk 5GB`
+sets a disk limit of 5 gigabytes. Log rate limits can be in Bytes(B) or Kilobytes(KB).
 
 ## <a id="exec-jobs"></a>Execute a job
 
@@ -73,8 +74,8 @@ You can use the cf CLI to list all jobs in a space by running `cf jobs`. See the
 <pre class="terminal">
 $ cf jobs<br>
 Listing jobs for org my-org / space my-space as user<span>@</span>example.com...
-Job Name    App Name        Command
-my-job      my-app          pwd
+Job Name    App Name        Command     Memory   Disk   Log Rate
+my-job      my-app          pwd         1024     1024   65536
 OK
 </pre>
 
