@@ -38,8 +38,9 @@ following command flags to override the default disk and memory limits when you 
 
 The value of `LIMIT` must be an integer and be suffixed with either `MB` for megabytes or `GB` for
 gigabytes for disk and memory limits. For example, `--memory 1024MB` sets a memory limit of 1024 megabytes and `--disk 5GB`
-sets a disk limit of 5 gigabytes. Log rate limits can be in Bytes(B) or Kilobytes(KB). `--logs -1` may be used for log rate to specify a unlimited log rate task. 
-An unlimited log rate limit task will be unable to run if the space or org has a quota. If any of the space or org limits cause your quotas to be exceeded, your task will fail. 
+sets a disk limit of 5 gigabytes. Log rate limits can be in bytes(B) or kilobytes(KB). `--logs -1` can be used for log rate to specify an unlimited log rate task.
+
+An unlimited log rate limit task is unable to run if the space or org has a quota. If any of the space or org limits cause your quotas to be exceeded, your task fails.
 
 ## <a id="exec-jobs"></a>Execute a job
 
